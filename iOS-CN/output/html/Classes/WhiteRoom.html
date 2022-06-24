@@ -1,0 +1,3440 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>WhiteRoom Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">  </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Agora</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/observerId">observerId</option>
+		
+		<option value="//api/name/uuid">uuid</option>
+		
+		<option value="//api/name/globalState">globalState</option>
+		
+		<option value="//api/name/memberState">memberState</option>
+		
+		<option value="//api/name/roomMembers">roomMembers</option>
+		
+		<option value="//api/name/broadcastState">broadcastState</option>
+		
+		<option value="//api/name/scale">scale</option>
+		
+		<option value="//api/name/state">state</option>
+		
+		<option value="//api/name/sceneState">sceneState</option>
+		
+		<option value="//api/name/phase">phase</option>
+		
+		<option value="//api/name/disconnectedBySelf">disconnectedBySelf</option>
+		
+		<option value="//api/name/writable">writable</option>
+		
+		<option value="//api/name/delay">delay</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/setGlobalState:">- setGlobalState:</option>
+		
+		<option value="//api/name/setMemberState:">- setMemberState:</option>
+		
+		<option value="//api/name/setViewMode:">- setViewMode:</option>
+		
+		<option value="//api/name/debugInfo:">- debugInfo:</option>
+		
+		<option value="//api/name/disconnect:">- disconnect:</option>
+		
+		<option value="//api/name/setWritable:completionHandler:">- setWritable:completionHandler:</option>
+		
+		<option value="//api/name/disableCameraTransform:">- disableCameraTransform:</option>
+		
+		<option value="//api/name/disableDeviceInputs:">- disableDeviceInputs:</option>
+		
+		<option value="//api/name/dispatchMagixEvent:payload:">- dispatchMagixEvent:payload:</option>
+		
+		<option value="//api/name/pptNextStep">- pptNextStep</option>
+		
+		<option value="//api/name/pptPreviousStep">- pptPreviousStep</option>
+		
+		<option value="//api/name/insertImage:src:">- insertImage:src:</option>
+		
+		<option value="//api/name/insertImage:">- insertImage:</option>
+		
+		<option value="//api/name/completeImageUploadWithUuid:src:">- completeImageUploadWithUuid:src:</option>
+		
+		<option value="//api/name/disableEraseImage:">- disableEraseImage:</option>
+		
+		<option value="//api/name/syncBlockTimestamp:">- syncBlockTimestamp:</option>
+		
+		<option value="//api/name/setTimeDelay:">- setTimeDelay:</option>
+		
+		<option value="//api/name/getSceneStateWithResult:">- getSceneStateWithResult:</option>
+		
+		<option value="//api/name/getScenesWithResult:">- getScenesWithResult:</option>
+		
+		<option value="//api/name/setScenePath:">- setScenePath:</option>
+		
+		<option value="//api/name/setScenePath:completionHandler:">- setScenePath:completionHandler:</option>
+		
+		<option value="//api/name/setSceneIndex:completionHandler:">- setSceneIndex:completionHandler:</option>
+		
+		<option value="//api/name/putScenes:scenes:index:">- putScenes:scenes:index:</option>
+		
+		<option value="//api/name/cleanScene:">- cleanScene:</option>
+		
+		<option value="//api/name/removeScenes:">- removeScenes:</option>
+		
+		<option value="//api/name/moveScene:target:">- moveScene:target:</option>
+		
+		<option value="//api/name/copy">- copy</option>
+		
+		<option value="//api/name/paste">- paste</option>
+		
+		<option value="//api/name/duplicate">- duplicate</option>
+		
+		<option value="//api/name/deleteOperation">- deleteOperation</option>
+		
+		<option value="//api/name/disableSerialization:">- disableSerialization:</option>
+		
+		<option value="//api/name/redo">- redo</option>
+		
+		<option value="//api/name/undo">- undo</option>
+		
+		<option value="//api/name/getGlobalStateWithResult:">- getGlobalStateWithResult:</option>
+		
+		<option value="//api/name/getMemberStateWithResult:">- getMemberStateWithResult:</option>
+		
+		<option value="//api/name/getRoomMembersWithResult:">- getRoomMembersWithResult:</option>
+		
+		<option value="//api/name/getBroadcastStateWithResult:">- getBroadcastStateWithResult:</option>
+		
+		<option value="//api/name/getRoomPhaseWithResult:">- getRoomPhaseWithResult:</option>
+		
+		<option value="//api/name/getZoomScaleWithResult:">- getZoomScaleWithResult:</option>
+		
+		<option value="//api/name/getRoomStateWithResult:">- getRoomStateWithResult:</option>
+		
+		<option value="//api/name/disableOperations:">- disableOperations:</option>
+		
+		<option value="//api/name/zoomChange:">- zoomChange:</option>
+		
+		<option value="//api/name/getPptImagesWithResult:">- getPptImagesWithResult:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">WhiteRoom Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td><a href="../Classes/WhiteDisplayer.html">WhiteDisplayer</a> : NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>WhiteRoom.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>用于操作互动白板实时房间。</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/observerId" title="observerId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/observerId">&nbsp;&nbsp;observerId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户在当前房间中的用户 ID。与该用户在 <a href="../Classes/WhiteRoomMember.html">WhiteRoomMember</a> 中的 <code>memberId</code> 相同。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSNumber *observerId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/uuid" title="uuid"></a>
+	<h3 class="method-title"><code><a href="#//api/name/uuid">&nbsp;&nbsp;uuid</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>房间 UUID，即房间唯一标识符。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *uuid</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/globalState" title="globalState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/globalState">&nbsp;&nbsp;globalState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>房间的全局状态。详见 <a href="../Classes/WhiteGlobalState.html">WhiteGlobalState</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) WhiteGlobalState *globalState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/memberState" title="memberState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/memberState">&nbsp;&nbsp;memberState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>工具信息。详见 <a href="../Classes/WhiteReadonlyMemberState.html">WhiteReadonlyMemberState</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) WhiteReadonlyMemberState *memberState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/roomMembers" title="roomMembers"></a>
+	<h3 class="method-title"><code><a href="#//api/name/roomMembers">&nbsp;&nbsp;roomMembers</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>在线成员信息。详见 <a href="../Classes/WhiteRoomMember.html">WhiteRoomMember</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSArray&lt;WhiteRoomMember*&gt; *roomMembers</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/broadcastState" title="broadcastState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/broadcastState">&nbsp;&nbsp;broadcastState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户视角状态信息， 包括用户当前场景状态、主播信息。详见 <a href="../Classes/WhiteBroadcastState.html">WhiteBroadcastState</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) WhiteBroadcastState *broadcastState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/scale" title="scale"></a>
+	<h3 class="method-title"><code><a href="#//api/name/scale">&nbsp;&nbsp;scale</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视角缩放比例。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) CGFloat scale</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/state" title="state"></a>
+	<h3 class="method-title"><code><a href="#//api/name/state">&nbsp;&nbsp;state</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>房间状态信息，详见 <a href="../Classes/WhiteDisplayerState.html">WhiteDisplayerState</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) WhiteRoomState *state</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sceneState" title="sceneState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sceneState">&nbsp;&nbsp;sceneState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>白板页面（场景）状态。详见 <a href="../Classes/WhiteSceneState.html">WhiteSceneState</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) WhiteSceneState *sceneState</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/phase" title="phase"></a>
+	<h3 class="method-title"><code><a href="#//api/name/phase">&nbsp;&nbsp;phase</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>房间连接状态。详见 <a href="../Constants/WhiteRoomPhase.html">WhiteRoomPhase</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) WhiteRoomPhase phase</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setGlobalState:" title="setGlobalState:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setGlobalState:">&ndash;&nbsp;setGlobalState:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>修改互动白板实时房间的公共全局状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setGlobalState:(WhiteGlobalState *)<em>globalState</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>globalState</code></th>
+						<td><p>房间公共全局状态，自定义字段。详见 <a href="../Classes/WhiteGlobalState.html">WhiteGlobalState</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>实时房间的 <a href="#//api/name/globalState"><code>globalState</code></a> 属性为公共全局变量，房间内所有用户看到的都是相同的 <a href="#//api/name/globalState"><code>globalState</code></a>，所有互动模式用户都可以读写。修改 <a href="#//api/name/globalState"><code>globalState</code></a> 属性会立即生效并同步给所有用户。</p>
+
+<p>1.0 迁移用户，请阅读文档站中 [页面（场景）管理] ，使用 <code>setScencePath</code>。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setMemberState:" title="setMemberState:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setMemberState:">&ndash;&nbsp;setMemberState:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>修改房间内的工具状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setMemberState:(WhiteMemberState *)<em>modifyState</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>modifyState</code></th>
+						<td><p>需要修改的工具状态，详见 <a href="../Classes/WhiteMemberState.html">WhiteMemberState</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>调用该方法会立刻更新房间的 <a href="../Classes/WhiteMemberState.html">WhiteMemberState</a>。</p>
+
+<p>你可以调用 <a href="#//api/name/getMemberStateWithResult:">getMemberStateWithResult</a>  获取最新设置的工具状态。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setViewMode:" title="setViewMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setViewMode:">&ndash;&nbsp;setViewMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>切换视角模式。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setViewMode:(WhiteViewMode)<em>viewMode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>viewMode</code></th>
+						<td><p>视角模式。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>互动白板实时房间支持对用户设置以下视角模式：</p>
+
+<ul>
+<li><code>Broadcaster</code>: 主播模式。该模式下用户可以主动调整视角，并将自己的视角同步给房间内所有其他用户。</li>
+<li><code>Follower</code>：跟随模式。该模式下用户的视角会跟随主播的视角。</li>
+<li><code>Freedom</code>：（默认）自由模式。该模式下用户可以主动调整视角，不受其他用户视角模式设置的影响，也不会影响其他用户的视角模式设置。</li>
+</ul>
+
+
+<p>该方法的设置会影响房间内所有用户的视角模式：</p>
+
+<ul>
+<li>当房间内不存在主播模式的用户时，所有用户的视角都默认为自由模式。</li>
+<li>当一个用户的视角设置为主播模式后，房间内其他所有用户（包括新加入房间的用户）的视角会被自动设置为跟随模式。</li>
+<li>当跟随模式的用户进行白板操作时，其视角会自动切换为自由模式。你可以调用 <a href="#//api/name/disableOperations:">disableOperations</a> 禁止跟随模式的用户操作白板，以保证其保持跟随模式。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/debugInfo:" title="debugInfo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/debugInfo:">&ndash;&nbsp;debugInfo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取 debug 信息。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)debugInfo:(void ( ^ _Nullable ) ( NSDictionary *_Nullable dict ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>你可以通过该接口获取 <code>debugInfo</code> 的调用结果：</p>
+
+<ul>
+<li>如果方法调用成功，则返回调试日志信息。</li>
+<li>如果方法调用失败，则返回错误信息。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disconnect:" title="disconnect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disconnect:">&ndash;&nbsp;disconnect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>主动断开与互动白板实时房间的连接。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)disconnect:(void ( ^ _Nullable ) ( void ))<em>completeHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completeHandler</code></th>
+						<td><p>调用结果：</p>
+
+<ul>
+<li>如果方法调用成功，则返回房间的全局状态。</li>
+<li>如果方法调用失败，则返回错误信息。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该方法会把与当前房间对象相关的所有资源释放掉。如果要再次加入房间，需要重新调用 <a href="../Classes/WhiteSDK.html#//api/name/joinRoomWithConfig:callbacks:completionHandler:">joinRoomWithConfig</a>。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disconnectedBySelf" title="disconnectedBySelf"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disconnectedBySelf">&nbsp;&nbsp;disconnectedBySelf</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户是否主动断开与白板房间的连接。在调用 <a href="#//api/name/disconnect:">disconnect</a> 主动断连时，该值会被立即赋值为 <code>YES</code>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) BOOL disconnectedBySelf</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setWritable:completionHandler:" title="setWritable:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setWritable:completionHandler:">&ndash;&nbsp;setWritable:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置用户在房间中是否为互动模式。
+在加入房间前，就可以在 <a href="../Classes/WhiteRoomConfig.html">WhiteRoomConfig</a> 中设置 <a href="../Classes/WhiteRoomConfig.html#//api/name/isWritable">isWritable</a> ，来决定该模式。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setWritable:(BOOL)<em>writable</em> completionHandler:(void ( ^ _Nullable ) ( BOOL isWritable , NSError *_Nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>writable</code></th>
+						<td><p>用户在房间中是否为互动模式：</p>
+
+<ul>
+<li><code>YES</code>：互动模式，即具有读写权限。</li>
+<li><code>NO</code>：订阅模式，即具有只读权限。</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>调用结果：</p>
+
+<ul>
+<li>如果方法调用成功，则返回用户在房间中的读写状态。</li>
+<li>如果方法调用失败，则返回错误信息。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/writable" title="writable"></a>
+	<h3 class="method-title"><code><a href="#//api/name/writable">&nbsp;&nbsp;writable</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地用户在当前互动白板实时房间是否为互动模式。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly, getter=isWritable) BOOL writable</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<ul>
+<li><code>YES</code>：互动模式，即具有读写权限。</li>
+<li><code>NO</code>：订阅模式，即具有只读权限。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disableCameraTransform:" title="disableCameraTransform:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disableCameraTransform:">&ndash;&nbsp;disableCameraTransform:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>禁止/允许用户调整（移动或缩放）视角。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)disableCameraTransform:(BOOL)<em>disableCameraTransform</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>disableCameraTransform</code></th>
+						<td><p>是否禁止用户调整视角：</p>
+
+<ul>
+<li><code>YES</code>：禁止用户调整视角。</li>
+<li><code>NO</code>：（默认）允许用户调整视角。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disableDeviceInputs:" title="disableDeviceInputs:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disableDeviceInputs:">&ndash;&nbsp;disableDeviceInputs:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>禁止/允许用户操作工具。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)disableDeviceInputs:(BOOL)<em>disable</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>disable</code></th>
+						<td><p>是否禁止用户操作工具：</p>
+
+<ul>
+<li><code>YES</code>：禁止用户操作工具操作。</li>
+<li><code>NO</code>：（默认）允许用户操作工具输入操作。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/dispatchMagixEvent:payload:" title="dispatchMagixEvent:payload:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dispatchMagixEvent:payload:">&ndash;&nbsp;dispatchMagixEvent:payload:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发送自定义事件。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)dispatchMagixEvent:(NSString *)<em>eventName</em> payload:(NSDictionary *)<em>payload</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>eventName</code></th>
+						<td><p>自定义事件名称，详见 <a href="../Classes/WhiteEvent.html">WhiteEvent</a>。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>payload</code></th>
+						<td><p>自定义事件内容，详见 <a href="../Classes/WhiteEvent.html">WhiteEvent</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pptNextStep" title="pptNextStep"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pptNextStep">&ndash;&nbsp;pptNextStep</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>播放动态 PPT 下一页。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pptNextStep</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当前 PPT 页面的动画已全部执行完成时，SDK 会将场景切换至下一页 PPT。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pptPreviousStep" title="pptPreviousStep"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pptPreviousStep">&ndash;&nbsp;pptPreviousStep</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>返回动态 PPT 上一页。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pptPreviousStep</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当前 PPT 页面的动画全部回退完成时，SDK 会将场景切回至上一页 PPT。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/insertImage:src:" title="insertImage:src:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/insertImage:src:">&ndash;&nbsp;insertImage:src:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>插入图片显示区域。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)insertImage:(WhiteImageInformation *)<em>imageInfo</em> src:(NSString *)<em>src</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>imageInfo</code></th>
+						<td><p>图片信息，详见 <a href="../Classes/WhiteImageInformation.html">WhiteImageInformation</a>。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>src</code></th>
+						<td><p>图片 URL 地址，详见 <a href="../Classes/WhiteImageInformation.html">WhiteImageInformation</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>SDK 会根据你传入的 <code>imageInfo</code> 在白板上设置并插入图片的显示区域。</p>
+
+<p><strong>Note:</strong></p>
+
+<p>你也可以调用 <a href="#//api/name/insertImage:src:">insertImage</a> 方法同时传入图片信息和图片的 URL 地址，在白板中插入并展示图片。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/insertImage:" title="insertImage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/insertImage:">&ndash;&nbsp;insertImage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>插入图片显示区域。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)insertImage:(WhiteImageInformation *)<em>imageInfo</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>imageInfo</code></th>
+						<td><p>图片信息，详见 <a href="../Classes/WhiteImageInformation.html">WhiteImageInformation</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>SDK 会根据你传入的 <code>imageInfo</code> 在白板上设置并插入图片的显示区域。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/completeImageUploadWithUuid:src:" title="completeImageUploadWithUuid:src:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/completeImageUploadWithUuid:src:">&ndash;&nbsp;completeImageUploadWithUuid:src:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>展示图片。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)completeImageUploadWithUuid:(NSString *)<em>uuid</em> src:(NSString *)<em>src</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uuid</code></th>
+						<td><p>图片显示区域的 UUID, 即在 <a href="#//api/name/insertImage:src:">insertImage</a> 方法的 <code>imageInfo</code> 中传入的图片 UUID。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>src</code></th>
+						<td><p>图片的 URL 地址。必须确保 app 客户端能访问该 URL，否则无法正常展示图片。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该方法可以将指定的网络图片展示到指定的图片显示区域。</p>
+
+<p><strong>Note:</strong></p>
+
+<p>调用该方法前，请确保你已经调用 <a href="#//api/name/insertImage:src:">insertImage</a> 方法在白板上插入了图片的显示区域。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disableEraseImage:" title="disableEraseImage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disableEraseImage:">&ndash;&nbsp;disableEraseImage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>关闭/开启橡皮擦擦除图片功能。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)disableEraseImage:(BOOL)<em>disable</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>disable</code></th>
+						<td><p>是否关闭橡皮擦擦除图片功能：</p>
+
+<ul>
+<li><code>YES</code>：禁止橡皮擦擦除图片。</li>
+<li><code>NO</code>：（默认）允许橡皮擦擦除图片。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syncBlockTimestamp:" title="syncBlockTimestamp:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syncBlockTimestamp:">&ndash;&nbsp;syncBlockTimestamp:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置本地显示远端白板内容的 Unix 时间戳。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)syncBlockTimestamp:(NSTimeInterval)<em>timestamp</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>timestamp</code></th>
+						<td><p>远端白板内容在本地显示的 Unix 时间戳，单位为秒。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>2.12.24</p>
+
+<p>调用该方法后，SDK 会根据你设置的 <code>timestamp</code> 的值显示接收到的远端白板内容。</p>
+
+<p>在同时订阅音视频流和白板内容的场景中，你可以从音视频流附带的 SEI 帧中获取时间信息，并调用该方法设置远端白板内容在本地的显示时间，以确保音视频流和白板内容实时同步。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTimeDelay:" title="setTimeDelay:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTimeDelay:">&ndash;&nbsp;setTimeDelay:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置本地显示远端白板内容的延时。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setTimeDelay:(NSTimeInterval)<em>delay</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delay</code></th>
+						<td><p>延时时长，单位为秒，默认值为 0，取值大于等于 0。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置该参数后，当本地用户接收到远端白板内容后，SDK 会根据你设置的 <a href="#//api/name/delay"><code>delay</code></a> 的值延迟显示白板内容。</p>
+
+<p>在音视频传输延时较大的场景中，如使用 CDN 推送音视频流时，你可以使用该参数延迟显示接收到的远端白板内容，以确保白板内容与音视频同步。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/delay" title="delay"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delay">&nbsp;&nbsp;delay</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地显示远端白板内容的延时，单位为秒，默认值为 0。取值大于等于 0。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) NSTimeInterval delay</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Scene Methods" name="task_Scene Methods"></a>
+						<h2 class="task-title">Scene Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getSceneStateWithResult:" title="getSceneStateWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSceneStateWithResult:">&ndash;&nbsp;getSceneStateWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取房间当前场景组下的场景状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getSceneStateWithResult:(void ( ^ ) ( WhiteSceneState *state ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前场景组下的场景状态，详见 <a href="../Classes/WhiteSceneState.html">WhiteSceneState</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getScenesWithResult:" title="getScenesWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getScenesWithResult:">&ndash;&nbsp;getScenesWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取房间当前场景组下的场景列表。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getScenesWithResult:(void ( ^ ) ( NSArray&lt;WhiteScene*&gt; *scenes ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前场景组下的场景列表，详见 <a href="../Classes/WhiteScene.html">WhiteScene</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setScenePath:" title="setScenePath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setScenePath:">&ndash;&nbsp;setScenePath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>切换至指定的场景。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setScenePath:(NSString *)<em>path</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>path</code></th>
+						<td><p>想要切换到的场景的场景路径，请确保场景路径以 &ldquo;/"，由场景组和场景名构成，例如，<code>/math/classA</code>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>方法调用成功后，房间内的所有用户看到的白板都会切换到指定场景。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>该方法为同步调用。</li>
+<li>调用 <code>setScenePath</code> 方法修改或新增场景后，无法通过 <a href="#//api/name/setScenePath:">setScenePath</a> 立即获取最新的场景状态。此时，如果需要立即获取最新的场景状态，可以调用 <a href="#//api/name/setScenePath:completionHandler:">setScenePath:completionHandler:</a>。</li>
+</ul>
+
+
+<p>场景切换失败可能有以下原因：</p>
+
+<ul>
+<li>路径不合法，请确保场景路径以 &ldquo;/"，由场景组和场景名构成。</li>
+<li>场景路径对应的场景不存在。</li>
+<li>传入的路径是场景组的路径，而不是场景路径。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setScenePath:completionHandler:" title="setScenePath:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setScenePath:completionHandler:">&ndash;&nbsp;setScenePath:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>切换至指定的场景。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setScenePath:(NSString *)<em>dirOrPath</em> completionHandler:(void ( ^ _Nullable ) ( BOOL success , NSError *_Nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>dirOrPath</code></th>
+						<td><p>想要切换到的场景的场景路径，请确保场景路径以 &ldquo;/"，由场景组和场景名构成，例如，<code>/math/classA</code>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>调用结果：</p>
+
+<ul>
+<li>如果方法调用成功，则返回 <code>YES</code>.</li>
+<li>如果方法调用失败，则返回错误信息。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>方法调用成功后，房间内的所有用户看到的白板都会切换到指定场景。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>该方法为异步调用。</li>
+<li>调用 <code>setScenePath</code> 方法修改或新增场景后，你可以通过 <a href="#//api/name/getSceneStateWithResult:">getSceneStateWithResult:</a> 立即获取最新的场景状态。</li>
+<li>场景切换失败可能有以下原因：
+
+<ul>
+<li>路径不合法，请确保场景路径以 &ldquo;/"，由场景组和场景名构成。</li>
+<li>场景路径对应的场景不存在。</li>
+<li>传入的路径是场景组的路径，而不是场景路径。</li>
+</ul>
+</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setSceneIndex:completionHandler:" title="setSceneIndex:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setSceneIndex:completionHandler:">&ndash;&nbsp;setSceneIndex:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>切换至当前场景组下的指定场景。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setSceneIndex:(NSUInteger)<em>index</em> completionHandler:(void ( ^ _Nullable ) ( BOOL success , NSError *_Nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>index</code></th>
+						<td><p>目标场景在当前场景组下的索引号。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>调用结果：
+   - 如果方法调用成功，则返回 <code>YES</code>.
+   - 如果方法调用失败，则返回错误信息。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>方法调用成功后，房间内的所有用户看到的白板都会切换到指定场景。</p>
+
+<p><strong>Note:</strong></p>
+
+<p>指定的场景必须在当前场景组中，否则，方法调用会失败。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/putScenes:scenes:index:" title="putScenes:scenes:index:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/putScenes:scenes:index:">&ndash;&nbsp;putScenes:scenes:index:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>在指定场景组下插入多个场景。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)putScenes:(NSString *)<em>dir</em> scenes:(NSArray&lt;WhiteScene*&gt; *)<em>scenes</em> index:(NSUInteger)<em>index</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>dir</code></th>
+						<td><p>场景组名称，必须以 <code>/</code> 开头。不能为场景路径。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scenes</code></th>
+						<td><p>由多个场景构成的数组。单个场景的字段详见 <a href="../Classes/WhiteScene.html">WhiteScene</a>。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>index</code></th>
+						<td><p>待插入的多个场景中，第一个场景在该场景组的索引号。如果传入的索引号大于该场景组已有场景总数，新插入的场景会排在现有场景的最后。场景的索引号从 0 开始。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<p>调用该方法插入多个场景后不会切换到新插入的场景。如果要切换至新插入的场景，需要调用 <a href="#//api/name/setScenePath:">setScenePath</a>。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cleanScene:" title="cleanScene:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cleanScene:">&ndash;&nbsp;cleanScene:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>清除当前场景的所有内容。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)cleanScene:(BOOL)<em>retainPPT</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>retainPPT</code></th>
+						<td><p>是否保留 PPT 内容：</p>
+
+<ul>
+<li><code>YES</code>：保留 PPT。</li>
+<li><code>NO</code>：连 PPT 一起清空。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeScenes:" title="removeScenes:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeScenes:">&ndash;&nbsp;removeScenes:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除场景或者场景组。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeScenes:(NSString *)<em>dirOrPath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>dirOrPath</code></th>
+						<td><p>场景组路径或者场景路径。如果传入的是场景组，则会删除该场景组下的所有场景。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>互动白板实时房间内必须至少有一个场景。当删除所有的场景后，SDK 会自动生成一个路径为 <code>/init</code> 初始场景（房间初始化时的默认场景）。</li>
+<li>如果删除白板当前所在场景，白板会展示被删除场景所在场景组的最后一个场景</li>
+<li>如果删除的是场景组，则该场景组下的所有场景都会被删除。</li>
+<li>如果删除的是当前场景所在的场景组，例如 <code>dirA</code>，SDK 会执行向上递归逻辑选择新的场景作为当前场景，规则如下：
+
+<ul>
+<li>如果当前场景组路径下还有其他场景组，例如 <code>dirB</code>，排在被删除的场景组 <code>dirA</code> 后面，则将场景切换至
+<code>dirB</code> 中的第一个场景（index 为 0）。</li>
+<li>如果当前场景组路径下 <code>dirA</code> 后不存在场景组，则查看当前场景组路径下是否存在场景；
+如果存在，则将场景切换至当前场景组路径下的第一个场景（index 为 0）。</li>
+<li>如果当前场景组路径下 <code>dirA</code> 后没有场景组，也不存在任何场景，则查看 <code>dirA</code> 前面是否存在场景组 <code>dirC</code>；如果存在，则选择 <code>dirC</code> 中的第一个场景（index 为 0）。</li>
+<li>以上都不满足，则继续向上递归执行该逻辑。</li>
+</ul>
+</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/moveScene:target:" title="moveScene:target:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/moveScene:target:">&ndash;&nbsp;moveScene:target:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>移动场景。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)moveScene:(NSString *)<em>source</em> target:(NSString *)<em>target</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>source</code></th>
+						<td><p>需要移动的场景原路径。必须为场景路径，不能是场景组的路径。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>target</code></th>
+						<td><p>目标场景组路径或目标场景路径：</p>
+
+<ul>
+<li>当 <code>target</code>设置为目标场景组时，表示将指定场景移至其他场景组中，场景路径会发生改变，但是场景名称不变。</li>
+<li>当 <code>target</code>设置为目标场景路径时，表示改变指定场景在当前场景组的位置，场景路径和场景名都会发生改变。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>成功移动场景后，场景路径也会改变。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>该方法只能移动场景，不能移动场景组，即 <code>source</code> 只能是场景路径，不能是场景组路径。</li>
+<li>该方法支持改变指定场景在当前所属场景组下的位置，也支持将指定场景移至其他场景组。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/copy" title="copy"></a>
+	<h3 class="method-title"><code><a href="#//api/name/copy">&ndash;&nbsp;copy</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>复制选中内容。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)copy</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该方法会将选中的内容存储到内存中，不会粘贴到白板中。</p>
+
+<p><strong>Note:</strong></p>
+
+<p>该方法仅当 <a href="#//api/name/disableSerialization:">disableSerialization</a> 设为 <code>NO</code> 时生效。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/paste" title="paste"></a>
+	<h3 class="method-title"><code><a href="#//api/name/paste">&ndash;&nbsp;paste</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>粘贴复制的内容。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)paste</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该方法会将 <a href="#//api/name/copy">copy</a> 方法复制的内容粘贴到白板中（用户当前的视角中间）。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>该方法仅当 <a href="#//api/name/disableSerialization:">disableSerialization</a> 设为 <code>NO</code> 时生效。</li>
+<li>多次调用该方法时，不能保证粘贴的内容每次都在用户当前的视角中间，可能会出现随机偏移。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/duplicate" title="duplicate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/duplicate">&ndash;&nbsp;duplicate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>复制并粘贴选中的内容。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)duplicate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>该方法会将选中的内容复制并粘贴到白板中（用户当前的视角中间）。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>该方法仅当 <a href="#//api/name/disableSerialization:">disableSerialization</a> 设为 <code>NO</code> 时生效。</li>
+<li>多次调用该方法时，不能保证粘贴的内容每次都在用户当前的视角中间，可能会出现随机偏移。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteOperation" title="deleteOperation"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteOperation">&ndash;&nbsp;deleteOperation</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>删除选中内容。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteOperation</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disableSerialization:" title="disableSerialization:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disableSerialization:">&ndash;&nbsp;disableSerialization:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开启/禁止本地序列化。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)disableSerialization:(BOOL)<em>disable</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>disable</code></th>
+						<td><p>是否禁止本地序列化：</p>
+
+<ul>
+<li><code>YES</code>：（默认）禁止开启本地序列化；</li>
+<li><code>NO</code>： 开启本地序列化，即可以对本地操作进行解析。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置 <code>disableSerialization(true)</code> 后，以下方法将不生效：</p>
+
+<ul>
+<li><a href="#//api/name/redo">redo</a></li>
+<li><a href="#//api/name/undo">undo</a></li>
+<li><a href="#//api/name/duplicate">duplicate</a></li>
+<li><a href="#//api/name/copy">copy</a></li>
+<li><a href="#//api/name/paste">paste</a></li>
+</ul>
+
+
+<p><strong>Warning:</strong></p>
+
+<p>如果要设置 <code>disableSerialization(false)</code>，必须确保同一房间内所有用户使用的 SDK 满足以下版本要求，否则会导致 app 客户端崩溃。</p>
+
+<ul>
+<li>Web SDK 2.9.2 或之后版本</li>
+<li>Android SDK 2.9.3 或之后版本</li>
+<li>iOS SDK 2.9.3 或之后版本</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/redo" title="redo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/redo">&ndash;&nbsp;redo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>重做，即回退撤销操作。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)redo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<p>该方法仅当 <a href="#//api/name/disableSerialization:">disableSerialization</a> 设为 <code>NO</code> 时生效。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/undo" title="undo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/undo">&ndash;&nbsp;undo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>撤销上一步操作。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)undo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<p>该方法仅当 <a href="#//api/name/disableSerialization:">disableSerialization</a> 设为 <code>NO</code> 时生效。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Asynchronous Methods" name="task_Asynchronous Methods"></a>
+						<h2 class="task-title">Asynchronous Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getGlobalStateWithResult:" title="getGlobalStateWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getGlobalStateWithResult:">&ndash;&nbsp;getGlobalStateWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取房间的全局状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getGlobalStateWithResult:(void ( ^ ) ( WhiteGlobalState *state ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回房间的全局状态，详见 <a href="../Classes/WhiteGlobalState.html">WhiteGlobalState</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<ul>
+<li>该方法为异步调用。</li>
+<li>通过 <a href="../Classes/WhiteDisplayerState.html#//api/name/setCustomGlobalStateClass:">setCustomGlobalStateClass</a> 设置自定义状态后，如需异步获取，可以通过 <code>getRoomStateWithResult</code> 获取自定义的当前房间状态。</li>
+<li>调用 <a href="#//api/name/globalState">setGlobalState</a> 方法后，可以立刻调用该方法。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getMemberStateWithResult:" title="getMemberStateWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getMemberStateWithResult:">&ndash;&nbsp;getMemberStateWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前的工具状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getMemberStateWithResult:(void ( ^ ) ( WhiteMemberState *state ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前的工具状态，详见 <a href="../Classes/WhiteMemberState.html">WhiteMemberState</a> 。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<p>该方法为异步调用。调用 <a href="#//api/name/memberState">setMemberState</a> 方法后，可以立刻调用该方法。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getRoomMembersWithResult:" title="getRoomMembersWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getRoomMembersWithResult:">&ndash;&nbsp;getRoomMembersWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取实时房间用户列表。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getRoomMembersWithResult:(void ( ^ ) ( NSArray&lt;WhiteRoomMember*&gt; *roomMembers ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前房间的用户列表，详见 <a href="../Classes/WhiteRoomMember.html">WhiteRoomMember</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<ul>
+<li>该方法为异步调用。</li>
+<li>房间的用户列表仅包含互动模式（具有读写权限）的用户，不包含订阅模式（只读权限）的用户。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getBroadcastStateWithResult:" title="getBroadcastStateWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getBroadcastStateWithResult:">&ndash;&nbsp;getBroadcastStateWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取用户视角状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getBroadcastStateWithResult:(void ( ^ ) ( WhiteBroadcastState *state ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前用户视角状态，详见 <a href="../Classes/WhiteBroadcastState.html">WhiteBroadcastState</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<p>该方法为异步调用。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getRoomPhaseWithResult:" title="getRoomPhaseWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getRoomPhaseWithResult:">&ndash;&nbsp;getRoomPhaseWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取房间连接状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getRoomPhaseWithResult:(void ( ^ ) ( WhiteRoomPhase phase ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前房间连接状态，详见 <a href="../Constants/WhiteRoomPhase.html">WhiteRoomPhase</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<p>该方法为异步调用。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getZoomScaleWithResult:" title="getZoomScaleWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getZoomScaleWithResult:">&ndash;&nbsp;getZoomScaleWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取用户当前的视角缩放比例。该方法为异步调用。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getZoomScaleWithResult:(void ( ^ ) ( CGFloat scale ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前视角缩放比例。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getRoomStateWithResult:" title="getRoomStateWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getRoomStateWithResult:">&ndash;&nbsp;getRoomStateWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前房间状态。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getRoomStateWithResult:(void ( ^ ) ( WhiteRoomState *state ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回当前房间状态，详见 <a href="../Classes/WhiteRoomState.html">WhiteRoomState</a>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<p>该方法为异步调用。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Deprecated Methods" name="task_Deprecated Methods"></a>
+						<h2 class="task-title">Deprecated Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/disableOperations:" title="disableOperations:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disableOperations:">&ndash;&nbsp;disableOperations:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该方法已废弃，请使用 <a href="#//api/name/disableDeviceInputs:">disableDeviceInputs</a> 和 <a href="../Classes/WhiteDisplayer.html#//api/name/disableCameraTransform:">disableCameraTransform</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)disableOperations:(BOOL)<em>disable</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>disable</code></th>
+						<td><p>是否禁止操作，<code>true</code> 为禁止。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>禁止操作。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/zoomChange:" title="zoomChange:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/zoomChange:">&ndash;&nbsp;zoomChange:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该方法已废弃，请使用 <a href="../Classes/WhiteDisplayer.html#//api/name/moveCamera:">moveCamera</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)zoomChange:(CGFloat)<em>scale</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scale</code></th>
+						<td><p>相对于原始大小的比例。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>缩小放大白板。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getPptImagesWithResult:" title="getPptImagesWithResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getPptImagesWithResult:">&ndash;&nbsp;getPptImagesWithResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>该方法已废弃，请使用 <a href="#//api/name/getScenesWithResult:">getScenesWithResult</a>。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)getPptImagesWithResult:(void ( ^ ) ( NSArray&lt;NSString*&gt; *pptPages ))<em>result</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>result</code></th>
+						<td><p>回调。返回所有 ppt 图片的地址。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取所有 ppt 图片。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoom.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2021 Agora. All rights reserved. Updated: 2021-11-16</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

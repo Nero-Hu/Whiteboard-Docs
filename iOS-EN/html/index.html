@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>  </title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="index.html">  </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="index.html">Agora</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="hierarchy.html">Hierarchy</a></li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview-contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">  </h1>
+
+					
+					<div class="section section-overview index-overview">
+						
+						
+						<p>Agora provides interactive whiteboard with high reliability and rich features though a virtual global network and flexible combinations of APIs.</p>
+
+<ul>
+<li><a href="Classes/WhiteSDK.html">WhiteSDK</a> class provides the main methods for initializing the <code>WhiteSdk</code> object, joining the live Interactive Whiteboard room, and create a <a href="Classes/WhitePlayer.html"><code>WhitePlayer</code></a> object.</li>
+<li><a href="Classes/WhiteRoom.html">WhiteRoom</a> class provides methods that manage the live Interactive Whiteboard room.</li>
+<li><a href="Classes/WhitePlayer.html">WhitePlayer</a> class provides methods that manage the playback of the whiteboard content.</li>
+<li><a href="Classes/WhiteDisplayer.html">WhiteDisplayer</a> is the parent class of the <a href="Classes/WhitePlayer.html">WhitePlayer</a> class and the <a href="Classes/WhiteRoom.html">WhiteRoom</a> class. The <a href="Classes/WhitePlayer.html">WhitePlayer</a> and <a href="Classes/WhiteRoom.html">WhiteRoom</a> classes can both inherit the methods of the <a href="Classes/WhiteDisplayer.html"><code>WhiteDisplayer</code></a> class.</li>
+</ul>
+
+
+<h3>SDK initialization</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                       </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/initWithWhiteBoardView:config:commonCallbackDelegate:">initWithWhiteBoardView</a></td>
+<td align="left"> Initializes a <a href="Classes/WhiteSDK.html">WhiteSDK</a> object and sets callbacks.  </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/initWithWhiteBoardView:config:commonCallbackDelegate:audioMixerBridgeDelegate:">initWithWhiteBoardView</a></td>
+<td align="left"> Initializes a <a href="Classes/WhiteRoom.html">WhiteRoom</a> object and sets callbacks and audio mixing. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteCommonCallbacks.html">WhiteCommonCallbacks</a>  </td>
+<td align="left"> Sets common callbacks. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/joinRoomWithConfig:callbacks:completionHandler:">joinRoomWithConfig</a>   </td>
+<td align="left"> Sets the configurations and event callbacks of whiteboard room and joins the live interactive whiteboard room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/joinRoomWithUuid:roomToken:completionHandler:">joinRoomWithUuid</a>   </td>
+<td align="left"> Sets the UUID and Token of whiteboard room and joins the live interactive whiteboard room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/createReplayerWithConfig:callbacks:completionHandler:">createReplayerWithConfig</a>   </td>
+<td align="left"> Creates a <a href="Classes/WhitePlayer.html">WhitePlayer</a> object, which is used to replay the whiteboard content of a live Interactive Whiteboard room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/isPlayable:result:">isPlayable</a>   </td>
+<td align="left"> Checks whether the room has playback data. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/setupFontFaces:">setupFontFaces</a>   </td>
+<td align="left"> Declares the fonts that can be used in the local whiteboard. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/loadFontFaces:completionHandler:">loadFontFaces</a>  </td>
+<td align="left"> Declares the fonts that can be used in the local whiteboard and preloads them.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteSDK.html#//api/name/updateTextFont:">updateTextFont</a>   </td>
+<td align="left"> Sets the fonts used by the text tool in the local whiteboard. </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Common events</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Event                                                       </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Protocols/WhiteCommonCallbackDelegate.html#//api/name/throwError:">throwError</a>   </td>
+<td align="left"> Reports an uncaught global error during SDK runtime. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Protocols/WhiteCommonCallbackDelegate.html#//api/name/urlInterrupter:">urlInterrupter</a> </td>
+<td align="left"> Occurs when the SDK intercepts an image URL address. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Protocols/WhiteCommonCallbackDelegate.html#//api/name/pptMediaPlay">pptMediaPlay</a>   </td>
+<td align="left"> Occurs when the audio and video in dynamic PPT slides start playing. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Protocols/WhiteCommonCallbackDelegate.html#//api/name/pptMediaPause">pptMediaPause</a>   </td>
+<td align="left"> Occurs when the audio and video in dynamic PPT slides pause playing. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Protocols/WhiteCommonCallbackDelegate.html#//api/name/customMessage:">customMessage</a>   </td>
+<td align="left"> Occurs when the user receives a message from the web page. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Protocols/WhiteCommonCallbackDelegate.html#//api/name/sdkSetupFail:">sdkSetupFail</a>   </td>
+<td align="left"> Reports the failure of the SDK initialization. </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Room management</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                      </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/observerId">observerId</a>   </td>
+<td align="left"> The user ID. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/setWritable:completionHandler:">setWritable</a> </td>
+<td align="left"> Sets whether a user is in interactive mode in the room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/disableDeviceInputs:">disableDeviceInputs</a>   </td>
+<td align="left"> Disables the whiteboard from responding to users' operations. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/disconnect:">disconnect</a>   </td>
+<td align="left"> Disconnects from the live Interactive Whiteboard room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/globalState">setGlobalState</a>   </td>
+<td align="left"> Modifies the global state of the live Interactive Whiteboard room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/disconnectedBySelf">disconnectedBySelf</a>   </td>
+<td align="left"> Gets whether the SDK calls <a href="Classes/WhiteRoom.html#//api/name/disconnect:">disconnect</a> to disconnect from the live Interactive Whiteboard room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/writable">writable</a> </td>
+<td align="left"> Gets whether the local user is in interactive mode in the room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/globalState">globalState</a></td>
+<td align="left"> Gets the global state of the room (synchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/getGlobalStateWithResult:">getGlobalStateWithResult</a> </td>
+<td align="left"> Gets the global state of the room (asynchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/roomMembers">roomMembers</a></td>
+<td align="left"> Gets the list of members in the room (synchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/getRoomMembersWithResult:">getRoomMembersWithResult</a></td>
+<td align="left"> Gets the list of members in the room. (asynchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/phase">phase</a> </td>
+<td align="left"> Gets the connection state of the room.  (synchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="getRoomPhaseWithResult:">getRoomPhaseWithResult</a> </td>
+<td align="left"> Gets the connection state of the room (asynchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/state">state</a> </td>
+<td align="left"> Gets the current room state (synchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/getRoomStateWithResult:">getRoomStateWithResult</a></td>
+<td align="left"> Gets the current room state (asynchronous). </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Whiteboard tool</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                      </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/memberState">setMemberState</a>  </td>
+<td align="left"> Modifies the state of the whiteboard tool currently in use. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/memberState">memberState</a>  </td>
+<td align="left"> Gets the state of the whiteboard tool currently in use (synchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/getMemberStateWithResult:">getMemberStateWithResult</a>  </td>
+<td align="left"> Gets the state of the whiteboard tool currently in use (asynchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/copy">copy</a>  </td>
+<td align="left"> Copies the selected content. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/paste">paste</a> </td>
+<td align="left"> Pastes the copied content. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/duplicate">duplicate</a>  </td>
+<td align="left"> Duplicates the selected content. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/deleteOpertion">deleteOpertion</a> </td>
+<td align="left"> Deletes the selected content. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/disableSerialization:">disableSerialization</a>  </td>
+<td align="left"> Disables/Enables the local serialization. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/redo">redo</a>  </td>
+<td align="left"> Redoes an undone action. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/undo">undo</a> </td>
+<td align="left"> Undoes an action. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/disableEraseImage:">disableEraseImage</a>  </td>
+<td align="left"> Disables the eraser from erasing images on the whiteboard. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/disableDeviceInputs:">disableDeviceInputs</a>  </td>
+<td align="left"> Disables the whiteboard from responding to users' operations. </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>View management</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                      </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/setViewMode:">setViewMode</a> </td>
+<td align="left">  Sets the view mode of the user.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/setCameraBound:">setCameraBound</a></td>
+<td align="left"> Sets the boundary of the user&rsquo;s view. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/disableCameraTransform:">disableCameraTransform</a></td>
+<td align="left"> Disables the user from adjusting the view. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/moveCamera:">moveCamera</a> </td>
+<td align="left"> Adjusts the view.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/moveCameraToContainer:">moveCameraToContainer</a> </td>
+<td align="left"> Adjusts the view to ensure the complete display of the view rectangle.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/scalePptToFit:">scalePptToFit</a> </td>
+<td align="left"> Adjusts the view in the specified mode to ensure the complete display of the PPT slide.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/disableCameraTransform:">disableCameraTransform</a> </td>
+<td align="left"> Disables the local user from adjusting the view of the whiteboard.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/broadcastState">broadcastState</a></td>
+<td align="left"> Gets the view state of the user (synchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/getBroadcastStateWithResult:">getBroadcastStateWithResult</a></td>
+<td align="left"> Gets the view state of the user (asynchronous). </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Scene management</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                      </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/insertImage:">insertImage</a></td>
+<td align="left"> Inserts an image placeholder on the whiteboard. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/completeImageUploadWithUuid:src:">completeImageUploadWithUuid</a></td>
+<td align="left"> Displays an image in the specified image placeholder.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/insertImage:src:">insertImage</a></td>
+<td align="left">Inserts and displays an image on the whiteboard. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/sceneState">sceneState</a></td>
+<td align="left"> Gets the state of the scenes under the current scene directory (synchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/getSceneStateWithResult:">getSceneStateWithResult</a></td>
+<td align="left"> Gets the state of the scenes under the current scene directory (asynchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/getScenesWithResult:">getScenesWithResult</a></td>
+<td align="left"> Gets the state of the scenes under the current scene directory (asynchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/setScenePath:">setScenePath</a></td>
+<td align="left">Switches to the specified scene (synchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/setScenePath:completionHandler:">setScenePath</a> </td>
+<td align="left">Switches to the specified scene (asynchronous). </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/setSceneIndex:completionHandler:">setSceneIndex</a></td>
+<td align="left"> Switches to the specified scene under the current scene directory.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/putScenes:scenes:index:">putScenes</a></td>
+<td align="left">Inserts multiples scenes under the specified scene directory.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/moveScene:target:">moveScene</a></td>
+<td align="left">Moves a scene. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/removeScenes:">removeScenes</a></td>
+<td align="left">Deletes a scene or a scene directory. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/cleanScene:">cleanScene</a></td>
+<td align="left">Clears all contents on the current scene. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/pptNextStep">pptNextStep</a></td>
+<td align="left">Plays the next slide of the PPT file. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/pptPreviousStep">pptPreviousStep</a></td>
+<td align="left">Returns to the previous slide of the PPT file.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/getScenePathType:result:">getScenePathType</a></td>
+<td align="left">Gets the type of the scene path. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/getEntireScenes:">getEntireScenes</a></td>
+<td align="left">Gets information about all scenes in the room. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/getScenePreviewImage:completion:">getScenePreviewImage</a></td>
+<td align="left"> Gets the preview of the specified scene.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/getSceneSnapshotImage:completion:">getSceneSnapshotImage</a></td>
+<td align="left">Gets the screenshot of the specified scene.</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Whiteboard playback management</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                       </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/play">play</a>  </td>
+<td align="left"> Starts the playback of the whiteboard content. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/pause">pause</a> </td>
+<td align="left"> Pauses the playback of the whiteboard content. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/stop">stop</a>   </td>
+<td align="left"> Stops the playback of the whiteboard content.</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/seekToScheduleTime:">seekToScheduleTime</a>  </td>
+<td align="left"> Sets the playback position (s) of the whiteboard content. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/setObserverMode:">setObserverMode</a>  </td>
+<td align="left"> Sets the mode for watching the whiteboard playback. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/playbackSpeed">playbackSpeed</a> </td>
+<td align="left"> Gets the playback speed (synchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/getPlaybackSpeed:">getPlaybackSpeed</a>   </td>
+<td align="left">Gets the playback speed (asynchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/phase">phase</a>  </td>
+<td align="left">Gets the current phase of the <a href="Classes/WhitePlayer.html"><code>WhitePlayer</code></a> object (synchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/getPhaseWithResult:">getPhaseWithResult</a>  </td>
+<td align="left"> Gets the current phase of the <a href="Classes/WhitePlayer.html"><code>WhitePlayer</code></a> object (asynchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/state">state</a>  </td>
+<td align="left"> Gets the state of the the <a href="Classes/WhitePlayer.html"><code>WhitePlayer</code></a> object (synchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/getPlayerStateWithResult:">getPlayerStateWithResult</a>  </td>
+<td align="left"> Gets the state of the the <a href="Classes/WhitePlayer.html"><code>WhitePlayer</code></a> object (asynchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/timeInfo">timeInfo</a>   </td>
+<td align="left"> Gets the time information of the <a href="Classes/WhitePlayer.html"><code>WhitePlayer</code></a> object (synchronous).</td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhitePlayer.html#//api/name/getPlayerTimeInfoWithResult:">getPlayerTimeInfoWithResult</a>  </td>
+<td align="left"> Gets the time information of the <a href="Classes/WhitePlayer.html"><code>WhitePlayer</code></a> object (asynchronous).</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Customized events</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                       </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/dispatchMagixEvent:payload:">dispatchMagixEvent</a>  </td>
+<td align="left"> Sends a custom event. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/addMagixEventListener:">addMagixEventListener</a> </td>
+<td align="left"> Adds a listener for a customized event. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/addHighFrequencyEventListener:fireInterval:">addHighFrequencyEventListener</a>  </td>
+<td align="left"> Adds a listener for a customized high-frequency event. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/removeMagixEventListener:">removeMagixEventListener</a>  </td>
+<td align="left"> Removes a listener for a customized event. </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>iframe plug-in message</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                       </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/postIframeMessage:">postIframeMessage</a>  </td>
+<td align="left"> Sends message in string format to the iframe plugin. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/setTimeDelay:">setTimeDelay</a> </td>
+<td align="left"> Sets the delay time for sending the whiteboard contents of the local user to the remote users. </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Miscellaneous methods</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left"> Method                                                       </th>
+<th align="left"> Description                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/debugInfo:">debugInfo</a>  </td>
+<td align="left"> Gets debug logs. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteRoom.html#//api/name/setTimeDelay:">setTimeDelay</a> </td>
+<td align="left"> Sets the delay time for sending the whiteboard contents of the local user to the remote users. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/convertToPointInWorld:result:">convertToPointInWorld</a>   </td>
+<td align="left"> Converts the coordinates of a point on the whiteboard. </td>
+</tr>
+<tr>
+<td align="left"> <a href="Classes/WhiteDisplayer.html#//api/name/refreshViewSize">refreshViewSize</a>  </td>
+<td align="left"> Refreshes the whiteboard view. </td>
+</tr>
+</tbody>
+</table>
+
+						
+						
+					</div>
+					
+
+					<div class="index-container">
+						
+
+						
+						<div class="index-column">
+							<h2 class="index-title">Class References</h2>
+							<ul>
+								
+								<li><a href="Classes/ConvertedFiles.html">ConvertedFiles</a></li>
+								
+								<li><a href="Classes/WhiteAudioMixerBridge.html">WhiteAudioMixerBridge</a></li>
+								
+								<li><a href="Classes/WhiteBoardView.html">WhiteBoardView</a></li>
+								
+								<li><a href="Classes/WhiteBroadcastState.html">WhiteBroadcastState</a></li>
+								
+								<li><a href="Classes/WhiteBroadcasterInformation.html">WhiteBroadcasterInformation</a></li>
+								
+								<li><a href="Classes/WhiteCameraBound.html">WhiteCameraBound</a></li>
+								
+								<li><a href="Classes/WhiteCameraConfig.html">WhiteCameraConfig</a></li>
+								
+								<li><a href="Classes/WhiteCameraState.html">WhiteCameraState</a></li>
+								
+								<li><a href="Classes/WhiteCombinePlayer.html">WhiteCombinePlayer</a></li>
+								
+								<li><a href="Classes/WhiteCommonCallbacks.html">WhiteCommonCallbacks</a></li>
+								
+								<li><a href="Classes/WhiteContentModeConfig.html">WhiteContentModeConfig</a></li>
+								
+								<li><a href="Classes/WhiteConversionInfo.html">WhiteConversionInfo</a></li>
+								
+								<li><a href="Classes/WhiteConverter.html">WhiteConverter</a></li>
+								
+								<li><a href="Classes/WhiteDisplayer.html">WhiteDisplayer</a></li>
+								
+								<li><a href="Classes/WhiteDisplayerState.html">WhiteDisplayerState</a></li>
+								
+								<li><a href="Classes/WhiteEvent.html">WhiteEvent</a></li>
+								
+								<li><a href="Classes/WhiteFontFace.html">WhiteFontFace</a></li>
+								
+								<li><a href="Classes/WhiteGlobalState.html">WhiteGlobalState</a></li>
+								
+								<li><a href="Classes/WhiteImageInformation.html">WhiteImageInformation</a></li>
+								
+								<li><a href="Classes/WhiteMemberInformation.html">WhiteMemberInformation</a></li>
+								
+								<li><a href="Classes/WhiteMemberState.html">WhiteMemberState</a></li>
+								
+								<li><a href="Classes/WhitePanEvent.html">WhitePanEvent</a></li>
+								
+								<li><a href="Classes/WhitePlayer.html">WhitePlayer</a></li>
+								
+								<li><a href="Classes/WhitePlayerConfig.html">WhitePlayerConfig</a></li>
+								
+								<li><a href="Classes/WhitePlayerEvent.html">WhitePlayerEvent</a></li>
+								
+								<li><a href="Classes/WhitePlayerState.html">WhitePlayerState</a></li>
+								
+								<li><a href="Classes/WhitePlayerTimeInfo.html">WhitePlayerTimeInfo</a></li>
+								
+								<li><a href="Classes/WhitePptPage.html">WhitePptPage</a></li>
+								
+								<li><a href="Classes/WhitePptParams.html">WhitePptParams</a></li>
+								
+								<li><a href="Classes/WhiteReadonlyMemberState.html">WhiteReadonlyMemberState</a></li>
+								
+								<li><a href="Classes/WhiteRectangleConfig.html">WhiteRectangleConfig</a></li>
+								
+								<li><a href="Classes/WhiteRoom.html">WhiteRoom</a></li>
+								
+								<li><a href="Classes/WhiteRoomCallbacks.html">WhiteRoomCallbacks</a></li>
+								
+								<li><a href="Classes/WhiteRoomConfig.html">WhiteRoomConfig</a></li>
+								
+								<li><a href="Classes/WhiteRoomMember.html">WhiteRoomMember</a></li>
+								
+								<li><a href="Classes/WhiteRoomState.html">WhiteRoomState</a></li>
+								
+								<li><a href="Classes/WhiteSDK.html">WhiteSDK</a></li>
+								
+								<li><a href="Classes/WhiteScene.html">WhiteScene</a></li>
+								
+								<li><a href="Classes/WhiteSceneState.html">WhiteSceneState</a></li>
+								
+								<li><a href="Classes/WhiteSdkConfiguration.html">WhiteSdkConfiguration</a></li>
+								
+								<li><a href="Classes/WhiteSliderView.html">WhiteSliderView</a></li>
+								
+								<li><a href="Classes/WhiteVideoView.html">WhiteVideoView</a></li>
+								
+							</ul>
+						</div>
+						
+
+						
+						<div class="index-column">
+							
+							<h2 class="index-title">Protocol References</h2>
+							<ul>
+								
+								<li><a href="Protocols/WhiteAudioMixerBridgeDelegate.html">WhiteAudioMixerBridgeDelegate</a></li>
+								
+								<li><a href="Protocols/WhiteCombineDelegate.html">WhiteCombineDelegate</a></li>
+								
+								<li><a href="Protocols/WhiteCommonCallbackDelegate.html">WhiteCommonCallbackDelegate</a></li>
+								
+								<li><a href="Protocols/WhitePlayerEventDelegate.html">WhitePlayerEventDelegate</a></li>
+								
+								<li><a href="Protocols/WhiteRoomCallbackDelegate.html">WhiteRoomCallbackDelegate</a></li>
+								
+							</ul>
+							
+
+							
+							<h2 class="index-title">Constant References</h2>
+							<ul>
+								
+									<li><a href="Constants/ConvertType.html">ConvertType</a></li>
+								
+									<li><a href="Constants/ConverterErrorCode.html">ConverterErrorCode</a></li>
+								
+									<li><a href="Constants/ConverterStatus.html">ConverterStatus</a></li>
+								
+									<li><a href="Constants/ServerConversionStatus.html">ServerConversionStatus</a></li>
+								
+									<li><a href="Constants/WhiteAnimationMode.html">WhiteAnimationMode</a></li>
+								
+									<li><a href="Constants/WhiteContentMode.html">WhiteContentMode</a></li>
+								
+									<li><a href="Constants/WhiteDeviceType.html">WhiteDeviceType</a></li>
+								
+									<li><a href="Constants/WhiteObserverMode.html">WhiteObserverMode</a></li>
+								
+									<li><a href="Constants/WhitePlayerPhase.html">WhitePlayerPhase</a></li>
+								
+									<li><a href="Constants/WhiteRoomPhase.html">WhiteRoomPhase</a></li>
+								
+									<li><a href="Constants/WhiteScenePathType.html">WhiteScenePathType</a></li>
+								
+									<li><a href="Constants/WhiteSyncManagerPauseReason.html">WhiteSyncManagerPauseReason</a></li>
+								
+									<li><a href="Constants/WhiteViewMode.html">WhiteViewMode</a></li>
+								
+							</ul>
+							
+
+							
+							<h2 class="index-title">Category References</h2>
+							<ul>
+								
+								<li><a href="Categories/NSArray+YYModel.html">NSArray(YYModel)</a></li>
+								
+								<li><a href="Categories/NSDictionary+YYModel.html">NSDictionary(YYModel)</a></li>
+								
+							</ul>
+							
+						</div>
+						
+					</div>
+
+					<footer>
+						<div class="footer-copyright">
+							
+							<p class="copyright">Copyright &copy; 2021 Agora. All rights reserved. Updated: 2021-06-09</p>
+							
+							
+							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+							
+						</div>
+					</footer>
+				</main>
+			</div>
+		</div>
+	</article>
+
+	<script src="js/script.js"></script>
+</body>
+</html>

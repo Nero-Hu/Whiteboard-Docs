@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>WhiteContentMode Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">  </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Agora</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">WhiteContentMode Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>WhiteCameraBound.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">WhiteContentMode</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>白板视角边界的缩放模式和缩放比例。</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSUInteger, WhiteContentMode ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">WhiteContentModeScale</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">WhiteContentModeAspectFit</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">WhiteContentModeAspectFitScale</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">WhiteContentModeAspectFitSpace</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">WhiteContentModeAspectFill</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">WhiteContentModeAspectFillScale</a>,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="WhiteContentModeScale"></a><code>WhiteContentModeScale</code></dt>
+<dd>
+
+
+<p>（默认）基于设置的 <code>scale</code> 缩放视角边界。</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">WhiteCameraBound.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="WhiteContentModeAspectFit"></a><code>WhiteContentModeAspectFit</code></dt>
+<dd>
+
+
+<p>等比例缩放视角边界，使视角边界的长边正好顶住与其垂直的屏幕的两边，以保证在屏幕上完整展示视角边界。</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">WhiteCameraBound.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="WhiteContentModeAspectFitScale"></a><code>WhiteContentModeAspectFitScale</code></dt>
+<dd>
+
+
+<p>等比例缩放视角边界，使视角边界的长边正好顶住与其垂直的屏幕的两边，以保证在屏幕上完整展示视角边界；在此基础上，再将视角边界缩放指定的倍数。</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">WhiteCameraBound.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="WhiteContentModeAspectFitSpace"></a><code>WhiteContentModeAspectFitSpace</code></dt>
+<dd>
+
+
+<p>等比例缩放视角边界，使视角边界的长边正好顶住与其垂直的屏幕的两边；在此基础上，在视角边界的四周填充指定的空白空间。</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">WhiteCameraBound.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="WhiteContentModeAspectFill"></a><code>WhiteContentModeAspectFill</code></dt>
+<dd>
+
+
+<p>等比例缩放视角边界，使视角边界的短边正好顶住与其垂直的屏幕的两边，以保证视角边界铺满屏幕。</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">WhiteCameraBound.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="WhiteContentModeAspectFillScale"></a><code>WhiteContentModeAspectFillScale</code></dt>
+<dd>
+
+
+<p>等比例缩放视角边界，使视角边界的短边正好顶住与其垂直的屏幕的两边，以保证视角边界铺满屏幕；在此基础上再将视角边界缩放指定的倍数。</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">WhiteCameraBound.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">WhiteCameraBound.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2021 Agora. All rights reserved. Updated: 2021-11-16</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

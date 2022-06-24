@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>WhiteCommonCallbackDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">  </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Agora</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/throwError:">- throwError:</option>
+		
+		<option value="//api/name/urlInterrupter:">- urlInterrupter:</option>
+		
+		<option value="//api/name/pptMediaPlay">- pptMediaPlay</option>
+		
+		<option value="//api/name/pptMediaPause">- pptMediaPause</option>
+		
+		<option value="//api/name/sdkSetupFail:">- sdkSetupFail:</option>
+		
+		<option value="//api/name/customMessage:">- customMessage:</option>
+		
+		<option value="//api/name/logger:">- logger:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">WhiteCommonCallbackDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>WhiteCommonCallbacks.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>白板通用回调。</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/throwError:" title="throwError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/throwError:">&ndash;&nbsp;throwError:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>SDK 出现未捕获的全局错误回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)throwError:(NSError *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>错误信息。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteCommonCallbacks.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/urlInterrupter:" title="urlInterrupter:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/urlInterrupter:">&ndash;&nbsp;urlInterrupter:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>图片拦截回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)urlInterrupter:(NSString *)<em>url</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>图片原地址。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>替换后的图片地址。</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><strong>Note:</strong></p>
+
+<ul>
+<li>要触发该回调，必须在初始化白板 SDK 时，设置 <code>enableInterrupterAPI(YES)</code> 开启图片拦截替换功能。详见 <a href="../Classes/WhiteSdkConfiguration.html">WhiteSdkConfiguration</a>。</li>
+<li>开启图片拦截替换功能后，在白板中插入图片或场景时，会触发该回调。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteCommonCallbacks.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pptMediaPlay" title="pptMediaPlay"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pptMediaPlay">&ndash;&nbsp;pptMediaPlay</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>播放动态 PPT 中的音视频回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pptMediaPlay</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteCommonCallbacks.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pptMediaPause" title="pptMediaPause"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pptMediaPause">&ndash;&nbsp;pptMediaPause</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>暂停播放动态 PPT 中的音视频回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pptMediaPause</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteCommonCallbacks.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sdkSetupFail:" title="sdkSetupFail:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sdkSetupFail:">&ndash;&nbsp;sdkSetupFail:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>  SDK 初始化失败回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sdkSetupFail:(NSError *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>错误信息。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>2.9.13</p>
+
+<p>  如果 SDK 初始化失败，调用加入实时房间或回放房间时会处于一直无响应状态，需要重新初始化 SDK。</p>
+
+<p>  SDK 初始化失败可能由以下原因导致：</p>
+
+<ul>
+<li>初始化 SDK 时候，网络异常，导致获取配置信息失败。</li>
+<li>传入了不合法的 App Identifier。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteCommonCallbacks.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/customMessage:" title="customMessage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/customMessage:">&ndash;&nbsp;customMessage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>接收到网页发送的消息回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)customMessage:(NSDictionary *)<em>dict</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>dict</code></th>
+						<td><p>字典格式的消息。只有当消息为字典格式时，本地用户才能收到。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>消息回调包括：</p>
+
+<ul>
+<li>字典格式的 iframe 数据</li>
+<li>图片加载失败信息</li>
+<li>ppt 播放/暂停回调信息</li>
+</ul>
+
+
+<p>当本地用户收到了网页（如 iframe 插件、动态 PPT）发送的消息时会触发该回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteCommonCallbacks.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/logger:" title="logger:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logger:">&ndash;&nbsp;logger:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取 SDK 输出的本地调试日志。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)logger:(NSDictionary *)<em>dict</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>dict</code></th>
+						<td><p>字典结构的日志消息，每条日志消息包含以下 key：</p>
+
+<ul>
+<li><code>funName</code>：功能名称。</li>
+<li><code>params</code>：具体的参数设置。</li>
+</ul>
+
+
+<p>例如，<code>{"funName": "joinRoom", "params": {"isWritable": 1, "region": "cn-hz"}}</code>。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection availability">
+				<h4 class="method-subtitle parameter-title">Availability</h4>
+				<p>v2.13.19</p>
+
+<p>将 <a href="../Classes/WhiteSdkConfiguration.html">WhiteSdkConfiguration</a> 类中 <code>log</code> 设为 <code>YES</code> 后，SDK 会触发该回调，返回 SDK 输出的本地调试日志。</p>
+
+<p>如果你需要关闭该回调，可以将 <code>log</code> 设为 <code>NO</code>。</p>
+
+<p><strong>Note:</strong></p>
+
+<p>即使将 <code>log</code> 设为 <code>NO</code>，SDK 会停止通过 <code>logger</code> 回调返回本地调试日志，但仍然会通过该回调返回 <a href="https://github.com/netless-io/whiteboard-demo/tree/master/packages/video-js-plugin"><code>video-js-plugin</code></a> 插件的日志信息。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteCommonCallbacks.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2021 Agora. All rights reserved. Updated: 2021-11-16</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
