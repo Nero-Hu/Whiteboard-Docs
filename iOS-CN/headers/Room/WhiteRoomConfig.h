@@ -142,20 +142,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isWritable;
 
 /**
- 关闭/开启笔锋效果。
+ 关闭/开启新铅笔工具。
+
+ 设置 `disableNewPencil(NO)`，SDK 会对铅笔工具（`AppliancePencil`）应用新版笔迹平滑算法，使书写笔迹更加流畅自然，并带有笔锋效果。
 
  @since 2.12.2
 
  **Note:**
 
   - 在 2.12.2 版本中，默认值为 `NO`，自 2.12.3 版本起，默认值改为 `YES`。
-  - 为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：
+  - 为正常显示笔迹，在开启新铅笔前，请确保该房间内的所有用户使用如下 SDK：
     - Android SDK 2.12.3 版或之后
     - iOS SDK 2.12.3 版或之后
     - Web SDK 2.12.5 版或之后
 
- - `YES`: （默认）关闭笔锋效果。
- - `NO`: 开启笔锋效果。
+ - `YES`: （默认）关闭新铅笔工具。
+ - `NO`: 开启新铅笔工具。
  */
 @property (nonatomic, assign) BOOL disableNewPencil;
 
@@ -166,6 +168,23 @@ NS_ASSUME_NONNULL_BEGIN
  SDK 超时后会主动断连，并触发 [firePhaseChanged]([WhiteRoomCallbackDelegate firePhaseChanged:]) 回调。同时触发 [fireDisconnectWithError]([WhiteRoomCallbackDelegate fireDisconnectWithError:]) 回调并返回”重连时长超出 xx 毫秒”的提示。
  */
 @property (nonatomic, strong) NSNumber *timeout;
+
+/**
+ 是否只允许用户使用 Apple Pencil 在白板上绘制和书写。
+
+ 设置 `drawOnlyApplePencil(YES)` 后，用户只能使用 Apple Pencil 在白板上绘制和书写，无法使用手指绘制和书写。
+ 如果用户用手指触碰白板，SDK 会触发两个 [fireRoomStateChanged](fireRoomStateChanged:) 回调，报告当前使用的
+ 白板工具 (`memberState`) 在 `ApplianceClicker` 和 `AppliancePencil` 之间发生了切换。
+
+ **Note:**
+
+ - 该属性仅在 iPad 设备上生效。
+ - 该属性的设置建议跟随 `UIPencilInteraction.prefersPencilOnlyDrawing` 的设置。
+
+ - `YES`：只允许使用 Apple Pencil 在白板上绘制和书写。
+ - `NO`：（默认）允许使用 Apple Pencil 或手指在白板上绘制和书写。
+ */
+@property (nonatomic, assign) BOOL drawOnlyApplePencil;
 
 @end
 

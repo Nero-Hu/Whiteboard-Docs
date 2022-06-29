@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithWhiteBoardView:(WhiteBoardView *)boardView config:(WhiteSdkConfiguration *)config DEPRECATED_MSG_ATTRIBUTE("initWithWhiteBoardView:config:commonCallbackDelegate");
 
-/** 
+/**
  混音设置。
   */
 @property (nonatomic, strong, readonly, nullable) WhiteAudioMixerBridge *audioMixer;
@@ -58,32 +58,32 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 字体
 
 /**
- 声明在本地白板中可用的字体。 
+ 声明在本地白板中可用的字体。
  @since 2.11.3
- 
- 调用该方法声明的字体可用于显示 PPT 中的文字和工具输入的文字。
- 
- 该方法和 [loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:]) 都可以声明在本地白板中可用的字体，区别是 `setupFontFaces` 没有回调，因为无法判断字体声明是否正确；[loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:])  会触发回调，报告每一种的预加载结果。 
 
- **Note:** 
+ 调用该方法声明的字体可用于显示 PPT 中的文字和工具输入的文字。
+
+ 该方法和 [loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:]) 都可以声明在本地白板中可用的字体，区别是 `setupFontFaces` 没有回调，因为无法判断字体声明是否正确；[loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:])  会触发回调，报告每一种的预加载结果。
+
+ **Note:**
 
  - 该方法只对本地白板生效，不影响远端白板的字体显示。
  - 通过该方法声明的字体，只有当被使用时，才会触发下载。
  - 不同的字体在不同设备上的渲染可能不同，例如，在某些设备上，要等字体加载完成后，才会渲染文字；而在另外一些设备上，会先使用默认的字体渲染文字，等指定的字体加载完毕后，再整体刷新。
  - 每次调用该方法都会覆盖原来的字体声明。
- - 请勿同时调用该方法和 [loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:]) 方法。否则，无法预期行为。 
- 
+ - 请勿同时调用该方法和 [loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:]) 方法。否则，无法预期行为。
+
  @param fontFaces 字体配置文件，详见 [WhiteFontFace](WhiteFontFace)。
  */
 - (void)setupFontFaces:(NSArray <WhiteFontFace *>*)fontFaces;
 
 /**
- 声明在本地白板中可用的字体并预加载。 
+ 声明在本地白板中可用的字体并预加载。
  @since 2.11.3
- 
+
  调用该方法预加载的字体可以用于显示 PPT 中的文字和工具输入的文字。
- 
- 该方法和 [setupFontFaces]([WhiteSDK setupFontFaces:]) 都可以声明在本地白板中可用的字体，区别是 `loadFontFaces` 会触发回调，报告每一种的预加载结果。 
+
+ 该方法和 [setupFontFaces]([WhiteSDK setupFontFaces:]) 都可以声明在本地白板中可用的字体，区别是 `loadFontFaces` 会触发回调，报告每一种的预加载结果。
 
  **Note:**
 
@@ -91,10 +91,10 @@ NS_ASSUME_NONNULL_BEGIN
  - 使用该方法预加载的字体，只有当该字体被使用时，才会触发下载。
  - 不同的字体在不同设备上的渲染可能不同，例如，在某些设备上，要等字体加载完成后，才会渲染文字；而在另外一些设备上，会先使用默认的字体渲染文字，等指定的字体加载完毕后，再整体刷新。
  - 通过该方法预加载的字体无法删除，每次调用都会在原来的基础上新增。
- - 请勿同时调用该方法和 [setupFontFaces]([WhiteSDK setupFontFaces:]) 方法。否则，无法预期行为。 
+ - 请勿同时调用该方法和 [setupFontFaces]([WhiteSDK setupFontFaces:]) 方法。否则，无法预期行为。
 
  @param fontFaces `WhiteFontFace` 对象 ，详见 [WhiteFontFace](WhiteFontFace)。
- @param completionHandler 调用结果：
+ @param completionHandler 方法调用结果：
 
  - 如果方法调用成功，则返回 `WhiteFontFace` 对象
  - 如果方法调用失败，则返回错误信息。
@@ -104,15 +104,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadFontFaces:(NSArray <WhiteFontFace *>*)fontFaces completionHandler:(void (^)(BOOL success, WhiteFontFace *fontFace, NSError * _Nullable error))completionHandler;
 
 /**
- 设置文字工具在本地白板中使用的字体。 
+ 设置文字工具在本地白板中使用的字体。
 
  @since 2.11.3
 
  **Note:**
 
  - 该方法只对本地白板生效，不影响远端白板的字体显示。
- - 该方法只能设置文字工具使用的字体，不能用于 PPT 中的文字显示。 
- @param fonts 字体名称。如果用户系统中不存在该字体，则文字工具无法使用该字体。请确保你已经调用 [setupFontFaces]([WhiteSDK setupFontFaces:]) 或 [loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:]) 将指定字体加载到本地白板中。 
+ - 该方法只能设置文字工具使用的字体，不能用于 PPT 中的文字显示。
+ @param fonts 字体名称。如果用户系统中不存在该字体，则文字工具无法使用该字体。请确保你已经调用 [setupFontFaces]([WhiteSDK setupFontFaces:]) 或 [loadFontFaces]([WhiteSDK loadFontFaces:completionHandler:]) 将指定字体加载到本地白板中。
  */
 - (void)updateTextFont:(NSArray <NSString *>*)fonts;
 
@@ -122,7 +122,7 @@ NS_ASSUME_NONNULL_BEGIN
  设置通用回调事件。
 
  SDK 通过 [WhiteCommonCallbackDelegate](WhiteCommonCallbackDelegate) 类向 app 报告 SDK 运行时的各项事件。
- 
+
  @param callbackDelegate 通用回调事件，详见 [WhiteCommonCallbackDelegate](WhiteCommonCallbackDelegate)。
  */
 - (void)setCommonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callbackDelegate;

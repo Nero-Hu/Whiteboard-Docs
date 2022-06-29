@@ -196,7 +196,7 @@ NS_ASSUME_NONNULL_BEGIN
  - 为确保截图正常显示，Agora 推荐使用[互动白板服务端截图功能](https://docs.agora.io/cn/whiteboard/whiteboard_screenshot?platform=RESTful)。
 
  @param scenePath 场景路径。
- @param completionHandler 调用结果：
+ @param completionHandler 方法调用结果：
 
  - 如果方法调用成功，将返回指定场景的截图。
  - 如果方法调用失败，将返回错误信息。

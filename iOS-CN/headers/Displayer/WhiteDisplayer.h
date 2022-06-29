@@ -46,6 +46,15 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 页面（场景）管理 API
 
 /**
+ 获取指定场景的信息。
+
+ @param scenePath 场景的路径。请确保场景路径以 `/` 开头，并且由场景目录和场景名构成，例如，`/math/classA`。
+ @param result 方法调用结果回调。方法调用成功时，返回场景信息。详见 [WhiteScene](WhiteScene)。
+ */
+- (void)getSceneFromScenePath:(NSString *)scenePath result:(void (^) (WhiteScene* _Nullable scene))result;
+
+
+/**
  查询场景路径类型。
 
  你可以在该方法中指定想要查询的场景路径，SDK 会返回该路径对应的场景类型。
@@ -196,7 +205,7 @@ NS_ASSUME_NONNULL_BEGIN
  - 为确保截图正常显示，Agora 推荐使用[互动白板服务端截图功能](https://docs.agora.io/cn/whiteboard/whiteboard_screenshot?platform=RESTful)。
 
  @param scenePath 场景路径。
- @param completionHandler 调用结果：
+ @param completionHandler 方法调用结果：
 
  - 如果方法调用成功，将返回指定场景的截图。
  - 如果方法调用失败，将返回错误信息。

@@ -24,12 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param clazz 自定义全局状态类，自定义的 `WhiteGlobalState` 类必须继承 [WhiteGlobalState](WhiteGlobalState)，否则会清空该配置。
 
- **Note:** 
- 
+ **Note:**
+
  如果你使用 Swift，在配置 [WhiteGlobalState](WhiteGlobalState) 子类属性时，需要对属性添加 `@objc` 修饰符。
 
- @return 
- 
+ @return
+
   - `YES`：配置成功。
   - `No`：配置失败，恢复为 [WhiteGlobalState](WhiteGlobalState) 类。
  */
@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 房间中所有的互动模式（具有读写权限）的用户。详见 [WhiteRoomMember](WhiteRoomMember)。 */
 @property (nonatomic, strong, readonly, nullable) NSArray<WhiteRoomMember *> *roomMembers;
 
-/** 当前场景组下的场景状态。详见 [WhiteSceneState](WhiteSceneState)。 */
+/** 当前场景目录下的场景状态。详见 [WhiteSceneState](WhiteSceneState)。 */
 @property (nonatomic, strong, readonly, nullable) WhiteSceneState *sceneState;
 
 /** 白板内部视角状态。详见 [WhiteCameraState](WhiteCameraState)。 */

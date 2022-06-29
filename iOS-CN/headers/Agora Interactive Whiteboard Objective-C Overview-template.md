@@ -92,18 +92,20 @@
 
 | 方法                                                      | 描述                          |
 | :----------------------------------------------------------- | :------------------------------ |
-| [insertImage]([WhiteRoom insertImage:])| 插入图片显示区域 |
+| [insertImage]([WhiteRoom insertImage:])1| 插入图片显示区域 |
 | [completeImageUploadWithUuid]([WhiteRoom completeImageUploadWithUuid:src:])| 展示图片|
-| [insertImage]([WhiteRoom insertImage:src:])|插入并展示图片 |
-| [sceneState]([WhiteRoom sceneState])| 获取当前场景组下的场景状态（同步方法）|
-| [getSceneStateWithResult]([WhiteRoom getSceneStateWithResult:])| 获取当前场景组下的场景状态（异步方法）|
-| [getScenesWithResult]([WhiteRoom getScenesWithResult:])| 获取当前场景组下的场景列表|
+| [insertImage]([WhiteRoom insertImage:src:])2|插入并展示图片 |
+| [insertText]([WhiteRoom insertText:])|在指定位置插入文字 |
+| [sceneState]([WhiteRoom sceneState])| 获取当前场景目录下的场景状态（同步方法）|
+| [getSceneFromScenePath]([WhiteRoom getSceneFromScenePath:])| 获取指定场景的信息|
+| [getSceneStateWithResult]([WhiteRoom getSceneStateWithResult:])| 获取当前场景目录下的场景状态（异步方法）|
+| [getScenesWithResult]([WhiteRoom getScenesWithResult:])| 获取当前场景目录下的场景列表|
 | [setScenePath]([WhiteRoom setScenePath:])|切换至指定的场景（同步方法） |
 | [setScenePath]([WhiteRoom setScenePath:completionHandler:]) |切换至指定的场景（异步方法） |
-| [setSceneIndex]([WhiteRoom setSceneIndex:completionHandler:])| 切换至当前场景组下的指定场景|
-| [putScenes]([WhiteRoom putScenes:scenes:index:])| 在指定场景组下插入多个场景|
+| [setSceneIndex]([WhiteRoom setSceneIndex:completionHandler:])| 切换至当前场景目录下的指定场景|
+| [putScenes]([WhiteRoom putScenes:scenes:index:])| 在指定场景目录下插入多个场景|
 | [moveScene]([WhiteRoom moveScene:target:])|移动场景 |
-| [removeScenes]([WhiteRoom removeScenes:])|删除场景或者场景组 |
+| [removeScenes]([WhiteRoom removeScenes:])|删除场景或者场景目录 |
 | [cleanScene]([WhiteRoom cleanScene:])|清除当前场景的所有内容 |
 | [pptNextStep]([WhiteRoom pptNextStep])|播放动态 PPT 下一页 |
 | [pptPreviousStep]([WhiteRoom pptPreviousStep])|返回动态 PPT 上一页|
@@ -156,3 +158,5 @@
 | [setTimeDelay]([WhiteRoom setTimeDelay:])  | 设置远端白板画面同步延时。 |
 | [convertToPointInWorld]([WhiteDisplayer convertToPointInWorld:result:])    | 转换白板上点的坐标 |
 | [refreshViewSize]([WhiteDisplayer refreshViewSize])   | 刷新白板的界面 |
+| [nativeWebSocket]([WhiteRoomConfig nativeWebSocket])   | 开启/关闭全链路加速 |
+| [setDrawOnlyApplePencil]([WhiteRoom setDrawOnlyApplePencil:])   | （仅适用于 iPad）设置是否只允许用户使用 Apple Pencil 在白板上绘制和书写 |

@@ -176,10 +176,10 @@ typedef NS_OPTIONS(NSUInteger, WhiteSyncManagerPauseReason) {
  定位到视频指定位置。
 
  定位到本地视频播放器的指定位置后，你可以调用该方法，将白板回放播放器调整到对应位置。
- 
+
  @param time 时间长度（s)。
- @param completionHandler 调用结果：
- 
+ @param completionHandler 方法调用结果：
+
  - `YES`：调用已经完成。
  - `No`：调用未完成。
 
@@ -188,13 +188,13 @@ typedef NS_OPTIONS(NSUInteger, WhiteSyncManagerPauseReason) {
 
 /**
  更新白板回放播放器的播放状态。
- 
+
  当白板回放播放器的播放状态发生变化时，White Player 会触发该回调，向你报告板回放播放器的播放状态。
 
  @param phase [WhitePlayer](WhitePlayer) 的播放状态。
- 
- **Note:** 
- 
+
+ **Note:**
+
  在该回调中，需要主动调用 [WhitePlayerPhase](WhitePlayerPhase) 方法，将状态同步给 [WhitePlayer](WhitePlayer)。
  */
 - (void)updateWhitePlayerPhase:(WhitePlayerPhase)phase;

@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param config  互动白板实时房间的参数配置，详见 [WhiteRoomConfig](WhiteRoomConfig)。
  @param callbacks 房间事件回调，详见 [WhiteRoomCallbackDelegate](WhiteRoomCallbackDelegate)。
- @param completionHandler 调用结果：
+ @param completionHandler 方法调用结果：
 
  - 如果方法调用成功，将返回房间对象，详见 [WhiteRoom](WhiteRoom)。
  - 如果方法调用失败，将返回错误信息。
