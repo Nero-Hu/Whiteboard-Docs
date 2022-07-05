@@ -57,8 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
  设置是否只允许用户使用 Apple Pencil 在白板上绘制和书写。
 
  设置 `setDrawOnlyApplePencil(YES)` 后，用户只能使用 Apple Pencil 在白板上绘制和书写，无法使用手指绘制和书写。
- 如果用户用手指触碰白板，SDK 会触发两个 [fireRoomStateChanged](fireRoomStateChanged:) 回调，报告当前使用的
- 白板工具 (`memberState`) 在 `ApplianceClicker` 和 `AppliancePencil` 之间发生了切换。
+ 如果用户用手指触碰白板，SDK 会触发两个 [fireRoomStateChanged]([WhiteRoomCallbackDelegate fireRoomStateChanged:]) 回调，报告当前使用的白板工具 (`memberState`) 在 `ApplianceClicker` 和 `AppliancePencil` 之间发生了切换。
 
  **Note:**
 
@@ -66,6 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
  - 该属性的设置建议跟随 `UIPencilInteraction.prefersPencilOnlyDrawing` 的设置。
 
  @param drawOnlyPencil 是否只允许用户使用 Apple Pencil 绘制和书写：
+
  - `YES`：只允许使用 Apple Pencil 在白板上绘制和书写。
  - `NO`：（默认）允许使用 Apple Pencil 或手指在白板上绘制和书写。
  */

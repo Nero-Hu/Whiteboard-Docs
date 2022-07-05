@@ -144,7 +144,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  关闭/开启新铅笔工具。
 
- 设置 `disableNewPencil(NO)`，SDK 会对铅笔工具（`AppliancePencil`）应用新版笔迹平滑算法，使书写笔迹更加流畅自然，并带有笔锋效果。
+ 设置是否关闭新铅笔工具：
+
+ - `YES`: （默认）关闭新铅笔工具。SDK 会对铅笔工具（`AppliancePencil`）应用旧版笔迹平滑算法。
+ - `NO`: 开启新铅笔工具。SDK 会对铅笔工具应用新版笔迹平滑算法，使书写笔迹更加流畅自然，并带有笔锋效果。
 
  @since 2.12.2
 
@@ -155,9 +158,6 @@ NS_ASSUME_NONNULL_BEGIN
     - Android SDK 2.12.3 版或之后
     - iOS SDK 2.12.3 版或之后
     - Web SDK 2.12.5 版或之后
-
- - `YES`: （默认）关闭新铅笔工具。
- - `NO`: 开启新铅笔工具。
  */
 @property (nonatomic, assign) BOOL disableNewPencil;
 
@@ -172,19 +172,37 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  是否只允许用户使用 Apple Pencil 在白板上绘制和书写。
 
+ 设置是否只允许用户使用 Apple Pencil 在白板上绘制和书写：
+
+ - `YES`：只允许使用 Apple Pencil 在白板上绘制和书写。
+ - `NO`：（默认）允许使用 Apple Pencil 或手指在白板上绘制和书写。
+
  设置 `drawOnlyApplePencil(YES)` 后，用户只能使用 Apple Pencil 在白板上绘制和书写，无法使用手指绘制和书写。
- 如果用户用手指触碰白板，SDK 会触发两个 [fireRoomStateChanged](fireRoomStateChanged:) 回调，报告当前使用的
+ 如果用户用手指触碰白板，SDK 会触发两个 [fireRoomStateChanged]([WhiteRoomCallbackDelegate fireRoomStateChanged:]) 回调，报告当前使用的
  白板工具 (`memberState`) 在 `ApplianceClicker` 和 `AppliancePencil` 之间发生了切换。
 
  **Note:**
 
- - 该属性仅在 iPad 设备上生效。
- - 该属性的设置建议跟随 `UIPencilInteraction.prefersPencilOnlyDrawing` 的设置。
-
- - `YES`：只允许使用 Apple Pencil 在白板上绘制和书写。
- - `NO`：（默认）允许使用 Apple Pencil 或手指在白板上绘制和书写。
+  - 该属性仅在 iPad 设备上生效。
+  - 该属性的设置建议跟随 `UIPencilInteraction.prefersPencilOnlyDrawing` 的设置。
  */
 @property (nonatomic, assign) BOOL drawOnlyApplePencil;
+
+/**
+ 是否开启全链路加速。
+
+ Agora 互动白板服务集成了 [Agora 全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。
+ 集成 Agora Whiteboard SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
+ 1. 在项目的 `podfile` 文件中添加 `pod 'Whiteboard/fpa'`。
+ 2. 加入频道前，调用 `nativeWebSocket(YES)`，开启全链路加速功能。
+
+ @note 该功能仅支持 iOS 13.0 或之后的系统。
+
+ - `YES`：开启全链路加速。
+ - `NO`：（默认）关闭全链路加速。
+*/
+@property (nonatomic, assign) BOOL nativeWebSocket API_AVAILABLE(ios(13.0));
+
 
 @end
 

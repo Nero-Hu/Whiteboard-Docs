@@ -95,9 +95,9 @@
 | [insertImage]([WhiteRoom insertImage:])1| 插入图片显示区域 |
 | [completeImageUploadWithUuid]([WhiteRoom completeImageUploadWithUuid:src:])| 展示图片|
 | [insertImage]([WhiteRoom insertImage:src:])2|插入并展示图片 |
-| [insertText]([WhiteRoom insertText:])|在指定位置插入文字 |
+| [insertText]([WhiteRoom insertText:y:textContent:completionHandler:])|在指定位置插入文字 |
 | [sceneState]([WhiteRoom sceneState])| 获取当前场景目录下的场景状态（同步方法）|
-| [getSceneFromScenePath]([WhiteRoom getSceneFromScenePath:])| 获取指定场景的信息|
+| [getSceneFromScenePath]([WhiteDisplayer getSceneFromScenePath:result:])| 获取指定场景的信息|
 | [getSceneStateWithResult]([WhiteRoom getSceneStateWithResult:])| 获取当前场景目录下的场景状态（异步方法）|
 | [getScenesWithResult]([WhiteRoom getScenesWithResult:])| 获取当前场景目录下的场景列表|
 | [setScenePath]([WhiteRoom setScenePath:])|切换至指定的场景（同步方法） |
