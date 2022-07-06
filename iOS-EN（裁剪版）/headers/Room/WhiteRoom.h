@@ -51,6 +51,30 @@ NS_ASSUME_NONNULL_BEGIN
 /** The connection state of the room. See [WhiteRoomPhase](WhiteRoomPhase). */
 @property (nonatomic, assign, readonly) WhiteRoomPhase phase;
 
+#pragma mark - Apple Pencil
+
+/**
+ Sets whether users can draw and write on the whiteboard using only the Apple pencil.
+
+ - `YES`: Users can draw and write using only the Apple pencil.
+ - `NO`: (Default) Users can draw and write using either the Apple pencil or their fingers.
+
+ After setting `setDrawOnlyApplePencil(YES)`, users can draw and write on the whiteboard using only the Apple Pencil. If users touches the whiteboard
+ using their fingers, the SDK triggers two [fireRoomStateChanged](fireRoomStateChanged:) callbacks to report that the whiteboard
+ tool currently in use (the `memberState` property) switches between `ApplianceClicker` and `AppliancePencil`.
+
+ **Note:**
+
+ - This property takes effect on iPad only.
+ - Agora recommends that you set this property following the setting of `UIPencilInteraction.prefersPencilOnlyDrawing`.
+
+ @param drawOnlyPencil Whether users can draw and write on the whiteboard using only the Apple pencil:
+
+ - `YES`: Users can draw and write using only the Apple pencil.
+ - `NO`: (Default) Users can draw and write using either the Apple pencil or their fingers.
+ */
+- (void)setDrawOnlyApplePencil:(BOOL)drawOnlyPencil;
+
 #pragma mark - Set API
 
 /**
@@ -205,6 +229,22 @@ NS_ASSUME_NONNULL_BEGIN
  When the current PPT slide is rolled back, the SDK switches back to the previous scene to play the previous PPT slide.
  */
 - (void)pptPreviousStep;
+
+#pragma mark - Text API
+
+/**
+ Inserts text at a specified position.
+
+ @param x The X coordinate of the midpoint of the left edge of the first character in the world coordinate system.
+ @param y The Y coordinate of the midpoint of the left edge of the first character in the world coordinate system.
+ @param textContent The initial text. If you do not pass in a value, the content is empty.
+ @param completionHandler The call result:
+
+ - The identifier of the text in string format, if the method call succeeds.
+ - An error message, if the method call fails.
+ */
+- (void)insertText:(CGFloat)x y:(CGFloat)y textContent:(NSString *)textContent completionHandler:(void (^) (NSString * textId))completionHandler;
+
 
 #pragma mark - Image API
 

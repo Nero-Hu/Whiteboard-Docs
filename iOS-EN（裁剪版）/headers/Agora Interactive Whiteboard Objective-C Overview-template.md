@@ -89,9 +89,10 @@ Agora provides interactive whiteboard with high reliability and rich features th
 
 | Method                                                      | Description                          |
 | :----------------------------------------------------------- | :------------------------------ |
-| [insertImage]([WhiteRoom insertImage:])| Inserts an image placeholder on the whiteboard. |
+| [insertImage]([WhiteRoom insertImage:])1| Inserts an image placeholder on the whiteboard. |
 | [completeImageUploadWithUuid]([WhiteRoom completeImageUploadWithUuid:src:])| Displays an image in the specified image placeholder.|
-| [insertImage]([WhiteRoom insertImage:src:])|Inserts and displays an image on the whiteboard. |
+| [insertImage]([WhiteRoom insertImage:src:])2|Inserts and displays an image on the whiteboard. |
+| [insertText]([WhiteRoom insertText:y:textContent:completionHandler:])|Inserts text at a specified position. |
 | [sceneState]([WhiteRoom sceneState])| Gets the state of the scenes under the current scene directory (synchronous).|
 | [getSceneStateWithResult]([WhiteRoom getSceneStateWithResult:])| Gets the state of the scenes under the current scene directory (asynchronous).|
 | [getScenesWithResult]([WhiteRoom getScenesWithResult:])| Gets the state of the scenes under the current scene directory (asynchronous).|
@@ -135,3 +136,4 @@ Agora provides interactive whiteboard with high reliability and rich features th
 | [setTimeDelay]([WhiteRoom setTimeDelay:]) | Sets the delay time for sending the whiteboard contents of the local user to the remote users. |
 | [convertToPointInWorld]([WhiteDisplayer convertToPointInWorld:result:])   | Converts the coordinates of a point on the whiteboard. |
 | [refreshViewSize]([WhiteDisplayer refreshViewSize])  | Refreshes the whiteboard view. |
+| [setDrawOnlyApplePencil]([WhiteRoom setDrawOnlyApplePencil:])   | (iPad only) Sets whether users can draw and write on the whiteboard using only the Apple pencil. |

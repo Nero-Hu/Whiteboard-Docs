@@ -172,8 +172,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  是否只允许用户使用 Apple Pencil 在白板上绘制和书写。
 
- 设置是否只允许用户使用 Apple Pencil 在白板上绘制和书写：
-
  - `YES`：只允许使用 Apple Pencil 在白板上绘制和书写。
  - `NO`：（默认）允许使用 Apple Pencil 或手指在白板上绘制和书写。
 
@@ -201,8 +199,7 @@ NS_ASSUME_NONNULL_BEGIN
  - `YES`：开启全链路加速。
  - `NO`：（默认）关闭全链路加速。
 */
-@property (nonatomic, assign) BOOL nativeWebSocket API_AVAILABLE(ios(13.0));
-
+@property (nonatomic, assign) BOOL nativeWebSocket;
 
 @end
 

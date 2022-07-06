@@ -77,6 +77,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL disableDeviceInputs;
 
 /**
+ Whether to disable the stroke effect of the new pencil (`AppliancePencil`).
+
+ - `YES`: Disable the stroke effect.
+ - `NO`: (Default) Enable the stroke effect.
+
+ This property takes effect only when `disableNewPencil` is set as `NO`.
+ */
+@property (nonatomic, assign) BOOL disableNewPencilStroke;
+
+@end
+
+@implementation WhiteSdkConfiguration (Deleted)
+
+/**
  Whether to disable the local user from adjusting the view of the whiteboard, including moving and zooming the view.
 
  - `YES`: Disable the local user from adjusting the view of the whiteboard.
@@ -147,19 +161,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isWritable;
 
 /**
- Whether to disables the stroke effect of the pencil.
+ Disables/Enables the new pencil.
+
+ Sets whether to disables the new pencil:
+
+ - `YES`: (Default) Disable the new pencil. The SDK applies the old stroke smoothing algorithm to pencil.
+ - `NO`: Enable the new pencil. This allows the SDK to apply the new stroke smoothing algorithm to pencil, which results in smoother, more natural handwriting with a stroke effect.
 
  @since 2.12.2
 
  **Note:**
 
   - In v2.12.2, the SDK sets the default value of `disableNewPencil` as `false`; as of v2.12.3, the SDK changes the default value of `disableNewPencil` to `YES`.
-  - To enable the stroke effect, ensure that every user in the room uses one of the following SDKs:
+  - To enable the new pencil, ensure that every user in the room uses one of the following SDKs:
     - Android SDK v2.12.3 or later
     - iOS SDK v2.12.3 or later
     - Web SDK v2.12.5 or later
- - `YES`: (Default) Disable the stroke effect of the pencil.
- - `NO`: Enable the stroke effect of the pencil.
  */
 @property (nonatomic, assign) BOOL disableNewPencil;
 
@@ -171,6 +188,23 @@ NS_ASSUME_NONNULL_BEGIN
  At the same time, it triggers the [fireDisconnectWithError]([WhiteRoomCallbackDelegate fireDisconnectWithError:]) callback and returns the prompt "Reconnection time exceeds xx milliseconds".
  */
 @property (nonatomic, strong) NSNumber *timeout;
+
+/**
+ Set whether users can draw and write on the whiteboard using only the Apple pencil.
+
+ - `YES`: Users can draw and write using only the Apple pencil.
+ - `NO`: (Default) Users can draw and write using either the Apple pencil or their fingers.
+
+ After setting `drawOnlyApplePencil(YES)`, users can draw and write on the whiteboard using only the Apple Pencil. If users touches the whiteboard
+ using their fingers, the SDK triggers two [fireRoomStateChanged](fireRoomStateChanged:) callbacks to report that the whiteboard
+ tool currently in use (the `memberState` property) switches between `ApplianceClicker` and `AppliancePencil`.
+
+ **Note:**
+
+ - This property takes effect on iPad only.
+ - Agora recommends that you set this property following the setting of `UIPencilInteraction.prefersPencilOnlyDrawing`.
+ */
+@property (nonatomic, assign) BOOL drawOnlyApplePencil;
 
 @end
 
