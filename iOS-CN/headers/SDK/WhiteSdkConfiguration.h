@@ -215,7 +215,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 @property (nonatomic, assign) BOOL disableDeviceInputs;
 
 /**
- 是否关闭新铅笔工具（`AppliancePencil`）的笔锋效果：
+ 是否关闭新铅笔工具（`AppliancePencil`）的笔锋效果。
 
  - `YES`：关闭笔锋效果。
  - `NO`：（默认）开启笔锋效果。
