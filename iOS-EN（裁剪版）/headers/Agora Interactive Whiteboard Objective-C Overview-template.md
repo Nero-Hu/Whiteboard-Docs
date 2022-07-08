@@ -136,4 +136,4 @@ Agora provides interactive whiteboard with high reliability and rich features th
 | [setTimeDelay]([WhiteRoom setTimeDelay:]) | Sets the delay time for sending the whiteboard contents of the local user to the remote users. |
 | [convertToPointInWorld]([WhiteDisplayer convertToPointInWorld:result:])   | Converts the coordinates of a point on the whiteboard. |
 | [refreshViewSize]([WhiteDisplayer refreshViewSize])  | Refreshes the whiteboard view. |
-| [setDrawOnlyApplePencil]([WhiteRoom setDrawOnlyApplePencil:])   | (iPad only) Sets whether users can draw and write on the whiteboard using only the Apple pencil. |
+| [setDrawOnlyApplePencil]([WhiteRoom setDrawOnlyApplePencil:])   | (iPad only) Sets whether users can only draw and write on the whiteboard using the Apple Pencil. |

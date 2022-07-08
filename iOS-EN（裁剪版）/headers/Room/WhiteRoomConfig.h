@@ -190,14 +190,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *timeout;
 
 /**
- Set whether users can draw and write on the whiteboard using only the Apple pencil.
+ Set whether users can only draw and write on the whiteboard using the Apple Pencil.
 
- - `YES`: Users can draw and write using only the Apple pencil.
- - `NO`: (Default) Users can draw and write using either the Apple pencil or their fingers.
+ - `YES`: Users can only draw and write using the Apple Pencil.
+ - `NO`: (Default) Users can draw and write using either the Apple Pencil or their fingers.
 
- After setting `drawOnlyApplePencil(YES)`, users can draw and write on the whiteboard using only the Apple Pencil. If users touches the whiteboard
- using their fingers, the SDK triggers two [fireRoomStateChanged](fireRoomStateChanged:) callbacks to report that the whiteboard
- tool currently in use (the `memberState` property) switches between `ApplianceClicker` and `AppliancePencil`.
+ After setting `drawOnlyApplePencil(YES)`, users can only draw and write on the whiteboard using the Apple Pencil. If users touch the whiteboard with their fingers, the SDK immediately changes the `memberState` property from `AppliancePencil`
+ to `ApplianceClicker` and then from `ApplianceClicker` back to `AppliancePencil` to prevent the whiteboard tool currently in use being
+ switched. The SDK triggers two [fireRoomStateChanged](fireRoomStateChanged:) callbacks to report these internal changes.
 
  **Note:**
 

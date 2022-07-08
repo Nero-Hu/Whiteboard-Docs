@@ -54,21 +54,22 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Apple Pencil
 
 /**
- Sets whether users can draw and write on the whiteboard using only the Apple pencil.
+ Sets whether users can only draw and write on the whiteboard using the Apple Pencil.
 
- After setting `setDrawOnlyApplePencil(YES)`, users can draw and write on the whiteboard using only the Apple Pencil. If users touches the whiteboard
- using their fingers, the SDK triggers two [fireRoomStateChanged]([WhiteRoomCallbackDelegate fireRoomStateChanged:]) callbacks to report that the whiteboard
- tool currently in use (the `memberState` property) switches between `ApplianceClicker` and `AppliancePencil`.
+ After setting `setDrawOnlyApplePencil(YES)`, users can only draw and write on the whiteboard using the Apple Pencil.
+ If users touch the whiteboard with their fingers, the SDK immediately changes the `memberState` property from `AppliancePencil`
+ to `ApplianceClicker` and then from `ApplianceClicker` back to `AppliancePencil` to prevent the whiteboard tool currently in use being
+ switched. The SDK triggers two [fireRoomStateChanged](fireRoomStateChanged:) callbacks to report these internal changes.
 
  **Note:**
 
  - This property takes effect on iPad only.
  - Agora recommends that you set this property following the setting of `UIPencilInteraction.prefersPencilOnlyDrawing`.
 
- @param drawOnlyPencil Whether users can draw and write on the whiteboard using only the Apple pencil:
+ @param drawOnlyPencil Whether users can only draw and write on the whiteboard using the Apple Pencil:
 
- - `YES`: Users can draw and write using only the Apple pencil.
- - `NO`: (Default) Users can draw and write using either the Apple pencil or their fingers.
+ - `YES`: Users can only draw and write using the Apple Pencil.
+ - `NO`: (Default) Users can draw and write using either the Apple Pencil or their fingers.
  */
 - (void)setDrawOnlyApplePencil:(BOOL)drawOnlyPencil;
 
