@@ -76,19 +76,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL disableDeviceInputs;
 
-/**
- Whether to disable the stroke effect of the new pencil (`AppliancePencil`).
-
- - `YES`: Disable the stroke effect.
- - `NO`: (Default) Enable the stroke effect.
-
- This property takes effect only when `disableNewPencil` is set as `NO`.
- */
-@property (nonatomic, assign) BOOL disableNewPencilStroke;
-
-@end
-
-@implementation WhiteSdkConfiguration (Deleted)
 
 /**
  Whether to disable the local user from adjusting the view of the whiteboard, including moving and zooming the view.
