@@ -20,11 +20,11 @@
 	<key>--project-version</key>
 	<string>2.4</string>
 	<key>--output</key>
-	<string>/Users/dyx/Desktop/3-互动白板/iOS/iOS-CN/output</string>
+	<string>/Users/dyx/Desktop/3-互动白板/Whiteboard-iOS/iOS-CN/output</string>
 	<key>--company-id</key>
 	<string>agora.io</string>
 	<key>--index-desc</key>
-	<string>/Users/dyx/Desktop/3-互动白板/iOS/iOS-CN/headers/index.md</string>
+	<string>/Users/dyx/Desktop/3-互动白板/Whiteboard-iOS/iOS-CN/headers/index.md</string>
 	<key>--include</key>
 	<string>./</string>
 	<key>--create-docset</key>

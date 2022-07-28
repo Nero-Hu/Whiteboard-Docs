@@ -86,6 +86,12 @@
 		
 		<option value="//api/name/timeout">timeout</option>
 		
+		<option value="//api/name/drawOnlyApplePencil">drawOnlyApplePencil</option>
+		
+		<option value="//api/name/nativeWebSocket">nativeWebSocket</option>
+		
+		<option value="//api/name/)">)</option>
+		
 	</optgroup>
 	
 
@@ -119,7 +125,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>WhiteObject</td>
+	<td>WhiteObject : NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
 	<td>WhiteRoomConfig.h</td>
@@ -148,7 +154,7 @@
 						
 
 						
-						
+						<h2 class="task-title">Other Methods</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -936,7 +942,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>关闭/开启笔锋效果。</p>
+				<p>关闭/开启新铅笔工具。</p>
 			</div>
 			
 		    
@@ -957,7 +963,7 @@
 
 <ul>
 <li>在 2.12.2 版本中，默认值为 <code>NO</code>，自 2.12.3 版本起，默认值改为 <code>YES</code>。</li>
-<li><p>为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：</p>
+<li>为正常显示笔迹，在开启新铅笔前，请确保该房间内的所有用户使用如下 SDK：
 
 <ul>
 <li>Android SDK 2.12.3 版或之后</li>
@@ -965,13 +971,22 @@
 <li>Web SDK 2.12.5 版或之后</li>
 </ul>
 </li>
-<li><p><code>YES</code>: （默认）关闭笔锋效果。</p></li>
-<li><code>NO</code>: 开启笔锋效果。</li>
 </ul>
 
 			</div>
 			
 
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置是否关闭新铅笔工具：</p>
+
+<ul>
+<li><code>YES</code>: （默认）关闭新铅笔工具。SDK 会对铅笔工具（<code>AppliancePencil</code>）应用旧版笔迹平滑算法。</li>
+<li><code>NO</code>: 开启新铅笔工具。SDK 会对铅笔工具应用新版笔迹平滑算法，使书写笔迹更加流畅自然，并带有笔锋效果。</li>
+</ul>
+
+			</div>
 			
 
 			
@@ -1033,6 +1048,186 @@
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/drawOnlyApplePencil" title="drawOnlyApplePencil"></a>
+	<h3 class="method-title"><code><a href="#//api/name/drawOnlyApplePencil">&nbsp;&nbsp;drawOnlyApplePencil</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否只允许用户使用 Apple Pencil 在白板上绘制和书写。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL drawOnlyApplePencil</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<ul>
+<li><code>YES</code>：只允许使用 Apple Pencil 在白板上绘制和书写。</li>
+<li><code>NO</code>：（默认）允许使用 Apple Pencil 或手指在白板上绘制和书写。</li>
+</ul>
+
+
+<p>设置 <code>drawOnlyApplePencil(YES)</code> 后，用户只能使用 Apple Pencil 在白板上绘制和书写，无法使用手指绘制和书写。
+如果用户用手指触碰白板，SDK 会触发两个 <a href="../Protocols/WhiteRoomCallbackDelegate.html#//api/name/fireRoomStateChanged:">fireRoomStateChanged</a> 回调，报告当前使用的
+白板工具 (<code>memberState</code>) 在 <code>ApplianceClicker</code> 和 <code>AppliancePencil</code> 之间发生了切换。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>该属性仅在 iPad 设备上生效。</li>
+<li>该属性的设置建议跟随 <code>UIPencilInteraction.prefersPencilOnlyDrawing</code> 的设置。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoomConfig.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/nativeWebSocket" title="nativeWebSocket"></a>
+	<h3 class="method-title"><code><a href="#//api/name/nativeWebSocket">&nbsp;&nbsp;nativeWebSocket</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否开启全链路加速。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL nativeWebSocket</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Agora 互动白板服务集成了 <a href="https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms">Agora 全链路加速（FPA）服务</a>。
+集成 Agora Whiteboard SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
+1. 在项目的 <code>podfile</code> 文件中添加 <code>pod 'Whiteboard/fpa'</code>。
+2. 加入频道前，调用 <code>nativeWebSocket(YES)</code>，开启全链路加速功能。</p><div class="note"><p><strong>Note:</strong> 该功能仅支持 iOS 13.0 或之后的系统。</p>
+
+<ul>
+<li><code>YES</code>：开启全链路加速。</li>
+<li><code>NO</code>：（默认）关闭全链路加速。</li>
+</ul>
+</div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoomConfig.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Extension Methods" name="task_Extension Methods"></a>
+						<h2 class="task-title">Extension Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/)" title=")"></a>
+	<h3 class="method-title"><code><a href="#//api/name/)">&nbsp;&nbsp;)</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>是否开启全链路加速。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL nativeWebSocket API_AVAILABLE ( ios ( 13.0 )</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Agora 互动白板服务集成了 <a href="https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms">Agora 全链路加速（FPA）服务</a>。
+集成 Agora Whiteboard SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
+1. 在项目的 <code>podfile</code> 文件中添加 <code>pod 'Whiteboard/fpa'</code>。
+2. 加入频道前，调用 <a href="#//api/name/nativeWebSocket"><code>nativeWebSocket</code></a>(YES)，开启全链路加速功能。</p><div class="note"><p><strong>Note:</strong> 该功能仅支持 iOS 13.0 或之后的系统。</p>
+
+<ul>
+<li><code>YES</code>：开启全链路加速。</li>
+<li><code>NO</code>：（默认）关闭全链路加速。</li>
+</ul>
+</div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteRoomConfig+FPA.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1048,7 +1243,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 Agora. All rights reserved. Updated: 2021-11-16</p>
+						<p class="copyright">Copyright &copy; 2022 Agora. All rights reserved. Updated: 2022-07-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

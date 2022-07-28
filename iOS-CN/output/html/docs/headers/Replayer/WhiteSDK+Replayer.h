@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param config 白板回放的参数配置，详见 [WhitePlayerConfig](WhitePlayerConfig)。
  @param eventCallbacks 白板回放事件的回调。详见 [WhitePlayerEventDelegate](WhitePlayerEventDelegate)。
- @param completionHandler 调用结果： 
+ @param completionHandler 方法调用结果：
 
   - 如果方法调用成功，将返回新创建的回放房间对象，详见 [WhitePlayer](WhitePlayer)。
   - 如果方法调用失败，将返回错误信息。
@@ -34,8 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param config 白板回放的参数配置，详见 [WhitePlayerConfig](WhitePlayerConfig)。
  @param result 回调。返回房间是否能够回放。
-  
- - `YES`：该房间能够回放。   
+
+ - `YES`：该房间能够回放。
  - `NO`：该房间不能回放。
  */
 - (void)isPlayable:(WhitePlayerConfig *)config result:(void (^)(BOOL isPlayable))result;

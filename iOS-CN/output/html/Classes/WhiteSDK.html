@@ -86,11 +86,11 @@
 		
 		<option value="//api/name/setCommonCallbackDelegate:">- setCommonCallbackDelegate:</option>
 		
+		<option value="//api/name/joinRoomWithConfig:callbacks:completionHandler:">- joinRoomWithConfig:callbacks:completionHandler:</option>
+		
 		<option value="//api/name/createReplayerWithConfig:callbacks:completionHandler:">- createReplayerWithConfig:callbacks:completionHandler:</option>
 		
 		<option value="//api/name/isPlayable:result:">- isPlayable:result:</option>
-		
-		<option value="//api/name/joinRoomWithConfig:callbacks:completionHandler:">- joinRoomWithConfig:callbacks:completionHandler:</option>
 		
 	</optgroup>
 	
@@ -529,7 +529,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>调用结果：</p>
+						<td><p>方法调用结果：</p>
 
 <ul>
 <li>如果方法调用成功，则返回 <a href="../Classes/WhiteFontFace.html"><code>WhiteFontFace</code></a> 对象</li>
@@ -711,6 +711,83 @@
 						</div>
 						
 
+						<a title="Room Methods" name="task_Room Methods"></a>
+						<h2 class="task-title">Room Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/joinRoomWithConfig:callbacks:completionHandler:" title="joinRoomWithConfig:callbacks:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/joinRoomWithConfig:callbacks:completionHandler:">&ndash;&nbsp;joinRoomWithConfig:callbacks:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置房间参数和事件回调并加入互动白板实时房间。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)joinRoomWithConfig:(WhiteRoomConfig *)<em>config</em> callbacks:(nullable id&lt;WhiteRoomCallbackDelegate&gt;)<em>callbacks</em> completionHandler:(void ( ^ ) ( BOOL success , WhiteRoom *_Nullable room , NSError *_Nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>config</code></th>
+						<td><p>互动白板实时房间的参数配置，详见 <a href="../Classes/WhiteRoomConfig.html">WhiteRoomConfig</a>。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>callbacks</code></th>
+						<td><p>房间事件回调，详见 <a href="../Protocols/WhiteRoomCallbackDelegate.html">WhiteRoomCallbackDelegate</a>。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>方法调用结果：</p>
+
+<ul>
+<li>如果方法调用成功，将返回房间对象，详见 <a href="../Classes/WhiteRoom.html">WhiteRoom</a>。</li>
+<li>如果方法调用失败，将返回错误信息。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">WhiteSDK+Room.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
 						<a title="Replayer Methods" name="task_Replayer Methods"></a>
 						<h2 class="task-title">Replayer Methods</h2>
 
@@ -752,7 +829,7 @@
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>调用结果：</p>
+						<td><p>方法调用结果：</p>
 
 <ul>
 <li>如果方法调用成功，将返回新创建的回放房间对象，详见 <a href="../Classes/WhitePlayer.html">WhitePlayer</a>。</li>
@@ -861,83 +938,6 @@
 </div>
 						</div>
 						
-
-						<a title="Room Methods" name="task_Room Methods"></a>
-						<h2 class="task-title">Room Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/joinRoomWithConfig:callbacks:completionHandler:" title="joinRoomWithConfig:callbacks:completionHandler:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/joinRoomWithConfig:callbacks:completionHandler:">&ndash;&nbsp;joinRoomWithConfig:callbacks:completionHandler:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>设置房间参数和事件回调并加入互动白板实时房间。</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)joinRoomWithConfig:(WhiteRoomConfig *)<em>config</em> callbacks:(nullable id&lt;WhiteRoomCallbackDelegate&gt;)<em>callbacks</em> completionHandler:(void ( ^ ) ( BOOL success , WhiteRoom *_Nullable room , NSError *_Nullable error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>config</code></th>
-						<td><p>互动白板实时房间的参数配置，详见 <a href="../Classes/WhiteRoomConfig.html">WhiteRoomConfig</a>。</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>callbacks</code></th>
-						<td><p>房间事件回调，详见 <a href="../Protocols/WhiteRoomCallbackDelegate.html">WhiteRoomCallbackDelegate</a>。</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>调用结果：</p>
-
-<ul>
-<li>如果方法调用成功，将返回房间对象，详见 <a href="../Classes/WhiteRoom.html">WhiteRoom</a>。</li>
-<li>如果方法调用失败，将返回错误信息。</li>
-</ul>
-</td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">WhiteSDK+Room.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div>
-						</div>
-						
 					</div>
 					
 					
@@ -950,7 +950,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 Agora. All rights reserved. Updated: 2021-11-16</p>
+						<p class="copyright">Copyright &copy; 2022 Agora. All rights reserved. Updated: 2022-07-06</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

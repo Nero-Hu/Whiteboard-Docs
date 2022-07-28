@@ -51,6 +51,26 @@ NS_ASSUME_NONNULL_BEGIN
 /** 房间连接状态。详见 [WhiteRoomPhase](WhiteRoomPhase)。 */
 @property (nonatomic, assign, readonly) WhiteRoomPhase phase;
 
+#pragma mark - Apple Pencil
+
+/**
+ 设置是否只允许用户使用 Apple Pencil 在白板上绘制和书写。
+
+ 设置 `setDrawOnlyApplePencil(YES)` 后，用户只能使用 Apple Pencil 在白板上绘制和书写，无法使用手指绘制和书写。
+ 如果用户用手指触碰白板，SDK 会触发两个 [fireRoomStateChanged]([WhiteRoomCallbackDelegate fireRoomStateChanged:]) 回调，报告当前使用的白板工具 (`memberState`) 在 `ApplianceClicker` 和 `AppliancePencil` 之间发生了切换。
+
+ **Note:**
+
+ - 该属性仅在 iPad 设备上生效。
+ - 该属性的设置建议跟随 `UIPencilInteraction.prefersPencilOnlyDrawing` 的设置。
+
+ @param drawOnlyPencil 是否只允许用户使用 Apple Pencil 绘制和书写：
+
+ - `YES`：只允许使用 Apple Pencil 在白板上绘制和书写。
+ - `NO`：（默认）允许使用 Apple Pencil 或手指在白板上绘制和书写。
+ */
+- (void)setDrawOnlyApplePencil:(BOOL)drawOnlyPencil;
+
 #pragma mark - Set API
 
 /**
@@ -194,6 +214,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)pptPreviousStep;
 
+#pragma mark - Text API
+
+/**
+ 在指定位置插入文字。
+
+ @param x 第一个文字左侧边的中点在世界坐标系中的 X 轴坐标。
+ @param y 第一个文字左侧边的中点在世界坐标系中的 Y 轴坐标。
+ @param textContent 初始的文字内容，不传则为空。
+ @param completionHandler 方法调用结果：
+
+ - 如果方法调用成功，则返回文字的标识符。
+ - 如果方法调用失败，则返回错误信息。
+ */
+- (void)insertText:(CGFloat)x y:(CGFloat)y textContent:(NSString *)textContent completionHandler:(void (^) (NSString * textId))completionHandler;
+
 #pragma mark - Image API
 
 /**
@@ -330,7 +365,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param dirOrPath    想要切换到的场景的场景路径，请确保场景路径以 "/"，由场景目录和场景名构成，例如，`/math/classA`.
  @param completionHandler 方法调用结果：
 
- - 如果方法调用成功，则返回 `YES`。
+ - 如果方法调用成功，则返回 `YES`.
  - 如果方法调用失败，则返回错误信息。
  */
 - (void)setScenePath:(NSString *)dirOrPath completionHandler:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))completionHandler;
@@ -348,7 +383,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param index   目标场景在当前场景目录下的索引号。
  @param completionHandler 方法调用结果：
 
- - 如果方法调用成功，则返回 `YES`。
+ - 如果方法调用成功，则返回 `YES`.
  - 如果方法调用失败，则返回错误信息。
  */
 - (void)setSceneIndex:(NSUInteger)index completionHandler:(void (^ _Nullable)(BOOL success, NSError * _Nullable error))completionHandler;
@@ -405,7 +440,7 @@ NS_ASSUME_NONNULL_BEGIN
  - 该方法只能移动场景，不能移动场景目录，即 `source` 只能是场景路径，不能是场景目录路径。
  - 该方法支持改变指定场景在当前所属场景目录下的位置，也支持将指定场景移至其他场景目录。
  @param source 需要移动的场景原路径。必须为场景路径，不能是场景目录的路径。
- @param target 目标场景目录的路径或目标场景路径：
+ @param target 目标场景目录的路径或目标场景的路径：
 
   - 当 `target` 设置为场景目录时，表示将指定场景移至其他场景目录中，场景路径会发生改变，但是场景名称不变。
   - 当 `target` 设置为场景时，表示改变指定场景在当前场景目录的位置，场景路径和场景名都会发生改变。
