@@ -127,6 +127,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setCommonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callbackDelegate;
 
+/**
+ 将 Slide 日志写入到指定的文件路径。
+ 
+ @param path 将要写入文件的 path。如果文件不存在，会直接创建文件。如果文件已存在，则会在文件末尾继续写入日志。
+ @param result 日志写入结果。
+ */
+- (void)requestSlideLogToFilePath:(NSString *)path result:(void(^)(BOOL success, NSError *error))result;
 
 @end
 NS_ASSUME_NONNULL_END
