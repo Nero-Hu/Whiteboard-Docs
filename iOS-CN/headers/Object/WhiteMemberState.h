@@ -28,7 +28,7 @@ extern WhiteApplianceNameKey const ApplianceEllipse;
 extern WhiteApplianceNameKey const ApplianceRectangle;
 /** 橡皮工具。 */
 extern WhiteApplianceNameKey const ApplianceEraser;
-/** 用于擦除局部铅笔笔迹的橡皮工具。*/
+/** 用于擦除局部铅笔笔迹的橡皮工具。该工具仅对 NewPencil 生效，使用前需要先设置 `disableNewPencil` 为 false。 */
 extern WhiteApplianceNameKey const AppliancePencilEraser;
 /** 直线工具。 */
 extern WhiteApplianceNameKey const ApplianceStraight;
