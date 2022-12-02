@@ -113,6 +113,7 @@
 | [getEntireScenes]([WhiteDisplayer getEntireScenes:])|获取当前房间内所有场景的信息 |
 | [getScenePreviewImage]([WhiteDisplayer getScenePreviewImage:completion:])| 获取指定场景的预览图|
 | [getSceneSnapshotImage]([WhiteDisplayer getSceneSnapshotImage:completion:])| 获取指定场景的截图|
+| [getLocalSnapShotWithCompletion]([WhiteDisplayer getLocalSnapShotWithCompletion:])| 获取指定场景的截图|
 
 ### 回放管理
 
@@ -155,6 +156,7 @@
 | 方法                                                       | 描述                          |
 | :----------------------------------------------------------- | :------------------------------ |
 | [debugInfo]([WhiteRoom debugInfo:])  | 获取调试日志信息 |
+| [requestSlideLogToFilePath]([WhiteSDK requestSlideLogToFilePath:result:])  | 获取调试日志信息 |
 | [setTimeDelay]([WhiteRoom setTimeDelay:])  | 设置远端白板画面同步延时。 |
 | [convertToPointInWorld]([WhiteDisplayer convertToPointInWorld:result:])    | 转换白板上点的坐标 |
 | [refreshViewSize]([WhiteDisplayer refreshViewSize])   | 刷新白板的界面 |
