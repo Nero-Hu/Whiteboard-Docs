@@ -112,6 +112,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL disableEraseImage;
 
 /**
+ Whether to enable floatbar.
+
+ - `YES`: Enable floatbar.
+ - `NO`: (Default) Disable floatbar.
+ */
+@property (nonatomic, assign) BOOL floatBar;
+
+/**
  The boundary of the view. See [WhiteCameraBound](WhiteCameraBound)。
  */
 @property (nonatomic, strong, nullable) WhiteCameraBound *cameraBound;

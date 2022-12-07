@@ -18,30 +18,23 @@ typedef NSString * WhiteApplianceNameKey NS_STRING_ENUM;
 /** Clicker, which can be used for clicking and selectin content on the HTML5 file.*/
 extern WhiteApplianceNameKey const ApplianceClicker;
 
-/**
- Pencil.
- */
+/** Pencil. */
 extern WhiteApplianceNameKey const AppliancePencil;
-/**
- Selector.
- */
+/** Selector. */
 extern WhiteApplianceNameKey const ApplianceSelector;
-/**
- Text input box.
- */
+/** Text input box. */
 extern WhiteApplianceNameKey const ApplianceText;
-/**
- Ellipse.
- */
+/** Ellipse. */
 extern WhiteApplianceNameKey const ApplianceEllipse;
-/**
- Rectangle.
- */
+/** Rectangle. */
 extern WhiteApplianceNameKey const ApplianceRectangle;
-/**
- Eraser.
- */
+/** Eraser. */
 extern WhiteApplianceNameKey const ApplianceEraser;
+/**
+ * A pencil eraser used to erase any part of the pencil strokes.
+ * This tool only applies for NewPencil. You need to set disableNewPencil to false before using the pencil eraser. 
+ */
+extern WhiteApplianceNameKey const AppliancePencilEraser;
 /** Straight line. */
 extern WhiteApplianceNameKey const ApplianceStraight;
 /** Arrow. */
@@ -96,4 +89,19 @@ extern WhiteApplianceShapeTypeKey const ApplianceShapeTypeSpeechBalloon;
 @property (nonatomic, strong, readwrite) NSNumber *strokeWidth;
 /** The font size of the text. */
 @property (nonatomic, strong, readwrite) NSNumber *textSize;
+/**
+ Whethter to allow directly selecting and editing whiteboard texts:
+ 
+ - `YES`: Allow directly selecting and editing whiteboard texts.
+ - `NO`: (Default) Do not allow directly selecting and editing whiteboard texts.
+ */
+@property (nonatomic, assign, readwrite, nullable) NSNumber *textCanSelectText;
+/**
+ Whether to support draw dotted lines:
+ You need to set disableNewPencil to false before joining the channel.
+
+ - `YES`: Support draw dotted lines.
+ - `NO`: (Default) Do not support draw dotted lines.
+ */
+@property (nonatomic, assign, readwrite, nullable) NSNumber *dottedLine;
 @end

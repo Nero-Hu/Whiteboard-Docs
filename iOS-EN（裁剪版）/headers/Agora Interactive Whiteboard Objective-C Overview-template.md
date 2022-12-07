@@ -108,7 +108,8 @@ Agora provides interactive whiteboard with high reliability and rich features th
 | [getScenePathType]([WhiteDisplayer getScenePathType:result:])|Gets the type of the scene path. |
 | [getEntireScenes]([WhiteDisplayer getEntireScenes:])|Gets information about all scenes in the room. |
 | [getScenePreviewImage]([WhiteDisplayer getScenePreviewImage:completion:])| Gets the preview of the specified scene.|
-| [getSceneSnapshotImage]([WhiteDisplayer getSceneSnapshotImage:completion:])|Gets the screenshot of the specified scene.|
+| [getSceneSnapshotImage]([WhiteDisplayer getSceneSnapshotImage:completion:])| Gets the screenshot of the specified scene.|
+| [getLocalSnapShotWithCompletion]([WhiteDisplayer getLocalSnapShotWithCompletion:])| Gets the screenshot of the specified scene.|
 
 
 ### Customized events
@@ -133,6 +134,7 @@ Agora provides interactive whiteboard with high reliability and rich features th
 | Method                                                       | Description                          |
 | :----------------------------------------------------------- | :------------------------------ |
 | [debugInfo]([WhiteRoom debugInfo:])  | Gets debug logs. |
+| [requestSlideLogToFilePath]([WhiteSDK requestSlideLogToFilePath:result:])  | Gets debug logs. |
 | [setTimeDelay]([WhiteRoom setTimeDelay:]) | Sets the delay time for sending the whiteboard contents of the local user to the remote users. |
 | [convertToPointInWorld]([WhiteDisplayer convertToPointInWorld:result:])   | Converts the coordinates of a point on the whiteboard. |
 | [refreshViewSize]([WhiteDisplayer refreshViewSize])  | Refreshes the whiteboard view. |
