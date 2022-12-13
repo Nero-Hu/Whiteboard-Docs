@@ -134,7 +134,7 @@ Agora provides interactive whiteboard with high reliability and rich features th
 | Method                                                       | Description                          |
 | :----------------------------------------------------------- | :------------------------------ |
 | [debugInfo]([WhiteRoom debugInfo:])  | Gets debug logs. |
-| [requestSlideLogToFilePath]([WhiteSDK requestSlideLogToFilePath:result:])  | Gets debug logs. |
+| [requestSlideLogToFilePath]([WhiteSDK requestSlideLogToFilePath:result:])  | Gets the debug logs. |
 | [setTimeDelay]([WhiteRoom setTimeDelay:]) | Sets the delay time for sending the whiteboard contents of the local user to the remote users. |
 | [convertToPointInWorld]([WhiteDisplayer convertToPointInWorld:result:])   | Converts the coordinates of a point on the whiteboard. |
 | [refreshViewSize]([WhiteDisplayer refreshViewSize])  | Refreshes the whiteboard view. |
