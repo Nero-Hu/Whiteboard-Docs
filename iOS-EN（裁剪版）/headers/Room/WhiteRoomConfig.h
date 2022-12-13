@@ -112,10 +112,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL disableEraseImage;
 
 /**
- Whether to enable floatbar.
+ Whether to enable the floatbar.
 
- - `YES`: Enable floatbar.
- - `NO`: (Default) Disable floatbar.
+ - `YES`: Enable the floatbar.
+ - `NO`: (Default) Disable the floatbar.
  */
 @property (nonatomic, assign) BOOL floatBar;
 

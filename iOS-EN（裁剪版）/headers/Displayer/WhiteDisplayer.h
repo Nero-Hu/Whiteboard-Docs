@@ -227,7 +227,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
    Gets the screenshot of the specified scene.
  
-   **NOTE:** The size of the screenshot equals to that of the current whiteboard view.
+   **NOTE:** The size of the screenshot is equal to that of the current whiteboard view.
  */
 - (void)getLocalSnapShotWithCompletion:(void(^)(UIImage * _Nullable image, NSError * _Nullable error))completionHandler;
 

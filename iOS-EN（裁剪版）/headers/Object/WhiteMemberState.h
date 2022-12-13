@@ -90,18 +90,18 @@ extern WhiteApplianceShapeTypeKey const ApplianceShapeTypeSpeechBalloon;
 /** The font size of the text. */
 @property (nonatomic, strong, readwrite) NSNumber *textSize;
 /**
- Whethter to allow directly selecting and editing whiteboard texts:
+ Whether to allow directly selecting and editing whiteboard text:
  
- - `YES`: Allow directly selecting and editing whiteboard texts.
- - `NO`: (Default) Do not allow directly selecting and editing whiteboard texts.
+ - `YES`: Allow directly selecting and editing whiteboard text.
+ - `NO`: (Default) Do not allow directly selecting and editing whiteboard text.
  */
 @property (nonatomic, assign, readwrite, nullable) NSNumber *textCanSelectText;
 /**
- Whether to support draw dotted lines:
- You need to set disableNewPencil to false before joining the channel.
+ Whether to support drawing dotted lines:
+ You need to set `disableNewPencil` to `false` before joining the channel.
 
- - `YES`: Support draw dotted lines.
- - `NO`: (Default) Do not support draw dotted lines.
+ - `YES`: Support drawing dotted lines.
+ - `NO`: (Default) Do not support drawing dotted lines.
  */
 @property (nonatomic, assign, readwrite, nullable) NSNumber *dottedLine;
 @end

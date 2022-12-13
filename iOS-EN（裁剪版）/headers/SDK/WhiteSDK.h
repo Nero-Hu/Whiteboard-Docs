@@ -140,7 +140,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Writes the slide log into a specified file.
  
- @param path The path to the specified file. If the file does not exist, it will be created. If the file already exists, the slide log will be written at the end of the file. 
+ @param path The path to the specified file. If the file does not exist, it is created. If the file already exists, the slide log is appended to the end of the file.
  @param result The writing result of the log. 
  */
 - (void)requestSlideLogToFilePath:(NSString *)path result:(void(^)(BOOL success, NSError *error))result;
