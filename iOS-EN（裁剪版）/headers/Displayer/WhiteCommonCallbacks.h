@@ -94,6 +94,26 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)logger:(NSDictionary *)dict;
 
+/**
+ Reports that the SDK tries to recover. 
+ 
+ Called when the SDK crashes due to insufficient memory.
+
+ Currently, only real-time rooms can trigger this callback. This callback is triggered a maximum of three times per crash.
+ */
+- (void)startRecoveringFromMemoryIssues;
+
+/**
+ Reports that the SDK finishes a recovery. 
+ 
+ Called when the SDK crashes due to insufficient memory and then finishes one recovery.
+  
+ If the recovery fails, the SDK does not automatically retry.
+ 
+ @param success Whether the recovery is successful.
+ */
+-(void)endRecoveringFromMemoryIssues:(BOOL)success;
+
 @end
 
 

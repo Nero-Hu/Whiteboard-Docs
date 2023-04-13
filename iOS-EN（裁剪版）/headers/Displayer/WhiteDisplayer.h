@@ -223,6 +223,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)getSceneSnapshotImage:(NSString *)scenePath completion:(void (^)(UIImage * _Nullable image))completionHandler;
 
+
+/**
+ Gets the screenshot of the specified scene.
+ 
+ **NOTE:** The size of the screenshot is equal to that of the current whiteboard view.
+
+ @param completionHandler The call result:
+
+ - The screenshot of the scene, if the method call succeeds.
+ - An error message, if the method call fails.
+ */
+- (void)getLocalSnapShotWithCompletion:(void(^)(UIImage * _Nullable image, NSError * _Nullable error))completionHandler;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -137,6 +137,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setCommonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callbackDelegate;
 
+/**
+ Writes the slide log into a specified file.
+ 
+ @param path The path to the specified file. If the file does not exist, it is created. If the file already exists, the slide log is appended to the end of the file.
+ @param result The writing result of the log. 
+ */
+- (void)requestSlideLogToFilePath:(NSString *)path result:(void(^)(BOOL success, NSError *error))result;
 
 @end
 NS_ASSUME_NONNULL_END
