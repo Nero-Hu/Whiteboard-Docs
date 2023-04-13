@@ -98,6 +98,25 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)logger:(NSDictionary *)dict;
 
+/**
+ 白板 SDK 即将开始恢复回调。
+
+ 当白板 SDK 因内存不足而崩溃时会触发该回调。
+ 目前只有实时房间会触发该回调。该回调最多会触发三次，超过三次会收到 -500 错误码。
+ 
+ */
+- (void)startRecoveringFromMemoryIssues;
+
+/**
+ 白板 SDK 完成了一次恢复回调。
+
+ 当白板 SDK 因内存不足而崩溃后，SDK 完成了一次恢复操作后会触发该回调。
+ 如果恢复失败，SDK 不会主动继续重连。
+ 
+ @param success 本次恢复是否成功。
+ */
+-(void)endRecoveringFromMemoryIssues:(BOOL)success;
+
 @end
 
 

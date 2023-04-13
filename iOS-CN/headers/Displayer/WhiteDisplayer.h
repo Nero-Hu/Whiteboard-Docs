@@ -212,6 +212,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)getSceneSnapshotImage:(NSString *)scenePath completion:(void (^)(UIImage * _Nullable image))completionHandler;
 
+
+/**
+   获取当前的白板截图。
+ 
+   **NOTE:** 该方法得到的截图尺寸为当前的白板视图大小。
+ */
+- (void)getLocalSnapShotWithCompletion:(void(^)(UIImage * _Nullable image, NSError * _Nullable error))completionHandler;
+
 @end
 
 NS_ASSUME_NONNULL_END

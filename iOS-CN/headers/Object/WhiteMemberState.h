@@ -28,6 +28,8 @@ extern WhiteApplianceNameKey const ApplianceEllipse;
 extern WhiteApplianceNameKey const ApplianceRectangle;
 /** 橡皮工具。 */
 extern WhiteApplianceNameKey const ApplianceEraser;
+/** 用于擦除局部铅笔笔迹的橡皮工具。该工具仅对 NewPencil 生效，使用前需要先设置 disableNewPencil 为 false。 */
+extern WhiteApplianceNameKey const AppliancePencilEraser;
 /** 直线工具。 */
 extern WhiteApplianceNameKey const ApplianceStraight;
 /** 箭头工具。 */
@@ -87,6 +89,23 @@ extern WhiteApplianceShapeTypeKey const ApplianceShapeTypeSpeechBalloon;
 @property (nonatomic, strong, readwrite, nullable) NSNumber *strokeWidth;
 /** 字体大小。 */
 @property (nonatomic, strong, readwrite, nullable) NSNumber *textSize;
+/**
+ 是否开启在文字教具下直接选择并编辑文字。NSNumber取值为 bool 类型。
+ 
+ - `YES`：开启。
+ - `NO`：（默认）不开启。
+
+ */
+@property (nonatomic, assign, readwrite, nullable) NSNumber *textCanSelectText;
+/**
+ 是否开启铅笔工具画虚线功能。NSNumber 取值为 bool 类型。
+ 该功能要求设置 `disableNewPencil` 为 false。
+
+ - `YES`：开启。
+ - `NO`：（默认）不开启。
+
+ */
+@property (nonatomic, assign, readwrite, nullable) NSNumber *dottedLine;
 @end
 
 NS_ASSUME_NONNULL_END

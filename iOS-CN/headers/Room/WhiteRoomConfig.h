@@ -108,6 +108,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL disableEraseImage;
 
 /**
+ 是否开启浮动条。浮动条会在使用选择工具选中单个物体或者同类物体时出现。
+
+ - `YES`：开启浮动条。
+ - `NO`：（默认）关闭浮动条。
+ */
+@property (nonatomic, assign) BOOL floatBar;
+
+/**
  本地用户的视角边界。详见 [WhiteCameraBound](WhiteCameraBound)。
  */
 @property (nonatomic, strong, nullable) WhiteCameraBound *cameraBound;
