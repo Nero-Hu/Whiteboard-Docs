@@ -4,13 +4,13 @@
 
 ## 1.2.2 版
 
-该版本于 2023 年 4 月 x 日发布。
+该版本于 2023 年 4 月 25 日发布。
 
 #### 新增特性
 
 **显示用户光标**
 
-该版本在 `FastRoomConfiguration` 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。自该版本起，SDK 将默认显示用户光标。
+该版本在 [`FastRoomConfiguration`](https://docs.agora.io/cn/whiteboard/fastboard_api_ios?platform=iOS#fastroomconfiguration) 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。自该版本起，SDK 将默认显示用户光标。
 
 #### 问题修复
 
