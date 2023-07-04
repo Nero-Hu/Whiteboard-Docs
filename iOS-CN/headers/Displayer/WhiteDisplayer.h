@@ -217,6 +217,11 @@ NS_ASSUME_NONNULL_BEGIN
    获取当前的白板截图。
  
    **NOTE:** 该方法得到的截图尺寸为当前的白板视图大小。
+
+ @param completionHandler 方法调用结果：
+
+ - 如果方法调用成功，将返回指定场景的截图。
+ - 如果方法调用失败，将返回错误信息。
  */
 - (void)getLocalSnapShotWithCompletion:(void(^)(UIImage * _Nullable image, NSError * _Nullable error))completionHandler;
 
