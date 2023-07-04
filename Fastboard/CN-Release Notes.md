@@ -2,6 +2,23 @@
 
 声网 Fastboard SDK 是为帮助开发人员快速构建白板应用推出的新一代白板 SDK。Fastboard SDK 基于互动白板 SDK 开发，对复杂的 API 进行封装，简化了接口调用逻辑，并提供核心功能的实现和默认 UI；此外，Fastboard SDK 还集成窗口管理器（[Window Manager](https://github.com/netless-io/window-manager)）和常用插件，帮助开发者轻松扩展白板应用的功能。使用 Fastboard SDK，你无需深入学习互动白板复杂的概念，只需几行代码即可加入白板房间，并立即使用丰富的工具体验实时互动协作。
 
+## 1.2.2 版
+
+该版本于 2023 年 4 月 25 日发布。
+
+#### 新增特性
+
+**显示用户光标**
+
+该版本在 [`FastRoomConfiguration`](https://docs.agora.io/cn/whiteboard/fastboard_api_ios?platform=iOS#fastroomconfiguration) 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。自该版本起，SDK 将默认显示用户光标。
+
+#### 问题修复
+
+该版本修复了以下问题：
+
+- 系统版本低于 iOS 14 的设备上设置 `drawOnlyApplePencil` 可能会造成崩溃。
+- 初始化形状工具时，形状工具的样式可能显示错误。
+
 ## 1.1.2 版
 
 该版本于 2022 年 10 月 28 日发布。

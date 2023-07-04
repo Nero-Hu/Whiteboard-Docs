@@ -162,7 +162,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
  - `"us-sv"`: Silicon Valley, US. This data center provides services to North America and South America.
  - `"in-mum"`: Mumbai, India.This data center provides services to India.
  - `"sg"`: Singapore.This data center provides services to Singapore, East Asia, and Southeast Asia.
- - `"gb-lon"`: London, England. This data center provides services to Europe.
+ - `"eu"`: Frankfurt, Europe. This data center provides services to Europe.
   
   **Note:**
   

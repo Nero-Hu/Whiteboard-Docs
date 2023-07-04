@@ -28,7 +28,8 @@ public init(appIdentifier: String,
                 roomUUID: String,
                 roomToken: String,
                 region: Region,
-                userUID: String)
+                userUID: String,
+                userPayload: FastUserPayload? = nil)
 ```
 
 **参数**
@@ -38,10 +39,12 @@ public init(appIdentifier: String,
 - `roomToken`：String。房间的 Room Token，用于加入房间时的用户鉴权。可以通过以下方式获取：
   - 调用[生成 Room Token RESTful API](https://docs.agora.io/cn/whiteboard/generate_whiteboard_token?platform=RESTful#生成-room-token（post）)。
   - 在 app 服务端用代码生成，详见[在 app 服务端生成 Token](https://docs.agora.io/cn/whiteboard/generate_whiteboard_token_at_app_server?platform=RESTful)。
-- `region`：数据中心。详见 <a href="#region">Region</a >。
+- `region`：数据中心。详见 <a href="#region">`Region`</a >。
 - `userUID`：String。用户的 UID，即用户的唯一标识符，字符串格式，不能超过 1024 字节。请确保同一房间内每个用户的 UID 唯一。
+- `userPayload`：用户光标显示的用户信息，包括用户的昵称和头像。详见  <a href="#fastuserpayload">`FastUserPayload`</a >。
 
 <a name="region"></a>
+
 #### Region
 
 数据中心，包含以下枚举：
@@ -51,6 +54,41 @@ public init(appIdentifier: String,
 - `SG`：新加坡，服务区覆盖新加坡、东亚、东南亚。
 - `IN`：印度孟买，服务区覆盖印度。
 - `GB`：英国伦敦，服务区覆盖欧洲。
+
+<a name="fastuserpayload"></a>
+#### FastUserPayload
+
+```swift
+public class FastUserPayload: NSObject {
+    let nickName: String?
+    let avatar: String?
+    
+    var dic: [String: String] {
+        var r = [String: String]()
+        if let nickName = nickName { r["nickName"] = nickName }
+        if let avatar = avatar { r["avatar"] = avatar }
+        return r
+    }
+    
+    public init(nickName: String) {
+        self.nickName = nickName
+        self.avatar = nil
+        super.init()
+    }
+    
+    public init(nickName: String, avatar: String) {
+        self.nickName = nickName
+        self.avatar = avatar
+        super.init()
+    }
+}
+```
+
+`FastUserPayload` 类，用于储存光标上显示的用户信息，包含以下属性：
+
+- `nickName`：String。（可选）用户光标上显示的用户昵称。
+
+- `avatar`：String。（可选）用户光标上显示的用户头像，应传入头像对应的 URL 地址。
 
 ## FastRoom 类
 
