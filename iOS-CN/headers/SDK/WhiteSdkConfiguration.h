@@ -98,7 +98,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 /**
  初始化 `WhiteSdkConfiguration` 对象。
 
- @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](https://docs.agora.io/cn/whiteboard/enable_whiteboard?platform=iOS#获取-app-identifier)。
+ @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](/doc/whiteboard/ios/whiteboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
  @return 初始化的 `WhiteSdkConfiguration` 对象。
 */
 - (instancetype)initWithApp:(NSString *)appIdentifier NS_DESIGNATED_INITIALIZER;
@@ -145,7 +145,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 
  **Note:**
 
- SDK 初始化时设置的 `region` 必须和[创建房间](https://docs.agora.io/cn/whiteboard/whiteboard_room_management?platform=RESTful)时指定的 `region` 一致；否则，SDK 无法连接到房间。
+ SDK 初始化时设置的 `region` 必须和[创建房间](/api-ref/whiteboard/restful/restful-wb/operations/post-v5-rooms)时指定的 `region` 一致；否则，SDK 无法连接到房间。
 
  @since 2.11.0 */
 @property (nonatomic, strong, nullable) WhiteRegionKey region;
@@ -175,7 +175,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 
  **Note：**
 
- Agora 不推荐设置 setPreloadDynamicPPT(true)，这样会使 PPT 显示缓慢。
+ 声网不推荐设置 setPreloadDynamicPPT(true)，这样会使 PPT 显示缓慢。
 
  - `YES`：开启。
  - `NO`: （默认）未开启。

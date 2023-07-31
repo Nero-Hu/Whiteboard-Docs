@@ -70,7 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /** 
- 用于桥接 Agora RTC SDK 的混音方法和白板 SDK。
+ 用于桥接声网 RTC SDK 的混音方法和白板 SDK。
 
  当用户同时使用音视频功能和互动白板，且在互动白板中展示的动态 PPT 包含音频文件时，可能遇到以下问题：
 
@@ -81,7 +81,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  **Note:** 
  
- 该类基于 Agora RTC SDK 的混音方法设计，如果你使用的实时音视频 SDK 不是 Agora RTC SDK，但也具有混音接口和混音状态回调，你也可以调用该类。
+ 该类基于声网 RTC SDK 的混音方法设计，如果你使用的实时音视频 SDK 不是声网 RTC SDK，但也具有混音接口和混音状态回调，你也可以调用该类。
  */
 @interface WhiteAudioMixerBridge : NSObject
 
@@ -98,7 +98,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  设置音乐文件播放状态。
 
- 你需要在 Agora RTC SDK 触发的 `localAudioMixingStateDidChanged` 回调中调用该方法，将音乐文件播放状态传递给白板中的 PPT。
+ 你需要在声网 RTC SDK 触发的 `localAudioMixingStateDidChanged` 回调中调用该方法，将音乐文件播放状态传递给白板中的 PPT。
 
  PPT 根据收到的音频播放状态判断是否显示画面，以确保音画同步。
 

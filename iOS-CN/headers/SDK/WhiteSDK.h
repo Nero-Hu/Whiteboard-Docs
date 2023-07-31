@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param boardView     白板界面，详见 [WhiteBoardView](WhiteBoardView)。
  @param config        白板 SDK 对象配置，详见 [WhiteSdkConfiguration](WhiteSdkConfiguration)。
  @param callback      通用回调事件，详见 [WhiteCommonCallbackDelegate](WhiteCommonCallbackDelegate)。
- @param mixer         RTC 混音设置，详见 [WhiteAudioMixerBridge](WhiteAudioMixerBridge)。当你同时使用 Agora RTC SDK 和互动白板 SDK, 且互动白板中展示的动态 PPT 中包含音频文件时，你可以调用 `WhiteAudioMixerBridge` 接口，将动态 PPT 中的所有音频交给 Agora RTC SDK 进行混音播放。
+ @param mixer         RTC 混音设置，详见 [WhiteAudioMixerBridge](WhiteAudioMixerBridge)。当你同时使用声网 RTC SDK 和互动白板 SDK, 且互动白板中展示的动态 PPT 中包含音频文件时，你可以调用 `WhiteAudioMixerBridge` 接口，将动态 PPT 中的所有音频交给声网 RTC SDK 进行混音播放。
  @return 初始化的 `WhiteSDK` 对象。
  */
 - (instancetype)initWithWhiteBoardView:(WhiteBoardView *)boardView config:(WhiteSdkConfiguration *)config commonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callback audioMixerBridgeDelegate:(nullable id<WhiteAudioMixerBridgeDelegate>)mixer;

@@ -197,8 +197,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  是否开启全链路加速。
 
- Agora 互动白板服务集成了 [Agora 全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。
- 集成 Agora Whiteboard SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
+ 声网互动白板服务集成了 [声网 全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。
+ 集成声网 Whiteboard SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
  1. 在项目的 `podfile` 文件中添加 `pod 'Whiteboard/fpa'`。
  2. 加入频道前，调用 `nativeWebSocket(YES)`，开启全链路加速功能。
 
