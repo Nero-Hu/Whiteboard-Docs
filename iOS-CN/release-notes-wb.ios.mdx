@@ -1,0 +1,721 @@
+---
+title: 发版说明
+---
+
+import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/VersionSection.tsx'
+
+本文提供声网互动白板 iOS SDK 的发版说明。
+
+
+<VersionSection version="2.16.46 版">
+
+该版本于 2022 年 12 月 2 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+<ListTitle>教具新特性</ListTitle>
+
+该版本为以下白板教具添加了新特性：
+
+- 画笔工具：支持画虚线。你需要设置 `room.memberState.dottedLine` 为 `true` 开启该功能。
+- 文字工具：支持直接选择并编辑文字。你需要设置 `room.memberState.textCanSelectText` 为 `true` 以开启该功能。
+
+此外，该版本还新增了铅笔橡皮工具，用于擦除局部铅笔笔迹。
+
+<ListTitle>浮动条</ListTitle>
+
+该版本新增浮动条功能，选中任意白板元素即可弹出浮动条，方便用户快速编辑指定白板元素。例如，选中笔迹可以快速删除笔迹、调整位置、更变笔迹颜色等，选中文字可以快速删除文字、调整文字样式、修改字体等。你可以通过调整 `WhiteRoomConfig` 中的 `floatBar` 参数启用浮动条功能。
+
+![](https://web-cdn.agora.io/docs-files/1669883894080)
+
+<ListTitle>白板截图</ListTitle>
+
+该版本在 `WhiteDisplayer` 新增 `getLocalSnapShotWithCompletion` 方法获取当前屏幕截图。
+
+<ListTitle>获取 PPT 日志</ListTitle>
+
+`WhiteSDK` 新增 `requestSlideLogToFilePath` 方法，用于将 PPT 产生的日志写入到指定文件。
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了以下改进：
+
+- 现在因 Web 内存不足导致白板崩溃后，SDK 会自动尝试恢复。之前如果设置过 `navigationDelegate`，需要先取消设置才能启用该优化。此外，该版本新增 `startRecoveringFromMemoryIssues` 和 `endRecoveringFromMemoryIssues` 回调，分别用于在内存不足时，报告 SDK 即将开始恢复白板 SDK 和 白板 SDK 恢复完毕。
+- 现在可以通过调用 `WhiteAudioMixerBridge` 下新增的 `pauseAudioMixing` 和 `resumeAudioMixing` 方法，实现暂停和恢复播放动态 PPT 中的音频和混音。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本修复了如下问题：
+
+- 重连后，白板 app 可能无法正确创建。
+- 创建白板 app 时，偶尔无法正确同步白板初始宽度和高度。
+- 加入房间时，偶现的 `WhiteBroadcastState` 初始化错误。
+- 在 iPad 上使用非 ApplePencil 的手写笔时，调用 `drawOnlyPencil` 功能可能导致白板崩溃。
+- 在用户没有读写权限的时候，调用 `drawOnlyPencil` 可能产生错误日志。
+- 切换只读/读写状态时可能导致 `mainView` 的 `disableCameraTransform` 配置丢失。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+
+<ListTitle>新增</ListTitle>
+
+- `MemberState` 新增属性 `dottedLine` 和 `textCanSelectText` 
+- `pauseAudioMixing`
+- `resumeAudioMixing`
+- `WhiteRoomConfig` 新增 `floatBar` 参数
+- `WhiteApplianceNameKey` 新增 `AppliancePencilEraser` 类型
+- `requestSlideLogToFilePath`
+- `startRecoveringFromMemoryIssues`
+- `endRecoveringFromMemoryIssues`
+- `getLocalSnapShotWithCompletion`
+
+</VersionSection>
+
+<VersionSection version="2.16.24 版">
+
+该版本于 2022 年 7 月 8 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+<ListTitle>插入文字</ListTitle>
+
+该版本在 `WhiteRoom` 类新增 `insertText` 方法，支持在指定位置插入文字。
+
+<ListTitle>设置笔锋效果</ListTitle>
+
+该版本在 `WhiteSdkConfiguration` 类中新增 `disableNewPencilStroke` 属性，用于开启或关闭新铅笔的笔锋效果。`disableNewPencilStroke` 的默认值为 `YES`，当你设置 `disableNewPencil(NO)` 开启新铅笔后，SDK 立即开启笔锋效果。如果需要关闭新铅笔的笔锋效果，可以设置 `disableNewPencilStroke(YES)`。
+
+<ListTitle>获取场景信息</ListTitle>
+
+该版本在 `WhiteDisplayer` 类中新增 `getSceneFromScenePath` 方法，支持使用场景路径获取指定场景的信息。
+
+<ListTitle>全链路加速</ListTitle>
+
+自该版本起，声网互动白板服务集成并支持[声网全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。集成声网 Whiteboard iOS SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
+
+1. 在项目的 `podfile` 文件中添加如下依赖：
+
+   ```
+   pod 'Whiteboard/fpa'
+   ```
+
+2. 加入频道前，将 `WhiteRoomConfig` 中的 `nativeWebSocket` 设为 `YES`，开启全链路加速功能。
+
+
+<Admonition type="caution" title="注意">
+该功能仅支持 iOS 13.0 或之后的系统。
+</Admonition>
+
+
+<ListTitle>设置是否只允许使用 Apple Pencil 绘制和书写</ListTitle>
+
+该版本支持在 iPad 上设置是否只允许用户使用 Apple Pencil 在白板上绘制和书写。加入白板房间前，你可以通过 `WhiteRoomConfig` 类中 `drawOnlyApplePencil` 属性来设置；加入房间后，你可以调用 `WhiteRoom` 类中的 `setDrawOnlyApplePencil` 方法来修改设置。
+
+<ListTitle>支持 YYKit</ListTitle>
+
+声网 Whiteboard iOS SDK 默认使用 [YYModel](https://github.com/ibireme/YYModel) 进行数据类型转换。自该版本起，SDK 新增支持 [YYKit](https://github.com/ibireme/YYKit)。如果要使用 YYKit，你需要在 `Podfile` 文件中添加如下行，来添加依赖：
+
+- 不使用全链路加速功能：
+
+  ```shell
+  pod 'Whiteboard/Whiteboard-YYKit'
+  ```
+
+- 使用全链路加速功能：
+
+  ```shell
+  pod 'Whiteboard/fpa-YYKit'
+  ```
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了如下改进：
+
+- 铅笔工具添加补间动画，使远端用户看到的笔迹绘制过程更加流畅。
+- 优化了弱网环境下的重连机制，减少不必要的重连。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本修复了如下问题：
+
+- 放缩、移动视角后，偶现画面出现偏移、重影。
+- 偶现动态 PPT 在断线重连后无法翻页。
+- 刚加入房间时，如果白板上已经有内容，可能显示不全。
+- SDK 断线重连后可能会发生内存泄漏。
+- 反复调用 `setWritable` 时可能会发生错误。
+- 点击 text 时无法弹出虚拟键盘。
+- 用户切换为只读模式，再切换回读写模式并写写画画时，远端用户看到该用户的光标是固定的。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+
+<ListTitle>新增</ListTitle>
+
+- `insertText`
+- `getSceneFromScenePath`
+- `setDrawOnlyApplePencil`
+- `drawOnlyApplePencil`
+- `disableNewPencilStroke`
+- `nativeWebSocket`
+
+</VersionSection>
+
+<VersionSection version="2.15.23 版">
+
+该版本于 2022 年 1 月 21 日发布。
+
+该版本进行了如下改进：
+
+- 更新封装的 `white-web-sdk` 至 2.15.16 版。
+- 优化 `getSceneSnapshotImage` 和 `getScenePreviewImage` 方法，确保确保在截图中正常显示场景中插入的图片。
+
+</VersionSection>
+
+<VersionSection version="2.15.0 版">
+
+该版本于 2021 年 11 月 16 日发布。
+
+<VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
+
+
+为简化接口，该版本删除 `joinRoomWithUuid` 和 `joinRoomWithRoomUuid` 方法，仅保留 `joinRoomWithConfig` 方法。
+
+同时，为方便管理房间内的用户，该版本在 `WhiteRoomConfig` 类的 `initWithUuid` 中新增 `uid` 参数，用于设置用户的唯一标识符（UID）。
+
+如果你将 SDK 升级到 v2.15.0 或之后版本，要加入房间，你必须调用 `joinRoomWithConfig`，并确保初始化 `WhiteRoomConfig` 对象时在 `initWithUuid` 中传入字符串格式的 `uid`。每个用户的 `uid` 长度不能超过 1024 字节，且在同一房间内必须唯一。详见《[加入实时房间](https://docs.agora.io/cn/whiteboard/join_whiteboard_room_ios?platform=iOS#3-初始化-sdk-并加入房间)》。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+该版本新增支持转换和展示如下 PowerPoint（PPT）特性：
+
+- 动作按钮
+- 母版动画
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了如下改进：
+
+- 更新封装的 `white-web-sdk` 至 2.15.1 版。
+- 进一步优化书写体验。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本修复了在白板中展示动态 PPT 时遇到的如下问题：
+
+- 偶现的图片位置偏移
+- 部分样式读取失败导致的白屏
+- 部分文字旋转角度和颜色错误
+- 带有动画效果的元素可能不出现
+- 文字的动画效果表现不正确
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+
+<ListTitle>修改</ListTitle>
+
+- `initWithUuid:roomToken`
+- `initWithUuid:roomToken:userPayload`
+
+<ListTitle>删除</ListTitle>
+
+- `initWithUuid:roomToken:memberInfo`
+- `joinRoomWithUuid`
+- `joinRoomWithRoomUuid`
+
+</VersionSection>
+
+<VersionSection version="2.14.1 版">
+
+该版本于 2021 年 10 月 21 日发布。
+
+<VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
+
+
+自该版本起，互动白板 iOS SDK 支持的最低平台要求由 iOS 9 变更为 iOS 10。
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了如下优化：
+
+- 更新封装的 `white-web-sdk` 至 2.14.4 版。
+- 持续优化书写性能。
+- 优化书写笔迹的形态。
+- 提高 `firePhaseChanged` 回调的准确性。
+- 隐藏动态 PPT 母版中不应该显示的元素。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本修复了如下问题：
+
+- 切换到抓手工具后，无法切换回光标。
+- 书写过程中偶现的笔迹突然消失。
+- 书写时偶现的笔迹带有不自然的水滴状笔锋。
+- 手动缩放文本框后再编辑文字，文本框和文字复原到原来的大小。
+- 在部分设备上窗口尺寸发生变化后，视角出现异常。
+- 快速拖动橡皮擦时，橡皮擦的图标放大效果和快速删除功能失效。
+- 偶现的动态 PPT 中多个音频文件同时播放。
+- 动态 PPT 返回上一页后动画显示异常。
+- 动态 PPT 中带动画的文本框偶现镜像翻转。
+
+</VersionSection>
+
+<VersionSection version="2.13.19 版">
+
+该版本于 2021 年 8 月 20 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+该版本新增如下特性：
+
+- 在 `WhiteCommonCallbackDelegate` 中新增 `logger` 回调，用于获取 SDK 输出的本地调试日志。
+- 为完善动态文档转换功能，该版本新增支持转换和展示如下 PowerPoint (PPT) 特性：
+  - 对文本按段落添加动画。
+  - 对文本添加的动画可逐字或逐词显示。
+  - 所有的表格预设样式。
+  - 小于 9 pt (12 px) 的文字。
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了如下优化：
+
+- 更新封装的 `white-web-sdk` 至 2.13.17 版。
+- 为提高安全性，关闭白板内部的 `allowUniversalAccessFromFileURLs` 功能。关闭该功能后，调用 `getSceneSnapshotImage` 时，在生成的截图中跨域图片可能无法显示。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本修复了如下问题：
+
+- 偶现的加入房间时，房间一直卡在 `connecting` 状态。
+- 断线重连后，部分用户的光标消失。
+- 断线重连后，部分插件的状态出现混乱。
+- 抓手工具不受设置的视角边界的限制。
+- 在高分辨率的设备上，当用户处于跟随视角模式时，视角的中心点出现轻微偏移。
+- 在白板中展示动态 PPT 时遇到的如下问题：
+  - 段间距显示不正确
+  - 文本分栏无效
+  - 使用幻灯片背景填充形状时显示不正确
+  - 悬挂缩进异常
+  - 动画回退后显示异常
+  - 文字编号错误
+  - 转换后公式显示不全
+  - 部分换行不正确
+  - 从右往左书写的文字（如阿拉伯文）显示异常
+
+</VersionSection>
+
+<VersionSection version="2.13.15 版">
+
+该版本于 2021 年 7 月 23 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+为完善动态文档转换功能，该版本新增支持转换和展示如下 PowerPoint（PPT）特性：
+
+- 反转路径方向动画效果 
+- 纵向文本框
+- Microsoft 公式编辑器 3.0 
+- 母版隐藏背景图形
+- 编辑图片颜色
+- 部分图片效果：
+  - 金属框架
+  - 柔化边缘矩形
+  - 双框架，黑色
+  - 厚重哑光，黑色
+  - 简单框架，黑色
+  - 中等复杂框架，黑色
+  - 居中矩形阴影
+  - 柔化边缘椭圆
+  - 金属圆角矩形
+  - 金属椭圆
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了如下优化：
+
+- 更新封装的 `white-web-sdk` 至 2.13.11 版。
+- 更新封装的 `@netless/video-js-plugin` 至 0.3.3 版本。
+- 降低了播放动态 PPT 动画时占用的 CPU。
+- 提升了在白板上书写绘画的流畅度。
+- 优化时间戳同步算法，缩小时间同步误差。
+- 打印的日志中包含场景变更信息。
+- 在 `WhitePptPage` 类中新增 `previewURL` 属性，支持在白板场景中展示动态 PPT 预览图。
+- 废弃 `WhiteDisplayer` 中 `backgroundColor` 属性，同时优化 `WhiteboardView` 类的实现逻辑，支持在 `WhiteboardView` 对象中直接调用 `UIView` 类的 `backgroundColor` 属性修改白板的背景色。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本修复了如下问题：
+
+- 调整视角时偶现的白板清晰度异常。
+- 偶现的用户进入房间后无法画出第一笔线。
+- 偶现的 `refreshViewSize` 调用不生效。
+- 在白板中展示动态 PPT 时遇到的如下问题：
+  - 动画未按设置的顺序播放。
+  - 动画播放后未按设置隐藏。
+  - 表格高度显示异常。
+  - 无法显示占位符中插入图片。
+  - 部分形状绘制错误。
+  - 文字缩进错误。
+  - 无法点击动画触发器。
+  - 图片透明度过大。
+
+</VersionSection>
+
+<VersionSection version="2.13.4 版">
+
+该版本于 2021 年 6 月 15 日发布。
+
+该版本更新 `white-web-sdk` 至 2.13.4。
+
+</VersionSection>
+
+<VersionSection version="2.13.2 版">
+
+该版本于 2021 年 6 月 11 日发布。
+
+该版本更新 `white-web-sdk` 至 2.13.3。
+
+</VersionSection>
+
+<VersionSection version="2.13.1 版">
+
+该版本于 2021 年 6 月 11 日发布。
+
+<ListTitle>改进</ListTitle>
+
+该版本更新 `white-web-sdk` 至 2.13.2。
+
+<ListTitle>问题修复</ListTitle>
+
+该版本修复了 `disableDeviceInputs` 设为 `true` 时，用户可能仍然可以操作 iframe 插件的问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.33 版">
+
+该版本于 2021 年 6 月 8 日发布。
+
+该版本修复的问题如下：
+
+主播模式的用户在使用点选工具（`Clicker`）时，如果对 HTML5 课件进行缩放，会导致跟随模式的用户看到的课件内容不完整。
+
+</VersionSection>
+
+<VersionSection version="2.12.32 版">
+
+该版本于 2021 年 6 月 7 日发布。
+
+该版本更新 [`@netless/cursor-tool `](https://www.npmjs.com/package/@netless/cursor-tool) 至 0.1.0，并且更新 `@netless/iframe-bridge `至 2.1.2。
+
+</VersionSection>
+
+<VersionSection version="2.12.31 版">
+
+该版本于 2021 年 6 月 4 日发布。
+
+该版本更新 `white-web-sdk` 至 2.12.21，并且更新 [`@netless/video-js-plugin`](https://www.npmjs.com/package/@netless/video-js-plugin) 至 0.1.5。
+
+</VersionSection>
+
+<VersionSection version="2.12.30 版">
+
+该版本于 2021 年 6 月 2 日发布。
+
+该版本修复了 `video-js-plugin` 插件在白板上无法显示的问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.29 版">
+
+该版本于 2021 年 6 月 1 日发布。
+
+该版本更新 [`@netless/video-js-plugin`](https://www.npmjs.com/package/@netless/video-js-plugin)至 0.1.3，修复了 video-js-plugin 和低版本 iOS 系统的 WebView 不兼容的问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.28 版">
+
+该版本于 2021 年 5 月 25 日发布。
+
+该版本更新 [`@netless/cursor-tool`](https://www.npmjs.com/package/@netless/cursor-tool) 至 0.0.9。
+
+</VersionSection>
+
+<VersionSection version="2.12.27 版">
+
+该版本于 2021 年 5 月 24 日发布。
+
+该版本支持 [`@netless/video-js-plugin`](https://www.npmjs.com/package/@netless/video-js-plugin) 插件，并更新 `white-web-sdk `至 2.12.20。
+
+</VersionSection>
+
+<VersionSection version="2.12.26 版">
+
+该版本于 2021 年 5 月 20 日发布。
+
+该版本新增以下特性：
+
+- `WhiteApplianceNameKey` 中新增 `ApplianceClicker`，支持设置点选工具，用于 H5 课件的操作和交互。
+- 更新 `white-web-sdk `至 2.12.18。
+
+</VersionSection>
+
+<VersionSection version="2.12.25 版">
+
+该版本于 2021 年 5 月 17 日发布。
+
+该版本有以下改进：
+
+- 更新 `white-web-sdk `至 2.12.18。
+- 服务端排版（`useServerWrap`）由默认关闭改为默认开启，并返回裁剪后的字体。
+
+</VersionSection>
+
+<VersionSection version="2.12.24 版">
+
+该版本于 2021 年 5 月 13 日发布。
+
+该版本新增以下特性：
+
+- `WhiteApplianceNameKey` 中新增 `ApplianceShape`，支持设置图形工具。目前支持的图形包括三角形、菱形、五角星、对话气泡。
+- 新增 `syncBlockTimestamp` 方法，用于设置发送白板内容的延时，保证白板内容与音视频同步。
+- 更新 `white-web-sdk `至 2.12.17。
+
+</VersionSection>
+
+<VersionSection version="2.12.23 版">
+
+该版本于 2021 年 5 月 11 日发布。
+
+该版本新增 `RegionKey` 枚举，用于设置数据中心。
+
+</VersionSection>
+
+<VersionSection version="2.12.22 版">
+
+该版本于 2021 年 4 月 28 日发布。
+
+该版本更新 `@netless/white-audio-plugin2` 和 `@netless/white-video-plugin2 `插件，修复了部分显示问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.21 版">
+
+该版本于 2021 年 4 月 28 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+该版本支持[ `@netless/white-audio-plugin2`](https://github.com/netless-io/whiteboard-demo/tree/master/packages/white-audio-plugin) 和 [`@netless/white-video-plugin2`](https://github.com/netless-io/react-whiteboard/tree/master/packages/white-video-plugin)，用于在 iOS 端观看 Web 端白板上播放的音频或视频。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本更新 `@netless/white-audio-plugin` 至 1.2.23，修复了白板回放中音频文件的显示问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.20 版">
+
+该版本于 2021 年 4 月 22 日发布。
+
+该版本更新 `white-web-sdk` 至 2.12.14。
+
+</VersionSection>
+
+<VersionSection version="2.12.19 版">
+
+该版本于 2021 年 4 月 22 日发布。
+
+该版本有以下改动：
+
+- 更新 `white-web-sdk` 至 2.12.13，优化了动态 PPT 的播放。
+- 更新 `@netless/iframe-bridge` 至 2.0.17，优化了白板回放的 iframe 插件逻辑。
+
+</VersionSection>
+
+<VersionSection version="2.12.18 版">
+
+该版本于 2021 年 4 月 20 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.16，优化了白板回放的 iframe 插件逻辑。
+
+</VersionSection>
+
+<VersionSection version="2.12.17 版">
+
+该版本于 2021 年 4 月 17 日发布。
+
+该版本更新 `white-web-sdk` 至 2.12.12。
+
+</VersionSection>
+
+<VersionSection version="2.12.16 版">
+
+该版本于 2021 年 4 月 14 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.14，优化了 iframe 插件。
+
+</VersionSection>
+
+<VersionSection version="2.12.15 版">
+
+该版本于 2021 年 4 月 13 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.13，优化了 H5 课件的消息发送逻辑。
+
+</VersionSection>
+
+<VersionSection version="2.12.14 版">
+
+该版本于 2021 年 4 月 13 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.11，修复了 H5 课件的显示问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.13 版">
+
+该版本于 2021 年 4 月 10 日发布。
+
+该版本更新 `white-web-sdk` 至 2.12.9。
+
+</VersionSection>
+
+<VersionSection version="2.12.12 版">
+
+该版本于 2021 年 4 月 9 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.9，修复了 H5 课件的显示问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.11 版">
+
+该版本于 2021 年 4 月 9 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.8，修复了 H5 课件的显示问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.10 版">
+
+该版本于 2021 年 4 月 6 日发布。
+
+该版本更新 `white-web-sdk` 至 2.12.8，修复了设置跟随者模式无法立即生效的问题。
+
+</VersionSection>
+
+<VersionSection version="2.12.9 版">
+
+该版本于 2021 年 4 月 2 日发布。
+
+该版本更新 `white-web-sdk` 至 2.12.7，优化了动态 PPT 的显示。
+
+</VersionSection>
+
+<VersionSection version="2.12.8 版">
+
+该版本于 2021 年 3 月 30 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.7。
+
+</VersionSection>
+
+<VersionSection version="2.12.7 版">
+
+该版本于 2021 年 3 月 30 日发布。
+
+该版本更新 `white-web-sdk` 至 2.12.6。
+
+</VersionSection>
+
+<VersionSection version="2.12.6 版">
+
+该版本于 2021 年 3 月 25 日发布。
+
+该版本更新 `@netless/iframe-bridge` 至 2.0.5，优化了白板回放时 H5 课件的展示。
+
+</VersionSection>
+
+<VersionSection version="2.12.5 版">
+
+该版本于 2021 年 3 月 25 日发布。
+
+该版本在 `Displayer` 类中新增 `scaleIframeToFit` 方法，支持等比例缩放视角，以保证完整显示 H5 课件的内容。
+
+</VersionSection>
+
+<VersionSection version="2.12.4 版">
+
+该版本于 2021 年 3 月 24 日发布。
+
+该版本更新 `@netless/cursor-tool` 至 0.0.7。
+
+</VersionSection>
+
+<VersionSection version="2.12.3 版">
+
+该版本于 2021 年 3 月 20 日发布。
+
+为解决笔锋效果与 2.2.12 之前版本 SDK 不兼容的问题，该版本将 `WhiteRoomConfig` 接口中的 `disableNewPencil` 属性设为 `YES`，以默认关闭笔锋效果。
+
+
+<Admonition type="caution" title="注意">
+为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：<li>Android SDK 2.12.3 版或之后</li><li>iOS SDK 2.12.3 版或之后</li><li>Web SDK 2.12.5 版或之后</li>
+</Admonition>
+
+
+
+</VersionSection>
+
+<VersionSection version="2.12.2 版">
+
+该版本于 2021 年 3 月 16 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+为优化笔迹显示，该版本新增笔锋效果。你可以通过 `WhiteRoomConfig` 接口中的 `disableNewPencil` 属性关闭或开启笔锋功能。
+
+
+<Admonition type="caution" title="注意">
+为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：<li>Android SDK 2.12.2 版或之后</li><li>iOS SDK 2.12.3 版或之后</li><li>Web SDK 2.12.5 版或之后</li>
+</Admonition>
+
+
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+- 更新 `white-web-sdk` 至 2.12.4 版本，优化 PPT 显示逻辑。
+- 优化音视频插件在白板回放时的按钮显示。
+
+</VersionSection>
+
+<VersionSection version="2.12.2 版之前">
+关于更多版本的发版说明，详见[版本历史](https://developer.netless.link/ios-zh/home/ios-changelog)。
+
+
+<Admonition type="caution" title="注意">
+2.6.4 及之前版本已经停止维护，建议升级到最新版本。
+</Admonition>
+
+
+</VersionSection>
