@@ -121,8 +121,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  获取当前 slide 的音量。
  @param completionHandler 方法调用结果：
- - 如果调用成功：`volume` 返回值为 (0,1] 之间的值，`error` 为 `nil`。
- - 如果调用失败：`volume` 返回值为 0，`error` 会返回详细信息。
+ - 调用成功：返回音量信息。`volume` 为 (0,1] 之间的值，`error` 为 `nil`。
+ - 调用失败：返回错误消息。`volume` 返回值为 0，`error` 为错误消息。
  */
 - (void)getSlideVolumeWithCompletionHandler:(void(^)(CGFloat volume, NSError *error))completionHandler;
 
