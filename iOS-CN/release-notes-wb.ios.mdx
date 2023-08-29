@@ -6,7 +6,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 本文提供声网互动白板 iOS SDK 的发版说明。
 
-<VersionSection version="2.16.61 版">
+<VersionSection version="2.16.62 版">
 
 该版本于 2023 年 8 月 31 日发布。
 
@@ -36,6 +36,14 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 `RoomParams` 和 `PlayerConfiguration` 分别新增 `modulesOrigin` 配置项，用于配置白板请求模块（modules）数据的地址。
 
+<ListTitle>文档操作事件</ListTitle>
+
+新增 `dispatchDocsEvent` 方法，用于向插入白板的 PDF/PPTX 文档发送事件，实现控制文档翻页、页面跳转和幻灯片动画播放。
+
+<ListTitle>窗口全屏</ListTitle>
+
+`WhiteWindowParams`新增 `fullscreen`, 用于控制窗口是否全屏。
+
 <VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
 
 <ListTitle>新增</ListTitle>
@@ -47,8 +55,11 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
   - `whiteSlideAppParams`
   - `apiHosts`
 - `setSlideDelegate`
+- `dispatchDocsEvent`
+  - `WhiteWindowDocsEventOptions`
 - `RoomParams` 新增 `modulesOrigin`
 - `PlayerConfiguration` 新增 `modulesOrigin`
+- `WhiteWindowParams`新增 `fullscreen`
 
 </VersionSection>
 
