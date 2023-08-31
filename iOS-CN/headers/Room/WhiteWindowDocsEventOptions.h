@@ -31,8 +31,6 @@ FOUNDATION_EXPORT WhiteWindowDocsEventKey const WhiteWindowDocsEventJumpToPage;
 
 /**
  * 跳转至页码。
- *
- * @param page 期望跳转的页码。
  */
 @property (nonatomic, copy) NSNumber *page;
 @end

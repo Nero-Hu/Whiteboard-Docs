@@ -215,7 +215,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 @property (nonatomic, strong) WhiteSlideAppParams *whiteSlideAppParams;
 
 /**
- 是否开启 Slide 资源 url 拦截替换功能。 
+ 是否开启 PPT 资源 URL 拦截替换功能。 
  开启之后，你需要通过 `WhiteSDK.setSlideDelegate` 设置多窗口 PPT 回调事件，并在 `slideUrlInterrupter` 回调中添加 URL 的替换处理逻辑。
  
  - `YES`：开启。
