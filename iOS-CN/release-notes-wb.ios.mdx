@@ -12,37 +12,39 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
 
-该版本废弃了白板数据中心（`region`）原有的英国伦敦数据中心（`gb-lon`），并新增了欧洲法兰克福数据中心（`eu`），服务区覆盖欧洲。如果需要使用该数据中心，请在升级到该版本后更新代码，并在控制台-互动白板服务配置中启用该数据中心。
+该版本废弃了白板数据中心（`region`）原有的英国伦敦数据中心（`gb-lon`），并新增了欧洲法兰克福数据中心（`eu`），服务区覆盖欧洲。如果你在之前版本中设置了 `region` 为 `gb-lon`，请在升级到该版本后改用 `eu`，并在控制台-互动白板服务配置中启用该数据中心。
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
 <ListTitle>PPT 音量控制</ListTitle>
 
-新增 `getSlideVolumeWithCompletionHandler` 和 `updateSlideVolume` 方法用于获取和更新 PPT 内音频的音量。
+该版本新增 `getSlideVolumeWithCompletionHandler` 和 `updateSlideVolume` 方法用于获取和更新 PPT 内音频的音量。
 
 <ListTitle>PPT URL 拦截替换</ListTitle>
 
-`WhiteSdkConfiguration` 新增 `enableSlideInterrupterAPI` 配置项。开启后，通过调用 `WhiteSDK.setSlideDelegate` 设置回调对象实现 PPT URL 的拦截替换功能。
+该版本在 `WhiteSdkConfiguration` 中新增 `enableSlideInterrupterAPI` 配置项，用于开启 PPT 资源 URL 拦截替换功能。该功能可用于加密用户上传的 PPT 资源，保护用户隐私。
 
-<ListTitle>PPT 显示配置</ListTitle>
+开启后，通过调用 `WhiteSDK.setSlideDelegate` 设置回调对象，并在 `slideUrlInterrupter: url: completionHandler` 回调中添加 PPT URL 的替换逻辑，从而实现 PPT URL 的拦截替换功能。
 
-`WhiteSdkConfiguration` 新增 `whiteSlideAppParams` 配置项用于 [@netless/app-slide](https://github.com/netless-io/netless-app/tree/master/packages/app-slide) 渲染相关的显示配置。当前支持配置 `WhiteSlideAppParams.showRenderError`，用于配置显示/隐藏渲染错误提示。
+<ListTitle>PPT 渲染显示配置</ListTitle>
+
+该版本在 `WhiteSdkConfiguration` 中新增 `whiteSlideAppParams` 配置项用于 [@netless/app-slide](https://github.com/netless-io/netless-app/tree/master/packages/app-slide) 渲染相关的显示配置。你可以通过 `WhiteSlideAppParams.showRenderError` 配置显示/隐藏渲染错误提示。
 
 <ListTitle>自定义 API 服务器域名</ListTitle>
 
-`WhiteSdkConfiguration` 新增 `apiHosts` 配置项, 用于配置白板的 API 服务器域名列表，可用于实现服务器代理。
+该版本在 `WhiteSdkConfiguration` 中新增 `apiHosts` 配置项, 用于配置白板的 API 服务器域名列表，例如添加代理服务器域名。
 
 <ListTitle>自定义模块源</ListTitle>
 
-`RoomParams` 和 `PlayerConfiguration` 分别新增 `modulesOrigin` 配置项，用于配置白板请求模块（modules）数据的地址。
+该版本在 `RoomParams` 和 `PlayerConfiguration` 中分别新增 `modulesOrigin` 配置项，用于配置白板请求模块（modules）数据的地址。
 
 <ListTitle>文档操作事件</ListTitle>
 
-新增 `dispatchDocsEvent` 方法，用于向插入白板的 PDF/PPTX 文档发送事件，实现控制文档翻页、页面跳转和幻灯片动画播放。
+该版本新增 `dispatchDocsEvent` 方法，用于向插入白板的 PDF/PPTX 文档发送事件，实现控制文档翻页、页面跳转和幻灯片动画播放。
 
 <ListTitle>窗口全屏</ListTitle>
 
-`WhiteWindowParams`新增 `fullscreen`, 用于控制窗口是否全屏。
+该版本在 `WhiteWindowParams` 中新增 `fullscreen`, 用于控制窗口是否全屏显示。
 
 <VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
 
@@ -55,11 +57,19 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
   - `whiteSlideAppParams`
   - `apiHosts`
 - `setSlideDelegate`
+  - `WhiteSlideDelegate`
+  - `slideUrlInterrupter: url: completionHandler`
 - `dispatchDocsEvent`
   - `WhiteWindowDocsEventOptions`
+  - `WhiteWindowDocsEventKey`
 - `RoomParams` 新增 `modulesOrigin`
 - `PlayerConfiguration` 新增 `modulesOrigin`
-- `WhiteWindowParams`新增 `fullscreen`
+- `WhiteWindowParams `新增 `fullscreen`
+
+<ListTitle>废弃</ListTitle>
+
+- `WhiteRegionKey` 中的 `WhiteRegionGB`, 改用 `WhiteRegionEU`
+- `WhitePptParams`，改用 `WhiteSlideAppParams`
 
 </VersionSection>
 

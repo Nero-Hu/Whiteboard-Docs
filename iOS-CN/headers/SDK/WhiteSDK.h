@@ -119,7 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - PPT Volume
 
 /**
- 获取当前 slide 的音量。
+ 获取当前 PPT 的音量。
  @param completionHandler 方法调用结果：
  - 调用成功：返回音量信息。`volume` 为 (0,1] 之间的值，`error` 为 `nil`。
  - 调用失败：返回错误消息。`volume` 返回值为 0，`error` 为错误消息。
@@ -127,7 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getSlideVolumeWithCompletionHandler:(void(^)(CGFloat volume, NSError *error))completionHandler;
 
 /**
- 更新当前 slide 的音量。
+ 更新当前 PPT 的音量。
  @param volume 音量值，取值范围为 (0,1]。
  */
 - (void)updateSlideVolume:(CGFloat)volume;
@@ -146,11 +146,11 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - SlideCallback
 
 /**
- 设置 多窗口 Slide 回调事件。
+ 设置多窗口 PPT 回调事件。
 
- SDK 通过 [WhiteSlideDelegate](WhiteSlideDelegate) 类处理 Slide 的回调。
+ SDK 通过 [WhiteSlideDelegate](WhiteSlideDelegate) 类处理 PPT 相关回调。
  
- @param slideDelegate Slide 回调事件，详见 [WhiteSlideDelegate](WhiteSlideDelegate)。
+ @param slideDelegate PPT 回调事件，详见 [WhiteSlideDelegate](WhiteSlideDelegate)。
  */
 - (void)setSlideDelegate:(nullable id<WhiteSlideDelegate>)slideDelegate;
 

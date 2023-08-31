@@ -211,12 +211,12 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 /** @deprecated 该属性已废弃。请使用 WhiteSlideAppParams */
 @property (nonatomic, strong) WhitePptParams *pptParams __deprecated_msg("use WhiteSlideAppParams instead");
 
-/** SlideApp 参数。详见 [WhiteSlideAppParams](WhiteSlideAppParams)  */
+/** PPT 渲染显示相关参数。详见 [WhiteSlideAppParams](WhiteSlideAppParams)。  */
 @property (nonatomic, strong) WhiteSlideAppParams *whiteSlideAppParams;
 
 /**
  是否开启 Slide 资源 url 拦截替换功能。 
- 开启之后，需要同时设置 `WhiteSDK.setSlideDelegate` 在 `slideUrlInterrupter` 回调中对 url 进行处理。
+ 开启之后，你需要通过 `WhiteSDK.setSlideDelegate` 设置多窗口 PPT 回调事件，并在 `slideUrlInterrupter` 回调中添加 URL 的替换处理逻辑。
  
  - `YES`：开启。
  - `NO`：（默认）关闭。
@@ -236,7 +236,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 @property (nonatomic, assign) BOOL disableNewPencilStroke;
 
 /**
- * 配置白板的 API 服务器域名列表，可以用于服务器代理。配置后，白板不再使用 sdk 自带配置。
+ * 配置白板的 API 服务器域名列表，可以用于服务器代理。配置后，白板不再使用 SDK 自带配置。
  * @example
  * [api.example.com]
  */

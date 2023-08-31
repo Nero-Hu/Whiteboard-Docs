@@ -9,10 +9,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ * `WhiteSlideAppParams` 接口，主要用于 PPT 渲染相关的显示配置。
+ */
 @interface WhiteSlideAppParams : WhiteObject
 
 /**
- 是否显示 slide 中的错误提示。
+ 是否显示 PPT 中的错误提示。
  
  - `YES`：显示。
  - `NO`：不显示 (默认)。
