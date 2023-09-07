@@ -66,7 +66,13 @@ NS_ASSUME_NONNULL_BEGIN
  - The data center set in this method must be the same as the data center of the live Interactive Whiteboard room to be joined; otherwise, the SDK fails to connect to the room.
  - You can call either this method or the [region]([WhiteSdkConfiguration region]) method in the [WhiteSdkConfiguration](WhiteSdkConfiguration) class to set the data center. If you call both，this method overrides the [region]([WhiteSdkConfiguration region]) method.
  */
-@property (nonatomic, strong, nullable) WhiteRegionKey region;
+@property (nonatomic, strong, nullable) 
+
+/**
+ * The address for requesting whiteboard module data. Once set, the default address is disabled automatically.
+ * @example https://modules.example.com
+ */
+@property (nonatomic, copy, nullable) NSString *modulesOrigin;
 
 /**
  Whether to disable the whiteboard tools from responding to users' inputs.

@@ -20,6 +20,7 @@
 #import "WhitePanEvent.h"
 #import "WhiteDisplayer.h"
 #import "WhiteSDK+Room.h"
+#import "WhiteWindowDocsEventOptions.h"
 
 @class WhiteBoardView;
 
@@ -634,6 +635,20 @@ NS_ASSUME_NONNULL_BEGIN
  @param result The callback, which reports the current room state. See [WhiteRoomState](WhiteRoomState).
  */
 - (void)getRoomStateWithResult:(void (^) (WhiteRoomState *state))result;
+
+@end
+
+/**
+ * Dispatches a doc event.
+ * In multi-window mode, this method can control the doc window with the focus on. 
+ *
+ * @param docsEvent Type of the doc event.See [WhiteWindowDocsEventKey](WhiteWindowDocsEventKey).
+ * @param options (Optional) Event options. The options of the event. Needed only when `event` is `jumpToPage`, specifying the target page you want to jump to. See [WhiteWindowDocsEventOptions](WhiteWindowDocsEventOptions).
+ * @param completionHandler The result of the method call.
+ *
+ * @warning This method can only be called when the docs view has finished loading. It does not support multiple consecutive calls, and the next call can only be made after the current transition animation has finished playing.
+ */
+- (void)dispatchDocsEvent:(WhiteWindowDocsEventKey)docsEvent options:( WhiteWindowDocsEventOptions * _Nullable )options completionHandler:(void (^)(bool success))completionHandler;
 
 @end
 
