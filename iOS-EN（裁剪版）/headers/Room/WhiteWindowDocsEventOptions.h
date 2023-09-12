@@ -30,7 +30,7 @@ FOUNDATION_EXPORT WhiteWindowDocsEventKey const WhiteWindowDocsEventJumpToPage;
 @interface WhiteWindowDocsEventOptions : WhiteObject
 
 /**
- * Jumpt to page.
+ * Jump to page.
  */
 @property (nonatomic, copy) NSNumber *page;
 @end

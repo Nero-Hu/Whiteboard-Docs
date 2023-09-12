@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  Whether to display rendering errors.
  
  - `YES`: Display rendering errors.
- - `NO`: (Default) Not display rendering errors.
+ - `NO`: (Default) Do not display rendering errors.
  */
 @property (nonatomic, assign) BOOL showRenderError;
 

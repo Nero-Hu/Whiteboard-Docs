@@ -129,9 +129,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - PPT Volume
 
 /**
- Gets the volume the PPT slide.
+ Gets the volume of the PPT slide.
  @param completionHandler The result of the method call, including two fields, `volume` and `error`:
-                          - A successful call: `volume` ranges from (0,1], indicating the volume the PPT; `error` returns `nil`.
+                          - A successful call: `volume` ranges from (0,1], indicating the volume of the PPT; `error` returns `nil`.
                           - A failed call: `volume` returns 0; `error` returns the error message.        
 */
 - (void)getSlideVolumeWithCompletionHandler:(void(^)(CGFloat volume, NSError *error))completionHandler;
@@ -157,7 +157,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Sets PPT callback events.
- The SDK process PPT-related callbacks via [WhiteSlideDelegate](WhiteSlideDelegate).
+ The SDK processes PPT-related callbacks via [WhiteSlideDelegate](WhiteSlideDelegate).
  
  @param slideDelegate PPT callback events，See [WhiteSlideDelegate](WhiteSlideDelegate).
  */

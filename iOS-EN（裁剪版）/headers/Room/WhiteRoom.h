@@ -642,7 +642,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Dispatches a doc event.
  * In multi-window mode, this method can control the doc window with the focus on. 
  *
- * @param docsEvent Type of the doc event.See [WhiteWindowDocsEventKey](WhiteWindowDocsEventKey).
+ * @param docsEvent Type of the doc event. See [WhiteWindowDocsEventKey](WhiteWindowDocsEventKey).
  * @param options (Optional) Event options. The options of the event. Needed only when `event` is `jumpToPage`, specifying the target page you want to jump to. See [WhiteWindowDocsEventOptions](WhiteWindowDocsEventOptions).
  * @param completionHandler The result of the method call.
  *
