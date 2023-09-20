@@ -255,7 +255,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 同时，为方便管理房间内的用户，该版本在 `WhiteRoomConfig` 类的 `initWithUuid` 中新增 `uid` 参数，用于设置用户的唯一标识符（UID）。
 
-如果你将 SDK 升级到 v2.15.0 或之后版本，要加入房间，你必须调用 `joinRoomWithConfig`，并确保初始化 `WhiteRoomConfig` 对象时在 `initWithUuid` 中传入字符串格式的 `uid`。每个用户的 `uid` 长度不能超过 1024 字节，且在同一房间内必须唯一。详见《[加入实时房间](https://docs.agora.io/cn/whiteboard/join_whiteboard_room_ios?platform=iOS#3-初始化-sdk-并加入房间)》。
+如果你将 SDK 升级到 v2.15.0 或之后版本，要加入房间，你必须调用 `joinRoomWithConfig`，并确保初始化 `WhiteRoomConfig` 对象时在 `initWithUuid` 中传入字符串格式的 `uid`。每个用户的 `uid` 长度不能超过 1024 字节，且在同一房间内必须唯一。详见[加入实时房间](./get-started/join-room-wb#3-初始化-sdk-并加入房间)。
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
