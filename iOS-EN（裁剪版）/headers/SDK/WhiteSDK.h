@@ -126,6 +126,22 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)updateTextFont:(NSArray <NSString *>*)fonts;
 
+#pragma mark - PPT Volume
+
+/**
+ Gets the volume of the PPT slide.
+ @param completionHandler The result of the method call, including two fields, `volume` and `error`:
+                          - A successful call: `volume` ranges from (0,1], indicating the volume of the PPT; `error` returns `nil`.
+                          - A failed call: `volume` returns 0; `error` returns the error message.        
+*/
+- (void)getSlideVolumeWithCompletionHandler:(void(^)(CGFloat volume, NSError *error))completionHandler;
+
+/**
+ 更新当前 PPT 的音量。
+ @param volume 音量值，取值范围为 (0,1]。
+ */
+- (void)updateSlideVolume:(CGFloat)volume;
+
 #pragma mark - CommonCallback
 
 /**
@@ -136,6 +152,16 @@ NS_ASSUME_NONNULL_BEGIN
  @param callbackDelegate Common event callbacks. See [WhiteCommonCallbackDelegate](WhiteCommonCallbackDelegate).
  */
 - (void)setCommonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callbackDelegate;
+
+#pragma mark - SlideCallback
+
+/**
+ Sets PPT callback events.
+ The SDK processes PPT-related callbacks via [WhiteSlideDelegate](WhiteSlideDelegate).
+ 
+ @param slideDelegate PPT callback events，See [WhiteSlideDelegate](WhiteSlideDelegate).
+ */
+- (void)setSlideDelegate:(nullable id<WhiteSlideDelegate>)slideDelegate;
 
 /**
  Writes the slide log into a specified file.

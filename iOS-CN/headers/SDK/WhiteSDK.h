@@ -116,6 +116,22 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)updateTextFont:(NSArray <NSString *>*)fonts;
 
+#pragma mark - PPT Volume
+
+/**
+ 获取当前 PPT 的音量。
+ @param completionHandler 方法调用结果：
+ - 调用成功：返回音量信息。`volume` 为 (0,1] 之间的值，`error` 为 `nil`。
+ - 调用失败：返回错误消息。`volume` 返回值为 0，`error` 为错误消息。
+ */
+- (void)getSlideVolumeWithCompletionHandler:(void(^)(CGFloat volume, NSError *error))completionHandler;
+
+/**
+ 更新当前 PPT 的音量。
+ @param volume 音量值，取值范围为 (0,1]。
+ */
+- (void)updateSlideVolume:(CGFloat)volume;
+
 #pragma mark - CommonCallback
 
 /**
@@ -126,6 +142,17 @@ NS_ASSUME_NONNULL_BEGIN
  @param callbackDelegate 通用回调事件，详见 [WhiteCommonCallbackDelegate](WhiteCommonCallbackDelegate)。
  */
 - (void)setCommonCallbackDelegate:(nullable id<WhiteCommonCallbackDelegate>)callbackDelegate;
+
+#pragma mark - SlideCallback
+
+/**
+ 设置多窗口 PPT 回调事件。
+
+ SDK 通过 [WhiteSlideDelegate](WhiteSlideDelegate) 类处理 PPT 相关回调。
+ 
+ @param slideDelegate PPT 回调事件，详见 [WhiteSlideDelegate](WhiteSlideDelegate)。
+ */
+- (void)setSlideDelegate:(nullable id<WhiteSlideDelegate>)slideDelegate;
 
 /**
  将 Slide 日志写入到指定的文件路径。

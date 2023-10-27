@@ -67,6 +67,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) WhiteRegionKey region;
 
 /**
+ * 白板请求 modules 数据的地址。配置后不会请求白板默认地址。
+ * @example https://modules.example.com
+ */
+@property (nonatomic, copy, nullable) NSString *modulesOrigin;
+
+/**
  禁止/允许工具响应用户输入。
 
  - `YES`：禁止工具响应用户输入。
@@ -197,12 +203,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  是否开启全链路加速。
 
- 声网互动白板服务集成了 [声网 全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。
+ 声网互动白板服务集成了 [声网全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。
  集成声网 Whiteboard SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
  1. 在项目的 `podfile` 文件中添加 `pod 'Whiteboard/fpa'`。
  2. 加入频道前，调用 `nativeWebSocket(YES)`，开启全链路加速功能。
 
- @note 该功能仅支持 iOS 13.0 或之后的系统。
+ @note 由于声网全链路加速（FPA）服务已下架，该功能已废弃。
 
  - `YES`：开启全链路加速。
  - `NO`：（默认）关闭全链路加速。

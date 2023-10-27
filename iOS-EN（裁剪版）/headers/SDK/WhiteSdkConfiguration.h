@@ -238,6 +238,21 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 /** The parameters set for the dynamic PPT. See [WhitePptParams](WhitePptParams). */
 @property (nonatomic, strong) WhitePptParams *pptParams;
 
+/** @deprecated This property is depreacated. Use `WhiteSlideAppParams` instead. */
+@property (nonatomic, strong) WhitePptParams *pptParams __deprecated_msg("use WhiteSlideAppParams instead");
+
+/** PPT rendering notification parameters. See [WhiteSlideAppParams](WhiteSlideAppParams).  */
+@property (nonatomic, strong) WhiteSlideAppParams *whiteSlideAppParams;
+
+/**
+ Enables/disables intercepting and replacing URLs of PPT resources.
+ Once enabled, you need to set PPT callback event via `WhiteSDK.setSlideDelegate`, and add URL-replacing logic in `slideUrlInterrupter`.
+ 
+ - `YES`: Enabled.
+ - `NO`: (Default) Disabled.
+ */
+@property (nonatomic, assign) BOOL enableSlideInterrupterAPI;
+
 
 @property (nonatomic, assign) BOOL disableDeviceInputs;
 

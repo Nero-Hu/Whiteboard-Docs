@@ -20,6 +20,7 @@
 #import "WhitePanEvent.h"
 #import "WhiteDisplayer.h"
 #import "WhiteSDK+Room.h"
+#import "WhiteWindowDocsEventOptions.h"
 
 @class WhiteBoardView;
 
@@ -614,6 +615,22 @@ NS_ASSUME_NONNULL_BEGIN
  @param result 回调。返回当前房间状态，详见 [WhiteRoomState](WhiteRoomState)。
  */
 - (void)getRoomStateWithResult:(void (^) (WhiteRoomState *state))result;
+
+@end
+
+@interface WhiteRoom(MainView)
+
+/**
+ * 发送文档操作事件。
+ * 在多窗口模式下，该方法可以用来操作当前聚焦的文档窗口。
+ *
+ * @param docsEvent 事件类型。详见 [WhiteWindowDocsEventKey](WhiteWindowDocsEventKey)。
+ * @param options 可选事件参数。该参数仅在设置 `docsEvent` 为 `WhiteWindowDocsEventJumpToPage` 时有效，用于传入跳转的页码。详见 [WhiteWindowDocsEventOptions](WhiteWindowDocsEventOptions)。
+ * @param completionHandler 方法调用结果。
+ *
+ * @warning 该方法只有在文档视图加载完毕时才能调用。不支持多次连续调用，只有当前的转场动画播放完毕之后才能进行下一次调用。
+ */
+- (void)dispatchDocsEvent:(WhiteWindowDocsEventKey)docsEvent options:( WhiteWindowDocsEventOptions * _Nullable )options completionHandler:(void (^)(bool success))completionHandler;
 
 @end
 

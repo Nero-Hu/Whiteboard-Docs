@@ -6,6 +6,73 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 本文提供声网互动白板 iOS SDK 的发版说明。
 
+<VersionSection version="2.16.62 版">
+
+该版本于 2023 年 8 月 31 日发布。
+
+<VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
+
+该版本废弃了白板数据中心（`region`）原有的英国伦敦数据中心（`gb-lon`），并新增了欧洲法兰克福数据中心（`eu`），服务区覆盖欧洲。如果你在之前版本中设置了 `region` 为 `gb-lon`，请在升级到该版本后改用 `eu`，并在控制台-互动白板服务配置中启用该数据中心。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+<ListTitle>PPT 音量控制</ListTitle>
+
+该版本新增 `getSlideVolumeWithCompletionHandler` 和 `updateSlideVolume` 方法用于获取和更新 PPT 内音频的音量。
+
+<ListTitle>PPT URL 拦截替换</ListTitle>
+
+该版本在 `WhiteSdkConfiguration` 中新增 `enableSlideInterrupterAPI` 配置项，用于开启 PPT 资源 URL 拦截替换功能。该功能可用于加密用户上传的 PPT 资源，保护用户隐私。
+
+开启后，通过调用 `WhiteSDK.setSlideDelegate` 设置回调对象，并在 `slideUrlInterrupter: url: completionHandler` 回调中添加 PPT URL 的替换逻辑，从而实现 PPT URL 的拦截替换功能。
+
+<ListTitle>PPT 渲染显示配置</ListTitle>
+
+该版本在 `WhiteSdkConfiguration` 中新增 `whiteSlideAppParams` 配置项用于 [@netless/app-slide](https://github.com/netless-io/netless-app/tree/master/packages/app-slide) 渲染相关的显示配置。你可以通过 `WhiteSlideAppParams.showRenderError` 配置显示/隐藏渲染错误提示。
+
+<ListTitle>自定义 API 服务器域名</ListTitle>
+
+该版本在 `WhiteSdkConfiguration` 中新增 `apiHosts` 配置项, 用于配置白板的 API 服务器域名列表，例如添加代理服务器域名。
+
+<ListTitle>自定义模块源</ListTitle>
+
+该版本在 `RoomParams` 和 `PlayerConfiguration` 中分别新增 `modulesOrigin` 配置项，用于配置白板请求模块（modules）数据的地址。
+
+<ListTitle>文档操作事件</ListTitle>
+
+该版本新增 `dispatchDocsEvent` 方法，用于向插入白板的 PDF/PPTX 文档发送事件，实现控制文档翻页、页面跳转和幻灯片动画播放。
+
+<ListTitle>窗口全屏</ListTitle>
+
+该版本在 `WhiteWindowParams` 中新增 `fullscreen`, 用于控制窗口是否全屏显示。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+<ListTitle>新增</ListTitle>
+
+- `getSlideVolumeWithCompletionHandler`
+- `updateSlideVolume`
+- `WhiteSdkConfiguration`
+  - `enableSlideInterrupterAPI`
+  - `whiteSlideAppParams`
+  - `apiHosts`
+- `setSlideDelegate`
+  - `WhiteSlideDelegate`
+  - `slideUrlInterrupter: url: completionHandler`
+- `dispatchDocsEvent`
+  - `WhiteWindowDocsEventOptions`
+  - `WhiteWindowDocsEventKey`
+- `RoomParams` 新增 `modulesOrigin`
+- `PlayerConfiguration` 新增 `modulesOrigin`
+- `WhiteWindowParams `新增 `fullscreen`
+
+<ListTitle>废弃</ListTitle>
+
+- `WhiteRegionKey` 中的 `WhiteRegionGB`, 改用 `WhiteRegionEU`
+- `WhitePptParams`，改用 `WhiteSlideAppParams`
+
+</VersionSection>
+
 
 <VersionSection version="2.16.46 版">
 
@@ -188,7 +255,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 同时，为方便管理房间内的用户，该版本在 `WhiteRoomConfig` 类的 `initWithUuid` 中新增 `uid` 参数，用于设置用户的唯一标识符（UID）。
 
-如果你将 SDK 升级到 v2.15.0 或之后版本，要加入房间，你必须调用 `joinRoomWithConfig`，并确保初始化 `WhiteRoomConfig` 对象时在 `initWithUuid` 中传入字符串格式的 `uid`。每个用户的 `uid` 长度不能超过 1024 字节，且在同一房间内必须唯一。详见《[加入实时房间](https://docs.agora.io/cn/whiteboard/join_whiteboard_room_ios?platform=iOS#3-初始化-sdk-并加入房间)》。
+如果你将 SDK 升级到 v2.15.0 或之后版本，要加入房间，你必须调用 `joinRoomWithConfig`，并确保初始化 `WhiteRoomConfig` 对象时在 `initWithUuid` 中传入字符串格式的 `uid`。每个用户的 `uid` 长度不能超过 1024 字节，且在同一房间内必须唯一。详见[加入实时房间](./get-started/join-room-wb#3-初始化-sdk-并加入房间)。
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
