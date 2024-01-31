@@ -6,7 +6,7 @@
 
 #### 改进
 
-该版本更新 `Whiteboard` 依赖至 v2.16.81，集成 SDK 时不再区分 YYModel 和 YYKit, 之前使用 `pod 'Fastboard/core-YYKit'` 集成 SDK 的用户可以切换成 `pod 'Fastboard'` 集成。
+自该版本起，集成 SDK 时不再区分 YYModel 和 YYKit。之前使用 `pod 'Fastboard/core-YYKit'` 集成 SDK 的用户可以切换成 `pod 'Fastboard'` 集成。
 
 ## 1.2.2 版
 
