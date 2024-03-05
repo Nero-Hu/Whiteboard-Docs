@@ -649,6 +649,10 @@ NS_ASSUME_NONNULL_BEGIN
  * 该方法仅在多窗口模式下有效, 无论应用 ID 是否有效都会触发回调。
  *
  * @param appId 小窗应用 ID。
+ * @param completionHandler 方法调用结果：
+ * 
+ * - 如果方法调用成功，则窗口关闭。
+ * - 如果方法调用失败，则返回错误信息。
  */
 - (void)closeApp:(NSString *)appId completionHandler:(void (^)(void))completionHandler;
 
