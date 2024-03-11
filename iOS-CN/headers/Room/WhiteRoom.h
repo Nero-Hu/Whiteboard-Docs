@@ -639,7 +639,7 @@ NS_ASSUME_NONNULL_BEGIN
  * - 如果方法调用成功，则返回 `appId`，即小窗应用 ID。
  * - 如果方法调用失败，则返回错误信息。
  *
- * @note 多次插入同一个小窗应用会导致插入失败，返回的 `appId` 为 `nil` 。
+ * @note 多次插入同一个小窗应用返回的 `appId` 为 `nil`，表示插入失败。
  */
 - (void)addApp:(WhiteAppParam *)appParams completionHandler:(void (^)(NSString *appId))completionHandler;
 
@@ -669,7 +669,7 @@ NS_ASSUME_NONNULL_BEGIN
  * 
  *  该方法仅在多窗口下有效。
  * 
- * @param completionHandler 查询结果回调
+ * @param completionHandler 查询结果回调。
   * 
  * - 如果方法调用成功，则返回一个以应用 ID 为键，包含所有小窗应用信息的字典。详见 [WhiteAppSyncAttributes](WhiteAppSyncAttributes)。
  * - 如果方法调用失败，则返回错误信息。
@@ -682,7 +682,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  该方法仅在多窗口下有效。
  * 
  * @param appId 小窗应用 ID。
- * @param completionHandler 查询结果回调
+ * @param completionHandler 查询结果回调。
  * 
  * - 如果方法调用成功，则返回小窗应用相关信息，详见 [WhiteAppSyncAttributes](WhiteAppSyncAttributes)。
  * - 如果方法调用失败，则返回错误信息。
