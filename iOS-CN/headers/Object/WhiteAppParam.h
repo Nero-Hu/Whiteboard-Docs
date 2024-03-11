@@ -10,13 +10,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@interface WhiteAppOptions : WhiteObject
+// @interface WhiteAppOptions : WhiteObject
 
-@property (nonatomic, nullable, copy) NSString *scenePath;
-@property (nonatomic, nullable, copy) NSString *title;
-@property (nonatomic, nullable, strong) NSArray<WhiteScene *> *scenes;
+// @property (nonatomic, nullable, copy) NSString *scenePath;
+// @property (nonatomic, nullable, copy) NSString *title;
+// @property (nonatomic, nullable, strong) NSArray<WhiteScene *> *scenes;
 
-@end
+// @end
 
 /** 多窗口模式下，小窗应用的配置参数项。
  * 
@@ -26,9 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 小窗应用类型。 */
 @property (nonatomic, copy, readonly) NSString *kind;
-/** 小窗应用固定需要的一些配置项。 */
+/** 小窗应用的必须配置项。 */
 @property (nonatomic, strong, readonly) WhiteAppOptions *options;
-/** 小窗应用所需要的一些额外可选属性,可以不填。 */
+/** 小窗应用的额外可选配置项。 */
 @property (nonatomic, copy, readonly) NSDictionary *attrs;
 
 // /*
