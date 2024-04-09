@@ -6,17 +6,17 @@ This version was released on April x, 2024.
 
 #### New Features
 
-**Mini Window Application Management**
+**Window Apps Management**
 
-In multi-window mode, the SDK supports inserting PPT or whiteboard plugins as mini window applications. Starting from this version, the `WhiteRoom` class introduces the following methods to manage mini window applications in multi-window mode:
+In multi-window mode, the SDK supports inserting PPT or whiteboard plugins as window apps. Starting from this version, the `WhiteRoom` class introduces the following methods to manage window apps in multi-window mode:
 
-- `addApp`: Inserts a mini window application and returns the application ID.
-- `closeApp`: Closes the window of the specified mini window application.
-- `focusApp`: Switches the focused window to the window of the specified mini window application.
-- `queryApp`: Queries the information of the specified mini window application.
-- `queryAllAppsWithCompletionHandler`: Queries the information of all current mini window applications.
+- `addApp`: Inserts a window app and returns the app ID.
+- `closeApp`: Closes the window of the specified window app.
+- `focusApp`: Switches the focused window to the window of the specified window app.
+- `queryApp`: Queries the information of the specified window app.
+- `queryAllApps`: Queries the information of all current window apps.
 
-**Customization of Whiteboard Tools**
+**Whiteboard Tools Customization**
 
 The `WhiteMemberState` and `WhiteReadonlyMemberState` classes introduce the following properties for customizing whiteboard tools:
 
