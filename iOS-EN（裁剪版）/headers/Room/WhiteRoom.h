@@ -244,6 +244,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)insertText:(CGFloat)x y:(CGFloat)y textContent:(NSString *)textContent completionHandler:(void (^) (NSString * textId))completionHandler;
 
+/**
+ * Updates the content of the specified text.
+ * @param textId The identifier of the text.
+ * @param textContent The text content.
+ */
+- (void)updateText:(NSString *)textId textContent:(NSString *)textContent;
 
 #pragma mark - Image API
 
@@ -637,6 +643,68 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getRoomStateWithResult:(void (^) (WhiteRoomState *state))result;
 
 @end
+
+@interface WhiteRoom(MainView)
+
+/**
+ * Insert a window app.
+ *
+ * In multi-window mode, PPT or custom plugins can be inserted as window apps to be displayed in a new window.
+ *
+ * @param appParams The properties of the window app. See [WhiteAppParam](WhiteAppParam).
+ * @param completionHandler The result of the method call:
+ *
+ * - If the method call is successful, it returns the `appId`, which is the ID of the window app.
+ * - If the method call fails, it returns an error message.
+ *
+ * @note If the same window app is inserted multiple times, the returned `appId` will be `nil`, indicating that the insertion failed.
+ */
+- (void)addApp:(WhiteAppParam *)appParams completionHandler:(void (^)(NSString *appId))completionHandler;
+
+/**
+ * Close the window of the specified window app.
+ *
+ * This method is only valid in multi-window mode, and the callback will be triggered regardless of whether the app ID is valid or not.
+ *
+ * @param appId The ID of the window app.
+ * @param completionHandler The result of the method call:
+ *
+ * - If the method call is successful, the window is closed.
+ * - If the method call fails, it returns an error message.
+ */
+- (void)closeApp:(NSString *)appId completionHandler:(void (^)(void))completionHandler;
+
+/**
+ * Switch the focused window to the window of the specified window app.
+ *
+ * This method is only valid in multi-window mode.
+ *
+ * @param appId The ID of the window app.
+ */
+- (void)focusApp:(NSString *)appId;
+
+/** Query information of all window apps.
+ *
+ * This method is only valid in multi-window mode.
+ *
+ * @param completionHandler The query result callback.
+ *
+ * - If the method call is successful, it returns a dictionary containing all window app information with the app ID as the key. See [WhiteAppSyncAttributes](WhiteAppSyncAttributes).
+ * - If the method call fails, it returns an error message.
+ */
+- (void)queryAllAppsWithCompletionHandler:(void (^)(NSDictionary<NSString *, WhiteAppSyncAttributes *> *apps, NSError * _Nullable error))completionHandler;
+
+/** Query information of the specified window app.
+ *
+ * This method is only valid in multi-window mode.
+ *
+ * @param appId The ID of the window app.
+ * @param completionHandler The query result callback.
+ *
+ * - If the method call is successful, it returns the relevant information of the window app. See [WhiteAppSyncAttributes](WhiteAppSyncAttributes).
+ * - If the method call fails, it returns an error message.
+ */
+- (void)queryApp:(NSString *)appId completionHandler:(void (^)(WhiteAppSyncAttributes *appParam, NSError * _Nullable error))completionHandler;
 
 /**
  * Dispatches a doc event.

@@ -77,6 +77,10 @@ extern WhiteApplianceShapeTypeKey const ApplianceShapeTypeSpeechBalloon;
 @property (nonatomic, strong, readonly) NSNumber *strokeWidth;
 /** The font size of the text.  */
 @property (nonatomic, strong, readonly) NSNumber *textSize;
+/** Text color in RGB format, for example, (0, 0, 255) represents blue. */
+@property (nonatomic, copy, readwrite, nullable) NSArray<NSNumber *> *textColor;
+/** Size of the eraser for local erasing. The value range is [1,3], where a larger value represents a larger size. */
+@property (nonatomic, strong, readwrite, nullable) NSNumber *pencilEraserSize;
 @end
 
 /** Settings of the whiteboard tool in use. */
@@ -89,6 +93,10 @@ extern WhiteApplianceShapeTypeKey const ApplianceShapeTypeSpeechBalloon;
 @property (nonatomic, strong, readwrite) NSNumber *strokeWidth;
 /** The font size of the text. */
 @property (nonatomic, strong, readwrite) NSNumber *textSize;
+/** Text color in RGB format, for example, (0, 0, 255) represents blue. */
+@property (nonatomic, copy, readwrite, nullable) NSArray<NSNumber *> *textColor;
+/** Size of the eraser for local erasing. The value range is [1,3], where a larger value represents a larger size. */
+@property (nonatomic, strong, readwrite, nullable) NSNumber *pencilEraserSize;
 /**
  Whether to allow directly selecting and editing whiteboard text:
  

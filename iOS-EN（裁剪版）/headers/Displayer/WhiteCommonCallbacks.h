@@ -81,10 +81,6 @@ NS_ASSUME_NONNULL_BEGIN
 
  If you need to disable this callback, call `log (NO)` in [WhiteSdkConfiguration](WhiteSdkConfiguration).
 
- **Note:**
- 
- After you call `log (NO)`, the SDK stops sending you the local debug logs through this callback, but still triggers this callback to send the logs related to [video-js-plugin](https://github.com/netless-io/whiteboard-demo/tree/master/packages/video-js-plugin).
-
  @param dict Log messages in dict format. Each log message contains the following keys:
 
  - `funName`: The function name.
