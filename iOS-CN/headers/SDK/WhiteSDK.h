@@ -52,9 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  提前选择最佳接入域名，用于加快用户首次连接速度。
- @param appId SDK 的 `appId`。
+ @param appId 白板项目的唯一标识，详见[获取白板项目的 App Identifier](/doc/whiteboard/ios/whiteboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
  @param region 需要选择的数据中心，详见 [WhiteRegionKey](WhiteRegionKey)。
- @param expireSeconds 数据缓存时间，单位为秒，可为空，默认为 24 小时。
+ @param expireSeconds 数据缓存时间 (s)，可为空，默认为 24 小时。
  @param superView 挂载的父视图，可为空，默认为 `UIApplication.shared.keyWindow`。
  */
 + (void)prepareWhiteConnectionForAppId:(NSString *)appId region:(WhiteRegionKey)region expireSeconds:(NSNumber * _Nullable )expireSeconds attachingSuperView: (UIView * _Nullable)superView;
