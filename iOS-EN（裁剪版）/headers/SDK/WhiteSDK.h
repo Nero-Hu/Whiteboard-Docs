@@ -57,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithWhiteBoardView:(WhiteBoardView *)boardView config:(WhiteSdkConfiguration *)config DEPRECATED_MSG_ATTRIBUTE("initWithWhiteBoardView:config:commonCallbackDelegate");
 
 /**
-* Preselects the optimal access domain to improve the connection speed for the first time a user connects.
+* Preselects the optimal access domain to improve the connection speed for when the user connects for the first time.
 *
 * @param appId The unique identifier for a whiteboard project. See [Get security credentials for your whiteboard project](https://docs.agora.io/en/interactive-whiteboard/develop/enable-whiteboard?platform=android#get-security-credentials-for-your-whiteboard-project) for details.
 * @param region The data center to select. See [WhiteRegionKey](WhiteRegionKey) for details.
