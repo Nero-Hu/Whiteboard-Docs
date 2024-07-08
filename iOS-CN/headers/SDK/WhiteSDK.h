@@ -52,6 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  提前选择最佳接入域名，用于加快用户首次连接速度。
+
+ 声网建议在加入白板房间前调用该方法，例如设备检测页、白板房间列表页等，有助于提升加入白板房间的连接速度。
+
  @param appId 白板项目的唯一标识，详见[获取白板项目的 App Identifier](/doc/whiteboard/ios/whiteboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
  @param region 需要选择的数据中心，详见 [WhiteRegionKey](WhiteRegionKey)。
  @param expireSeconds 数据缓存时间 (s)，可为空，默认为 24 小时。

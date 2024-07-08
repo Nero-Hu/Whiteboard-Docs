@@ -59,6 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 * Preselects the optimal access domain to improve the connection speed for when the user connects for the first time.
 *
+* Agora recommends calling this method before joining a whiteboard room, such as on the device detection page or the whiteboard room list page, thus improving the connection speed when joining the whiteboard room.
+*
 * @param appId The unique identifier for a whiteboard project. See [Get security credentials for your whiteboard project](https://docs.agora.io/en/interactive-whiteboard/develop/enable-whiteboard?platform=android#get-security-credentials-for-your-whiteboard-project) for details.
 * @param region The data center to select. See [WhiteRegionKey](WhiteRegionKey) for details.
 * @param expireSeconds The data cache time (s). Can be nil. The default is 24 hours.
