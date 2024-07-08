@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param src src 图片或动态 PPT 页的地址，支持的格式如下：
 
  - 图片：URL 地址，可以是你自己生成的 URL 地址，也可以是通过文档转换功能生成的 URL 地址，例如，`"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/staticConvert/2fdxxxxx67e/1.jpeg"`。
- - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[动态文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中 `conversionFileUrl` 字段的值。
+ - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[动态文档转换任务的查询结果](/doc/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中 `conversionFileUrl` 字段的值。
  @param size 图片或动态 PPT 在白板中的尺寸，单位为像素。
 
  @return 初始化的 `WhitePptPage` 对象。
@@ -44,8 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param src src 图片或动态 PPT 页的地址，支持的格式如下：
 
  - 图片：URL 地址，可以是你自己生成的 URL 地址，也可以是通过文档转换功能生成的 URL 地址，例如，`"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/staticConvert/2fdxxxxx67e/1.jpeg"`。
- - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[动态文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中 `conversionFileUrl` 字段的值。
- @param url 图片或动态 PPT 预览图的 URL 地址。动态 PPT 预览图的 URL 地址可以从[文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中的 `preview` 字段获取，例如，"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/dynamicConvert/2fdxxxxx67e/preview/1.png"。
+ - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[动态文档转换任务的查询结果](/doc/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中 `conversionFileUrl` 字段的值。
+ @param url 图片或动态 PPT 预览图的 URL 地址。动态 PPT 预览图的 URL 地址可以从[文档转换任务的查询结果](/doc/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中的 `preview` 字段获取，例如，"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/dynamicConvert/2fdxxxxx67e/preview/1.png"。
  @param size 图片或动态 PPT 在白板中的尺寸，单位为像素。
 
  @return 初始化的 `WhitePptPage` 对象。
