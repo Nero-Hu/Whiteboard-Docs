@@ -202,7 +202,7 @@ NS_ASSUME_NONNULL_BEGIN
  **Note:**
 
  - 如果场景中展示了图片或动态 PPT 幻灯片，请确保该图片或PPT幻灯片的存储服务器支持跨域资源共享； 否则，生成的截图中可能不会显示图片或 PPT 幻灯片。
- - 为确保截图正常显示，声网推荐使用[互动白板服务端截图功能](/api-ref/whiteboard/restful/restful-wb/operations/post-v5-rooms-uuid-screenshots)。
+ - 为确保截图正常显示，声网推荐使用[互动白板服务端截图功能](/doc/whiteboard/restful/restful-wb/operations/post-v5-rooms-uuid-screenshots)。
 
  @param scenePath 场景路径。
  @param completionHandler 方法调用结果：
