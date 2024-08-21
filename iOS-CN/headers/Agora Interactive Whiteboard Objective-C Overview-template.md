@@ -51,7 +51,7 @@
 | [roomMembers]([WhiteRoom roomMembers])| 获取房间的用户列表（同步方法） |
 | [getRoomMembersWithResult]([WhiteRoom getRoomMembersWithResult:])| 获取房间的用户列表（异步方法） |
 | [phase]([WhiteRoom phase])  | 获取房间的连接状态（同步方法） |
-| [getRoomPhaseWithResult](Whiteroom getRoomPhaseWithResult:) | 获取房间的连接状态（异步方法） |
+| [getRoomPhaseWithResult]([Whiteroom getRoomPhaseWithResult:]) | 获取房间的连接状态（异步方法） |
 | [state]([WhiteRoom state])| 获取房间的所有状态（同步方法） |
 | [getRoomStateWithResult]([WhiteRoom getRoomStateWithResult:])| 获取房间的所有状态（异步方法） |
 
@@ -66,7 +66,7 @@
 | [copy]([WhiteRoom copy])  | 复制选中内容 |
 | [paste]([WhiteRoom paste]) | 粘贴复制的内容 |
 | [duplicate]([WhiteRoom duplicate])  | 复制并粘贴选中的内容 |
-| [deleteOpertion](WhiteRoom deleteOpertion) | 删除选中的内容 |
+| [deleteOpertion]([WhiteRoom deleteOperation]) | 删除选中的内容 |
 | [disableSerialization]([WhiteRoom disableSerialization:]) | 开启/禁止本地序列化 |
 | [redo]([WhiteRoom redo])   | 重做 |
 | [undo]([WhiteRoom undo]) | 撤销上一步操作 |

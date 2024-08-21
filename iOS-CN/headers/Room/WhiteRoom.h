@@ -695,7 +695,12 @@ NS_ASSUME_NONNULL_BEGIN
  * 发送文档操作事件。
  * 在多窗口模式下，该方法可以用来操作当前聚焦的文档窗口。
  *
- * @param docsEvent 事件类型。详见 [WhiteWindowDocsEventKey](WhiteWindowDocsEventKey)。
+ * @param docsEvent 事件类型。可传入以下事件：
+ *    - `WhiteWindowDocsEventPrevPage`：上一页。
+ *    - `WhiteWindowDocsEventNextPage`：下一页。
+ *    - `WhiteWindowDocsEventPrevStep`：上一步。
+ *    - `WhiteWindowDocsEventNextStep`：下一步。
+ *    - `WhiteWindowDocsEventJumpToPage`：跳转到指定页码。需配合 `options` 参数使用。
  * @param options 可选事件参数。该参数仅在设置 `docsEvent` 为 `WhiteWindowDocsEventJumpToPage` 时有效，用于传入跳转的页码。详见 [WhiteWindowDocsEventOptions](WhiteWindowDocsEventOptions)。
  * @param completionHandler 方法调用结果。
  *

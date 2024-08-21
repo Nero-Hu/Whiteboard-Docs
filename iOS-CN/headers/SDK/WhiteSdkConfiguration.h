@@ -10,10 +10,10 @@
 #import "WhiteConsts.h"
 
 //文档中隐藏
-typedef NS_ENUM(NSInteger, WhiteDeviceType) {
-    WhiteDeviceTypeTouch,
-    WhiteDeviceTypeDesktop,
-};
+// typedef NS_ENUM(NSInteger, WhiteDeviceType) {
+//     WhiteDeviceTypeTouch,
+//     WhiteDeviceTypeDesktop,
+// };
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -130,18 +130,18 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 @property (nonatomic, assign) BOOL enableIFramePlugin;
 
 
-@property (nonatomic, assign) WhiteDeviceType deviceType;
+// @property (nonatomic, assign) WhiteDeviceType deviceType;
 
 /**
  互动白板房间所在的数据中心。
 
  数据中心包括：
 
- - `"cn-hz"`：中国杭州。该数据中心为其他数据中心服务区未覆盖的地区提供服务。
- - `"us-sv"`：美国硅谷。该数据中心为北美洲、南美洲地区提供服务。
- - `"in-mum"`：印度孟买。该数据中心为印度地区提供服务。
- - `"sg"`：新加坡。该数据中心为新加坡、东亚、东南亚地区提供服务。
- - `"eu"`：欧洲（法兰克福）。该数据中心为欧洲地区提供服务。
+ - `WhiteRegionCN`：中国杭州。该数据中心为其他数据中心服务区未覆盖的地区提供服务。
+ - `WhiteRegionUS`：美国硅谷。该数据中心为北美洲、南美洲地区提供服务。
+ - `WhiteRegionIN`：印度孟买。该数据中心为印度地区提供服务。
+ - `WhiteRegionSG`：新加坡。该数据中心为新加坡、东亚、东南亚地区提供服务。
+ - `WhiteRegionEU`：欧洲（法兰克福）。该数据中心为欧洲地区提供服务。
 
  **Note:**
 
@@ -150,7 +150,9 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
  @since 2.11.0 */
 @property (nonatomic, strong, nullable) WhiteRegionKey region;
 /**
- 画笔教具的渲染引擎模式。详见 [WhiteSdkRenderEngineKey](WhiteSdkRenderEngineKey)。
+ 画笔教具的渲染引擎模式。可选择以下两种模式：
+ - `WhiteSdkRenderEngineSvg`：SVG 渲染模式。2.8.0 及之前版本默认使用渲染模式，该模式兼容性较好，但性能较差。
+ - `WhiteSdkRenderEngineCanvas`：Canvas 渲染模式。2.8.0 版本起新增 `canvas` 渲染模式，该模式性能较好，但兼容性较差。2.9.0 及之后版本的 `WhiteSdk` 默认使用 `canvas` 渲染模式。
 
  @since 2.8.0
 

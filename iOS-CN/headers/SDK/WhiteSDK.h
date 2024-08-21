@@ -56,7 +56,12 @@ NS_ASSUME_NONNULL_BEGIN
  声网建议在加入白板房间前调用该方法，例如设备检测页、白板房间列表页等，有助于提升加入白板房间的连接速度。
 
  @param appId 白板项目的唯一标识，详见[获取白板项目的 App Identifier](/doc/whiteboard/ios/whiteboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
- @param region 需要选择的数据中心，详见 [WhiteRegionKey](WhiteRegionKey)。
+ @param region 需要选择的数据中心。可选值包括：
+    - `WhiteRegionCN`：中国杭州。该数据中心为其他数据中心服务区未覆盖的地区提供服务。
+    - `WhiteRegionUS`：美国硅谷。该数据中心为北美洲、南美洲地区提供服务。
+    - `WhiteRegionIN`：印度孟买。该数据中心为印度地区提供服务。
+    - `WhiteRegionSG`：新加坡。该数据中心为新加坡、东亚、东南亚地区提供服务。
+    - `WhiteRegionEU`：欧洲（法兰克福）。该数据中心为欧洲地区提供服务。
  @param expireSeconds 数据缓存时间 (s)，可为空，默认为 24 小时。
  @param superView 挂载的父视图，可为空，默认为 `UIApplication.shared.keyWindow`。
  */
