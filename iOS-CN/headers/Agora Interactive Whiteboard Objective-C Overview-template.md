@@ -51,7 +51,7 @@
 | [roomMembers]([WhiteRoom roomMembers])| 获取房间的用户列表（同步方法） |
 | [getRoomMembersWithResult]([WhiteRoom getRoomMembersWithResult:])| 获取房间的用户列表（异步方法） |
 | [phase]([WhiteRoom phase])  | 获取房间的连接状态（同步方法） |
-| [getRoomPhaseWithResult]([Whiteroom getRoomPhaseWithResult:]) | 获取房间的连接状态（异步方法） |
+| [getRoomPhaseWithResult]([WhiteRoom getRoomPhaseWithResult:]) | 获取房间的连接状态（异步方法） |
 | [state]([WhiteRoom state])| 获取房间的所有状态（同步方法） |
 | [getRoomStateWithResult]([WhiteRoom getRoomStateWithResult:])| 获取房间的所有状态（异步方法） |
 
