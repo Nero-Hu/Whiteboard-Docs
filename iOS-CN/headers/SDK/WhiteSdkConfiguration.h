@@ -145,7 +145,7 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 
  **Note:**
 
- SDK 初始化时设置的 `region` 必须和[创建房间](/doc/whiteboard/restful/restful-wb/operations/post-v5-rooms)时指定的 `region` 一致；否则，SDK 无法连接到房间。
+ SDK 初始化时设置的 `region` 必须和[创建房间](/doc/whiteboard/restful/whiteboard-sdk/restful-wb/operations/post-v5-rooms)时指定的 `region` 一致；否则，SDK 无法连接到房间。
 
  @since 2.11.0 */
 @property (nonatomic, strong, nullable) WhiteRegionKey region;
