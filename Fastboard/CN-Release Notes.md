@@ -2,6 +2,17 @@
 
 声网 Fastboard SDK 是为帮助开发人员快速构建白板应用推出的新一代白板 SDK。Fastboard SDK 基于互动白板 SDK 开发，对复杂的 API 进行封装，简化了接口调用逻辑，并提供核心功能的实现和默认 UI；此外，Fastboard SDK 还集成窗口管理器（[Window Manager](https://github.com/netless-io/window-manager)）和常用插件，帮助开发者轻松扩展白板应用的功能。使用 Fastboard SDK，你无需深入学习互动白板复杂的概念，只需几行代码即可加入白板房间，并立即使用丰富的工具体验实时互动协作。
 
+## 1.4.2 版
+
+该版本于 2024 年 9 月 x 日发布。
+
+#### 问题修复
+
+该版本修复了以下问题：
+
+- 在某些高版本 iOS 设备上设置 `drawOnlyApplePencil` 不生效。
+- 使用 Cocoapods 安装 SDK 时出现 `warning: duplicate UUIDs`，不符合预期。
+
 ## 1.4.0 版
 
 #### 改进
