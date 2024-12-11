@@ -1,8 +1,12 @@
+---
+title: Fastboard iOS SDK API 参考
+---
+
 本页提供声网 Fastboard SDK（iOS）的 Swift API 参考。
 
-## Fastboard 类
+<H2 className="anchor index-auto-group index-class-fastboard" id="fastboard">Fastboard 类</H2>
 
-### createFastRoom
+<H3 className="anchor index-api-createfastroom" id="createfastroom">createFastRoom</H3>
 
 ```swift
 public class func createFastRoom(withFastRoomConfig config: FastRoomConfiguration)
@@ -19,7 +23,7 @@ public class func createFastRoom(withFastRoomConfig config: FastRoomConfiguratio
 方法调用成功时返回 `FastRoom` 对象。
 
 <a name="roomconfig"></a>
-#### FastRoomConfiguration
+<H3 className="anchor index-api-fastroomconfiguration" id="fastroomconfiguration">FastRoomConfiguration</H3>
 
 `FastRoomConfiguration` 类，提供初始化 `FastRoomConfiguration` 实例的方法。
 
@@ -34,18 +38,18 @@ public init(appIdentifier: String,
 
 **参数**
 
-- `appIdentifier`：String。互动白板项目的 App Identifier。详见[获取互动白板项目的安全密钥](https://docs.agora.io/cn/whiteboard/enable_whiteboard?platform=iOS#%E8%8E%B7%E5%8F%96%E4%BA%92%E5%8A%A8%E7%99%BD%E6%9D%BF%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%AE%89%E5%85%A8%E5%AF%86%E9%92%A5)。
-- `roomUUID`：String。房间的 UUID，即房间的唯一标识符。详见[创建房间](https://docs.agora.io/cn/whiteboard/whiteboard_room_management?platform=RESTful#%E5%88%9B%E5%BB%BA%E6%88%BF%E9%97%B4%EF%BC%88post%EF%BC%89)请求成功后响应包体中 `uuid` 参数的值。
+- `appIdentifier`：String。互动白板项目的 AppIdentifier。详见[获取互动白板项目的安全密钥](/doc/whiteboard/ios/fastboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
+- `roomUUID`：String。房间的 UUID，即房间的唯一标识符。详见[创建房间](/doc/whiteboard/restful/fastboard-sdk/restful-wb/operations/post-v5-rooms)请求成功后响应包体中 `uuid` 参数的值。
 - `roomToken`：String。房间的 Room Token，用于加入房间时的用户鉴权。可以通过以下方式获取：
-  - 调用[生成 Room Token RESTful API](https://docs.agora.io/cn/whiteboard/generate_whiteboard_token?platform=RESTful#生成-room-token（post）)。
-  - 在 app 服务端用代码生成，详见[在 app 服务端生成 Token](https://docs.agora.io/cn/whiteboard/generate_whiteboard_token_at_app_server?platform=RESTful)。
+  - 调用[生成 Room Token](/doc/whiteboard/restful/fastboard-sdk/restful-wb/operations/post-v5-tokens-rooms-uuid)。
+  - 在 app 服务端用代码生成，详见[在 app 服务端生成 Token](/doc/whiteboard/ios/fastboard-sdk/basic-features/generate-token#在-app-服务端生成-token)。
 - `region`：数据中心。详见 <a href="#region">`Region`</a >。
 - `userUID`：String。用户的 UID，即用户的唯一标识符，字符串格式，不能超过 1024 字节。请确保同一房间内每个用户的 UID 唯一。
 - `userPayload`：用户光标显示的用户信息，包括用户的昵称和头像。详见  <a href="#fastuserpayload">`FastUserPayload`</a >。
 
 <a name="region"></a>
 
-#### Region
+<H3 className="anchor index-api-region" id="region">Region</H3>
 
 数据中心，包含以下枚举：
 
@@ -53,10 +57,10 @@ public init(appIdentifier: String,
 - `US`：美国硅谷，服务区覆盖北美洲、南美洲。
 - `SG`：新加坡，服务区覆盖新加坡、东亚、东南亚。
 - `IN`：印度孟买，服务区覆盖印度。
-- `GB`：英国伦敦，服务区覆盖欧洲。
+- `EU`：欧洲（法兰克福），服务区覆盖欧洲。
 
 <a name="fastuserpayload"></a>
-#### FastUserPayload
+<H3 className="anchor index-api-fastuserpayload" id="fastuserpayload">FastUserPayload</H3>
 
 ```swift
 public class FastUserPayload: NSObject {
@@ -90,11 +94,11 @@ public class FastUserPayload: NSObject {
 
 - `avatar`：String。（可选）用户光标上显示的用户头像，应传入头像对应的 URL 地址。
 
-## FastRoom 类
+<H2 className="anchor index-auto-group index-class-fastroom" id="fastroom">FastRoom 类</H2>
 
 `FastRoom` 类提供管理互动白板实时房间的方法。
 
-### joinRoom
+<H3 className="anchor index-api-joinroom" id="joinroom">joinRoom</H3>
 
 ```swift
 public func joinRoom(completionHandler: ((Result<WhiteRoom, FastRoomError>)->Void)? = nil)
@@ -110,7 +114,7 @@ public func joinRoom(completionHandler: ((Result<WhiteRoom, FastRoomError>)->Voi
 
 - `completionHandler`：方法调用结果回调。传入 `nil`，表示不注册回调。
 
-### disconnectRoom
+<H3 className="anchor index-api-disconnectroom" id="disconnectroom">disconnectRoom</H3>
 
 ```swift
 public func disconnectRoom()
@@ -118,7 +122,7 @@ public func disconnectRoom()
 
 离开白板房间。
 
-### insertImg
+<H3 className="anchor index-api-insertimg" id="insertimg">insertImg</H3>
 
 ```swift
 public func insertImg(_ src: URL, imageSize: CGSize)
@@ -133,7 +137,7 @@ public func insertImg(_ src: URL, imageSize: CGSize)
 - `src`：String。图片的 URL 地址。请确保 app 客户端能够访问该 URL，否则图片无法正常展示。
 - `imageSizewidth`：CGSize。图片的尺寸。
 
-### insertMedia
+<H3 className="anchor index-api-insertmedia" id="insertmedia">insertMedia</H3>
 
 ```swift
 public func insertMedia(_ src: URL, title: String, completionHandler: ((String)->Void)? = nil)
@@ -147,7 +151,7 @@ public func insertMedia(_ src: URL, title: String, completionHandler: ((String)-
 - `title`：String。窗口标题。
 - `completionHandler`：方法调用结果回调。传入 `nil`，表示不注册回调。
 
-### insertPptx
+<H3 className="anchor index-api-insertpptx" id="insertpptx">insertPptx</H3>
 
 ```swift
 public func insertPptx(
@@ -160,9 +164,9 @@ public func insertPptx(
 
 在白板子窗口中插入并展示动态文档。
 
-动态文档指通过[声网互动白板文档转换服务](https://docs.agora.io/cn/whiteboard/file_conversion_overview?platform=RESTful)，由 PPTX 格式的文件转换成的 HTML 网页。转换后的文件会保留源文件里的动画效果。
+动态文档指通过[声网互动白板文档转换服务](/doc/whiteboard/ios/fastboard-sdk/advanced-features/convert-files)，由 PPTX 格式的文件转换成的 HTML 网页。转换后的文件会保留源文件里的动画效果。
 
-成功[发起文档转换任务](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#发起文档转换)并调用[查询文档转换任务进度 API](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#查询转换任务的进度) 获取文档转换结果后，可以调用该方法并传入获取的文档转换结果，SDK 会自动创建子窗口，插入并分页展示转换后的文档。
+成功[发起文档转换任务](/doc/whiteboard/restful/fastboard-sdk/restful-wb/operations/post-v5-projector-tasks)并调用[查询文档转换任务进度](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#查询转换任务的进度)获取文档转换结果后，可以调用该方法并传入获取的文档转换结果，SDK 会自动创建子窗口，插入并分页展示转换后的文档。
 
 **参数**
 
@@ -171,7 +175,7 @@ public func insertPptx(
 - `title`：插入时的窗口标题。
 - `completionHandler`：方法调用结果回调。传入 `nil`，表示不注册回调。
 
-### insertStaticDocument
+<H3 className="anchor index-api-insertstaticdocument" id="insertstaticdocument">insertStaticDocument</H3>
 
 ```swift
 public func insertStaticDocument(_ pages: [WhitePptPage],
@@ -183,16 +187,16 @@ public func insertStaticDocument(_ pages: [WhitePptPage],
 
 静态文档指通过[声网互动白板文档转换服务](https://docs.agora.io/cn/whiteboard/file_conversion_overview?platform=RESTful)，由 PPT、PPTX、DOC、DOCX、PDF 格式的文件转换成的 PNG、JPG/JPEG 格式的静态图片。
 
-成功[发起文档转换任务](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#发起文档转换（post）)并调用[查询文档转换任务进度 API](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#查询转换任务的进度（get）) 获取文档转换结果后，可以调用该方法并传入获取的文档转换结果，SDK 会自动创建子窗口，插入并分页展示转换后的文档。
+成功[发起文档转换任务](/doc/whiteboard/restful/fastboard-sdk/restful-wb/operations/post-v5-projector-tasks)并调用[查询文档转换任务进度](/doc/whiteboard/restful/fastboard-sdk/restful-wb/operations/get-v5-projector-tasks-uuid)获取文档转换结果后，可以调用该方法并传入获取的文档转换结果，SDK 会自动创建子窗口，插入并分页展示转换后的文档。
 
 **参数**
 
-- `pages`：转换后的文件列表。详见[查询文档转换任务进度 API](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#http-响应-1) 请求成功后返回的响应包体中 `convertedFileList` 参数的值。
+- `pages`：转换后的文件列表。详见[查询文档转换任务进度](/doc/whiteboard/restful/fastboard-sdk/restful-wb/operations/get-v5-projector-tasks-uuid)请求成功后返回的响应包体中 `convertedFileList` 参数的值。
 - `title`：窗口标题。
 - `completionHandler`：方法调用结果回调。传入 `nil`，表示不注册回调。
 
 
-### followSystemPencilBehavior
+<H3 className="anchor index-api-followsystempencilbehavior" id="followsystempencilbehavior">followSystemPencilBehavior</H3>
 
 ```swift
 public static var followSystemPencilBehavior
@@ -203,11 +207,11 @@ public static var followSystemPencilBehavior
 - `YES`：跟随系统默认设置。在该状态下，用户可以使用 Apple Pencil 的系统默认功能操作白板，例如，双击切换当前工具为橡皮擦，双击显示调色板，使用 Apple Pencil 涂鸦等。
 - `NO`：不跟随系统默认设置。在该状态下，Apple Pencil 的系统默认功能不可用。
 
-## FastRoomThemeManager 类
+<H2 className="anchor index-auto-group index-class-fastroomthememanager" id="fastroomthememanager">FastRoomThemeManager 类</H2>
 
 `FastRoomThemeManager` 类提供设置白板用户界面主题的方法。
 
-### apply
+<H3 className="anchor index-api-apply" id="apply">apply</H3>
 
 ```swift
 public func apply(_ theme: FastRoomThemeAsset)
@@ -250,7 +254,7 @@ Fastboard SDK 在 iOS 13.0 或以上版本上默认跟随系统的主题设置�
 
 <a name="themeasset"></a>
 
-#### FastRoomThemeAsset
+<H3 className="anchor index-api-fastroomthemeasset" id="fastroomthemeasset">FastRoomThemeAsset</H3>
 
 白板主题样式。
 
@@ -284,7 +288,7 @@ open class FastRoomThemeAsset: NSObject {
 
 
 <a name="whiteboardassets"></a>
-##### FastRoomWhiteboardAssets
+<H3 className="anchor index-api-fastroomwhiteboardassets" id="fastroomwhiteboardassets">FastRoomWhiteboardAssets</H3>
 
 白板的样式。
 
@@ -311,7 +315,7 @@ open class FastRoomWhiteboardAssets: NSObject {
 
 
 <a name="controlbarassets"></a>
-##### FastRoomControlBarAssets
+<H3 className="anchor index-api-fastroomcontrolbarassets" id="fastroomcontrolbarassets">FastRoomControlBarAssets</H3>
 
 控制条的样式。
 
@@ -343,7 +347,7 @@ open class FastRoomControlBarAssets: NSObject {
 
 
 <a name="panelitemassets"></a>
-##### FastRoomPanelItemAssets
+<H3 className="anchor index-api-fastroompanelitemassets" id="fastroompanelitemassets">FastRoomPanelItemAssets</H3>
 
 按钮的样式。
 
@@ -417,11 +421,11 @@ open class FastRoomPanelItemAssets: NSObject {
 - `selectedBackgroundCornerradius`：选中状态的背景圆角。
 - `selectedBackgroundEdgeinset` ：选中状态的背景内边距。
 
-## FastRoomDefaultOperationItem 类
+<H2 className="anchor index-auto-group index-class-fastroomdefaultoperationitem" id="fastroomdefaultoperationitem">FastRoomDefaultOperationItem 类</H2>
 
 `FastRoomDefaultOperationItem` 类用于自定义白板用户界面上的操作组件。
 
-### defaultColors
+<H3 className="anchor index-api-defaultcolors" id="defaultcolors">defaultColors</H3>
 
 ```swift
 public static var defaultColors: [UIColor]
