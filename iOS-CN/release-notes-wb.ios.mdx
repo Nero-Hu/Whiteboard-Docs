@@ -6,30 +6,79 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 本文提供声网互动白板 iOS SDK 的发版说明。
 
-## 2.16.96 版
+<VersionSection version="2.16.112 版">
+
+该版本于 2025 年 4 月 x 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+<ListTitle>高性能白板绘制工具</ListTitle>
+
+该版本新增 `appliance-plugin` 插件，实现了一套高性能的白板绘制工具。安装 `@netless/appliance-plugin` 后，你可以通过 `WhiteSdkConfiguration.enableAppliancePlugin` 配置项启用该插件。详见[`appliance-plugin`](https://github.com/netless-io/fastboard/blob/main/docs/zh/appliance-plugin.md)。
+
+<Admonition type="caution" title="注意">
+- `@netless/appliance-plugin` 为必需外部依赖，需要单独安装。
+- 为确保笔迹正常显示，请在所有终端（Web、Android 和 iOS）上都开启 `appliance-plugin` 插件。如果某个终端未开启，其他终端使用 `appliance-plugin` 绘制的笔迹将无法在该终端显示。
+- 开启 `appliance-plugin` 插件后，白板上的历史内容仍会显示，但无法对其进行操作或升级。为避免影响使用体验，建议在全新的白板上使用该插件。关闭插件后，使用该插件绘制的内容将会丢失。
+</Admonition>
+
+开启 `appliance-plugin` 插件后，你可以：
+
+- 使用新增的激光铅笔工具 `LASER_PENCIL`，使用方式详见[`appliance-plugin`](https://github.com/netless-io/fastboard/blob/main/docs/zh/appliance-plugin.md#%E6%96%B0%E5%8A%9F%E8%83%BD)。
+- 新增 `WhiteMemberState.strokeOpacity` 属性，用于更改线框透明度。
+- 新增 `WhiteMemberState.fillOpacity` 属性，用于更改填充透明度。
+- 新增 `WhiteMemberState.fillColor` 属性，用于更改填充颜色。
+
+<ListTitle>处理 PPT 渲染错误</ListTitle>
+
+该版本新增 `SlideListener.onSlideError` 方法，用于监听 PPT 渲染相关错误。此外，发生 PPT 渲染错误时，你可以调用 `WhiteSdk.recoverSlide` 方法恢复 PPT 渲染。
+
+<ListTitle>自动聚焦</ListTitle>
+
+新增 `WhiteSdkConfiguration.useWebKeyboardInjection` 属性，用于控制是否允许 WKWebview 自动获得输入焦点。主要用于处理键盘显示和文本输入的控制，特别是在复杂的 App 界面中，多个组件可能都需要接收键盘输入时的协调问题。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+<ListTitle>新增</ListTitle>
+
+- `WhiteSdkConfiguration` 新增以下属性：
+  - `enableAppliancePlugin`
+  - `useWebKeyboardInjection`
+- `WhiteMemberState` 新增以下属性：
+  - `strokeOpacity`
+  - `fillOpacity`
+  - `fillColor`
+- `onSlideError`
+- `recoverSlide`
+
+</VersionSection>
+
+<VersionSection version="2.16.96 版">
 
 该版本于 2024 年 6 月 x 日发布。
 
-#### 新增特性
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
-**接入域名预选**
+<ListTitle>接入域名预选</ListTitle>
 
 该版本新增 `WhiteSDK.prepareWhiteConnectionForAppId` 方法，用于提前选择最佳接入域名，用于加快用户首次加入白板方间时的连接速度。
 
-**白板窗口样式覆盖**
+<ListTitle>白板窗口样式覆盖</ListTitle>
 
 该版本新增 `WhiteWindowParams.overwriteStyles`，用于使用 CSS 覆盖白板窗口样式，实现自定义 UI 细节。
 
-#### 问题修复
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
 
 该版本修复了 `drawOnlyPencil` 在 iOS 17 及以上版本失效的问题。
 
-#### API 变更
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
 
-**新增**
+<ListTitle>新增</ListTitle>
 
 - `prepareWhiteConnectionForAppId`
 - `overwriteStyles`
+
+</VersionSection>
 
 <VersionSection version="2.16.88 版">
 
