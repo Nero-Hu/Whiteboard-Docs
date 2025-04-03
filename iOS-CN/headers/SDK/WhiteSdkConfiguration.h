@@ -238,11 +238,27 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 @property (nonatomic, assign) BOOL disableNewPencilStroke;
 
 /**
+ 启用。
+ 启用后，原基础教具将被替换。请确保同一房间的所有终端使用相同配置。
+ 默认为 NO。
+ */
+@property (nonatomic, assign) BOOL enableAppliancePlugin;
+
+/**
  * 配置白板的 API 服务器域名列表，可以用于服务器代理。配置后，白板不再使用 SDK 自带配置。
  * @example
  * [api.example.com]
  */
 @property (nonatomic, copy, nullable) NSArray<NSString*> *apiHosts;
+
+/**
+ * 是否允许 WKWebview 自动获得输入焦点：
+ * - `YES`：（默认）允许。
+ * - `NO`：不允许。
+ * 
+ * @note 由于在一个 App 中，同一时间只能有一个控件获得焦点，该属性可能会影响 App 中其他 WKWebView 实例，如果不需要自动聚焦功能可以选择关闭。
+ */
+@property (nonatomic, assign) BOOL useWebKeyboardInjection;
 
 @end
 

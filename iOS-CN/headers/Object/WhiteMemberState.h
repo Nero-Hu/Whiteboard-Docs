@@ -38,6 +38,8 @@ extern WhiteApplianceNameKey const ApplianceArrow;
 extern WhiteApplianceNameKey const ApplianceHand;
 /** 激光笔工具。 */
 extern WhiteApplianceNameKey const ApplianceLaserPointer;
+/** 激光画笔工具，该工具仅在 `WhiteSdkConfiguration.enableAppliancePlugin` 启用时可用。 */
+extern WhiteApplianceNameKey const ApplianceLaserPen;
 /** 图形工具，需要设置 `ShapeType` 属性，如果不设置，则默认设置为三角形。
  @since 2.12.24 */
 extern WhiteApplianceNameKey const ApplianceShape;
@@ -79,6 +81,24 @@ extern WhiteApplianceShapeTypeKey const ApplianceShapeTypeSpeechBalloon;
 /** 当教具为 `Shape` 时，所选定的 shape 图形。
  @since 2.12.24 */
 @property (nonatomic, strong, readonly, nullable) WhiteApplianceShapeTypeKey shapeType;
+
+/** 线框透明度。
+ * @since 2.16.112
+ * 取值范围为 [0.0, 1.0]，0 表示完全透明，1 表示完全不透明。
+ * 仅在 `WhiteSdkConfiguration.enableAppliancePlugin` 启用时有效。
+ */
+@property (nonatomic, strong, readonly, nullable) NSNumber *strokeOpacity;
+/** 填充样式。
+ * @since 2.16.112
+ * 仅在 WhiteSdkConfiguration.enableAppliancePlugin 启用时有效
+ */
+@property (nonatomic, copy, readonly, nullable) NSArray<NSNumber *> *fillColor;
+/** 填充透明度。
+ * @since 2.16.112
+ * 取值范围为 [0.0, 1.0]，0 表示完全透明，1 表示完全不透明。
+ * 仅在 `WhiteSdkConfiguration.enableAppliancePlugin` 启用时有效。
+*/
+@property (nonatomic, strong, readonly, nullable) NSNumber *fillOpacity;
 @end
 
 #pragma mark - MemberState
