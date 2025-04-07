@@ -149,6 +149,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)updateSlideVolume:(CGFloat)volume;
 
+/**
+ 恢复 Slide 并跳转到其他页。
+ RESOURCE_ERROR 和 RUNTIME_ERROR 可以用这种方式恢复。
+ 
+ @param slideId 使用错误消息里告知的 slideId
+ @param slideIndex 指定要跳转到哪一页, 如果想要跳转到下一页可以使用错误消息里告知的报错页码 + 1
+ */
+- (void)recoverSlide:(NSString *)slideId slideIndex:(NSInteger)slideIndex;
+
+/**
+ 恢复 Slide。
+ RESOURCE_ERROR 可以用这种方式恢复。
+ 
+ @param slideId 错误消息里告知的 slideId。
+ */
+- (void)recoverSlide:(NSString *)slideId;
+
+
 #pragma mark - CommonCallback
 
 /**
