@@ -256,6 +256,35 @@ FOUNDATION_EXPORT WhiteSDKLoggerReportModeKey const WhiteSDKLoggerReportBan;
 
 @property (nonatomic, assign) BOOL disableDeviceInputs;
 
+/**
+ Enables the appliance plugin.
+
+ After enabling this property, the basic teaching tools will be replaced. Ensure that all terminals in the same room use the same configuration.
+
+ The default value is NO.
+ */
+@property (nonatomic, assign) BOOL enableAppliancePlugin;
+
+/**
+ Configures the API server domain name list for the whiteboard, which can be used for server proxy. After configuration, the whiteboard no longer uses the SDK's own configuration.
+
+ @example
+ [api.example.com]
+ */
+@property (nonatomic, copy, nullable) NSArray<NSString*> *apiHosts;
+
+/**
+ Whether to allow the WKWebview to automatically obtain the input focus:
+
+ - `YES`：(Default) Allow.
+ - `NO`：Disallow.
+
+ **Note:**
+
+ Because only one control can obtain the focus at the same time in an App, this property may affect other WKWebView instances in the App. If you do not need the automatic focus feature, you can close it.
+ */
+@property (nonatomic, assign) BOOL useWebKeyboardInjection;
+
 @end
 
 @implementation WhiteSdkConfiguration (Deleted)

@@ -81,6 +81,25 @@ extern WhiteApplianceShapeTypeKey const ApplianceShapeTypeSpeechBalloon;
 @property (nonatomic, copy, readwrite, nullable) NSArray<NSNumber *> *textColor;
 /** Size of the eraser for local erasing. The value range is [1,3], where a larger value represents a larger size. */
 @property (nonatomic, strong, readwrite, nullable) NSNumber *pencilEraserSize;
+
+/** The opacity of the stroke.
+ * @since 2.16.112
+ * The value range is [0.0, 1.0], where 0 represents completely transparent and 1 represents completely opaque.
+ * Only effective when `WhiteSdkConfiguration.enableAppliancePlugin` is enabled.
+ */
+@property (nonatomic, strong, readonly, nullable) NSNumber *strokeOpacity;
+/** The fill color.
+ * @since 2.16.112
+ * Only effective when `WhiteSdkConfiguration.enableAppliancePlugin` is enabled.
+ */
+@property (nonatomic, copy, readonly, nullable) NSArray<NSNumber *> *fillColor;
+/** The opacity of the fill.
+ * @since 2.16.112
+ * The value range is [0.0, 1.0], where 0 represents completely transparent and 1 represents completely opaque.
+ * Only effective when `WhiteSdkConfiguration.enableAppliancePlugin` is enabled.
+*/
+@property (nonatomic, strong, readonly, nullable) NSNumber *fillOpacity;
+
 @end
 
 /** Settings of the whiteboard tool in use. */
