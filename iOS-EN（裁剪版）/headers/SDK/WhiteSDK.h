@@ -149,10 +149,27 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getSlideVolumeWithCompletionHandler:(void(^)(CGFloat volume, NSError *error))completionHandler;
 
 /**
- 更新当前 PPT 的音量。
- @param volume 音量值，取值范围为 (0,1]。
+ Updates the volume of the current PPT.
+ @param volume The volume value, ranging from (0,1].
  */
 - (void)updateSlideVolume:(CGFloat)volume;
+
+/**
+ Restores the Slide and jumps to other pages.
+ RESOURCE_ERROR and RUNTIME_ERROR can be recovered in this way.
+ 
+ @param slideId The slideId used in the error message.
+ @param slideIndex The page to jump to, if you want to jump to the next page, use the error message page number + 1.
+ */
+- (void)recoverSlide:(NSString *)slideId slideIndex:(NSInteger)slideIndex;
+
+/**
+ Restores the Slide.
+ RESOURCE_ERROR can be recovered in this way.
+ 
+ @param slideId The slideId used in the error message.
+ */
+- (void)recoverSlide:(NSString *)slideId;
 
 #pragma mark - CommonCallback
 
