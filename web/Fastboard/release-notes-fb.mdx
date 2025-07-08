@@ -1,0 +1,304 @@
+---
+title: 发版说明
+---
+
+import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/VersionSection.tsx'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+本文提供声网 Fastboard SDK for Web 的发版说明。
+
+## 0.3.22 版
+
+该版本于 2024 年 11 月 xx 日发布。
+
+#### 新增特性
+
+**全打包方式引用**
+
+自该版本起，Fastboard SDK 新增全打包文件 `@netless/fastboard/full` 和 `@netless/fastboard-react/full`，用于解决内外依赖冲突问题。使用全打包方式引用时，无需再安装 `@netless/window-manager` 和 `white-web-sdk` 等依赖。
+
+<Admonition type="caution" title="注意">
+使用全打包方式引用时，你需要在项目中移除 `@netless/window-manager`、`white-web-sdk` 和 `jspdf` 依赖。
+</Admonition>
+
+<Tabs groupId="preq">
+  <TabItem value="javascript" label="JavaScript 中引用">
+```javascript
+// 全打包方式引用
+import { createFastboard, createUI } from "@netless/fastboard/full";
+
+// 分包引用
+import { createFastboard, createUI } from "@netless/fastboard";
+```
+  </TabItem>
+  <TabItem value="react" label="React 中引用">
+```jsx
+// 全打包方式引用
+import { useFastboard, Fastboard } from "@netless/fastboard-react/full";
+// 分包引用
+import { useFastboard, Fastboard } from "@netless/fastboard-react";
+```
+  </TabItem>
+</Tabs>
+
+更多全打包方式和分包方式引用的信息，详见 [Fastboard 安装与使用](https://github.com/netless-io/fastboard/blob/main/README-zh.md#install)。
+
+**高性能白板绘制工具**
+
+该版本新增 `appliance-plugin` 插件，实现了一套高性能的白板绘制工具，且支持在多窗口模式下使用。安装 `@netless/appliance-plugin` 后，你可以通过 `FastboardOptions.enableAppliancePlugin` 或 `managerConfig.supportAppliancePlugin` 配置项启用该插件。详见[`appliance-plugin`](https://github.com/netless-io/fastboard/blob/main/docs/zh/appliance-plugin.md)。
+
+<Admonition type="caution" title="注意">
+`@netless/appliance-plugin` 为必需外部依赖，不包含在全打包文件中，需要单独安装。
+</Admonition>
+
+#### 改进
+
+**自定义 UI 组件颜色**
+
+`ToolbarConfig` 接口新增 `colors` 属性，用于设置 UI 组件的颜色。自该版本起，默认情况下，工具条 (toolbar) 和悬浮条 (floatbar) 的颜色保持一致，应用统一的颜色集合。你也可以通过 [`joinRoomParams.floatbarOptions.colors`](/api-ref/whiteboard/javascript/globals#floatbaroptions) 或 [`ToolbarConfig.colors`](/api-ref/fastboard/javascript/fastboard-api#toolbarconfig) 分别设置两者的颜色集合。
+
+#### API 变更
+
+**新增**
+
+- `FastboardOptions.enableAppliancePlugin`
+- `ToolbarConfig.colors`
+
+<VersionSection version="0.3.16 版">
+
+该版本于 2024 年 9 月 x 日发布。
+
+#### 新增特性
+
+**获取房间是否可操作**
+
+新增 `canOperate` 方法，用于获取房间是否处于可操作状态，即获取当前房间是否处于互动模式 (`writable`) 且房间连接状态为已连接 (`connected`)。
+
+
+#### 改进
+
+该版本进行了如下改进：
+
+- 多窗口模式下，插入的小窗应用支持拖动窗口右上角以调整窗口大小。
+- 支持在调用 `destroy` 销毁状态后访问状态的值 (`state.value`)。
+- `insertDocs` 方法支持传入带 `prefix` 字段的静态转换的响应包体。
+
+#### 问题修复
+
+该版本修复了如下问题：
+
+- 使用 `insertDocs` 插入静态转换后的文档无法返回 `appId`。
+- 当 `FatboardUIConfig` 更新为 `{ toolbar: undefined }` 时出错。
+- 监听部分状态（例如 `camera.value`）时返回的不是最新值。
+- 房间连接状态 (`room.phase`) 为未连接时，部分组件失效。
+
+#### API 变更
+
+**新增**
+- `canOperate`
+
+<VersionSection version="0.3.10 版">
+
+该版本于 2024 年 2 月 4 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+<ListTitle>白板教具新特性</ListTitle>
+
+该版本为以下白板教具添加了新特性：
+
+- 铅笔工具：新增 [`toggleDottedLine`](/api-ref/fastboard/javascript/fastboard-api#toggledottedline) 方法，用于切换铅笔工具的画线样式。
+- 铅笔橡皮工具：新增 [`setPencilEraserSize`](/api-ref/fastboard/javascript/fastboard-api#setpencilerasersize) 方法，用于修改铅笔橡皮的大小。
+
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+该版本进行了如下改进：
+
+- [`insertImage`](/api-ref/fastboard/javascript/fastboard-api#insertimage) 方法新增参数 `crossOrigin`，用于设置是否对插入的图片启用跨域资源共享 (CORS, Cross-Origin Resource Sharing) 。
+- 新增 [`jumpPage`](/api-ref/fastboard/javascript/fastboard-api#jumppage) 方法，用于跳转至指定白板页。相比之前修改 `FastboardApp` 的 `sceneIndex` 属性的方式更加便捷。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+该版本修复了重新连接白板房间后偶现 `FastobardApp.camera` 控件显示的白板画布缩放比例无法随实际情况变化的问题。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+<ListTitle>新增</ListTitle>
+
+- `toggleDottedLine`
+- `setPencilEraserSize`
+- `insertImage` 新增参数 `crossOrigin` 
+- `jumpPage`
+
+</VersionSection>
+
+<VersionSection version="0.3.8 版">
+
+该版本于 2023 年 8 月 17 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+<ListTitle>快速插入文档</ListTitle>
+
+新增 `insertDocs [1/2]` 方法，用于快速插入[新版文档转换服务](./advanced-features/convert-files)转换后的 PDF/PPTX 文档。
+
+<ListTitle>操作 PDF/PPTX 文档</ListTitle>
+
+新增 `dispatchDocsEvent` 方法，用于向插入白板的 PDF/PPTX 文档发送事件，实现控制文档翻页、页面跳转和幻灯片动画播放。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+该版本修复了使用旧版本打包器时偶现的打包失败问题。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+<ListTitle>新增</ListTitle>
+
+- [`insertDocs [1/2]`](/api-ref/fastboard/javascript/fastboard-api#insertdocs1)
+- [`dispatchDocsEvent`](/api-ref/fastboard/javascript/fastboard-api#dispatchdocsevent)
+- [`DocsEventOptions`](/api-ref/fastboard/javascript/fastboard-api#docseventoptions)
+
+</VersionSection>
+
+
+<VersionSection version="0.3.6 版">
+
+该版本于 2022 年 10 月 28 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+<ListTitle>注册 Fastboard 插件</ListTitle>
+
+该版本在 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#fastboardoptions`}>`FastboardOptions`</a> 接口中新增可选属性 `netlessApps`，用于注册 Fastboard 官方内置或由你自定义的 Fastboard 插件，详见[注册和使用 app](https://github.com/netless-io/fastboard/blob/main/README-zh.md#注册与使用-apps)。
+
+<ListTitle>创建 UI 组件</ListTitle>
+
+该版本新增了 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#createui`}>`createUI`</a> 和 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#createreplayui`}>`createReplayUI`</a> 方法分别用于创建 Fastboard 内置的一套 UI 组件和回放模式的一套 UI 组件。
+
+<ListTitle>删除白板页</ListTitle>
+
+该版本新增了 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#removepage`}>`removePage`</a> 方法用于删除指定白板页。
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了如下改进：
+
+- 点击插件按钮后自动隐藏插件菜单。
+- 向白板日志提交 Fastboard 信息。
+- 优化 UI 在 React 下使用时的性能。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+
+该版本修复了如下问题：
+
+- 白板在某些设备上可能失焦。
+- 用户自定义热键的 UI 显示错误。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+
+<ListTitle>新增</ListTitle>
+
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#removepage`}>`removePage`</a>
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#createui`}>`createUI`</a>
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#createreplayui`}>`createReplayUI`</a>
+
+<ListTitle>废弃</ListTitle>
+
+- `insertCodeEditor`：改用 `fastboard.manager.addApp({ kind: 'Monaco' })` 实现。
+- `insertCountdown`：改用 `fastboard.manager.addApp({ kind: 'Countdown' })` 实现。
+- `insertGeoGebra`：改用 `fastboard.manager.addApp({ kind: 'GeoGebra' })` 实现。
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#mount`}>`mount`</a>：现在推荐用 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#createui`}>`createUI`</a>。
+
+</VersionSection>
+
+<VersionSection version="0.3.2 版">
+
+该版本于 2022 年 4 月 29 日发布。
+
+<VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
+
+
+该版本替换了构建白板用户界面使用的框架。集成该版本的 Fastboard SDK，无需再添加 `react` 和 `react-dom` 依赖项。详见[添加依赖项](./get-started/join-room-fb#添加依赖项)。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+
+<ListTitle>白板用户界面配置</ListTitle>
+
+该版本在 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#mount`}>`mount`</a> 方法中新增 `options` 参数，用于配置白板用户界面。你可以通过该参数设置白板用户界面的主题、语言和每个组件的显示状态等。
+
+同时，该版本还将调用 `mount` 方法后返回的 `update` 方法的 `theme` 和 `language` 变更为 `props` 参数。通过 `props` 参数可以更新白板用户界面的主题、语言和每个组件的显示状态等。
+
+<ListTitle>字体设置</ListTitle>
+
+该版本在 `FastboardApp` 类中新增 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#settextcolor`}>`setTextColor`</a> 和 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#settextsize`}>`setTextSize`</a> 方法，用于设置字体的颜色和大小，方便你自行开发文本编辑功能。
+
+<ListTitle>管理插件按钮</ListTitle>
+
+该版本新增 `AppsInToolbar` 类，提供管理工具条上插件按钮方法，具体如下：
+
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#push`}>`push`</a>：在插件中心的末尾添加插件按钮。
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#insert`}>`insert`</a>：在指定位置添加一个插件按钮。
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#delete`}>`delete`</a>：删除指定的插件按钮。
+- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#clear`}>`clear`</a>：删除所有插件按钮。
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+
+该版本进行了如下改进：
+
+- 优化了用户界面的样式。
+- 当用户以只读模式加入白板房间时，SDK 自动隐藏用户界面上的所有组件，以避免用户点击却不生效。
+
+</VersionSection>
+
+<VersionSection version="0.2.8 版">
+
+该版本于 2022 年 3 月 7 日发布，是 Fastboard SDK 首个版本。
+
+<VersionTitle icon="/img/icons/version-feature.png">功能特性</VersionTitle>
+
+
+<ListTitle>白板核心功能的默认实现和 UI</ListTitle>
+
+该版本直接实现了互动白板的核心基础功能，并提供默认的 UI。集成 Fastboard SDK 并调用 `createFastboard` 方法加入白板房间后，即可使用如下功能：
+
+- 白板工具栏，包括铅笔、文本编辑、图形工具等所有白板基础编辑工具，并支持设置线条粗细、字体大小和颜色。
+- 页面管理，包括新增页面和页面跳转。
+- 视角管理，包括页面缩放和视角调整。
+- 撤销、重做
+
+同时，Fastboard SDK 还提供了如下 API，方便你自行开发这些功能并自定义 UI：
+
+- `setAppliance`
+- `setStrokeWidth`
+- `setStrokeColor`
+- `moveCamera`
+- `moveCameraToContain`
+- `undo`
+- `redo`
+
+<ListTitle>添加和使用插件</ListTitle>
+
+Fastboard SDK 集成了窗口管理器（[Window Manager](https://github.com/netless-io/window-manager)）和插件中心（[Netless App](https://github.com/netless-io/netless-app)），用于在白板应用中快速添加和使用插件，扩展白板的功能。该版本默认提供代码编辑器（Code Editor）、计时器（Countdown）、数学计算器（GeoGebra）插件，加入房间即可使用。此外，你还可以根据业务需求开发并添加自定义插件。
+
+
+<Admonition type="caution" title="注意">
+GeoGebra 数学计算器仅作为示例插件，如需商用，请联系 GeoGebra 获取许可。
+</Admonition>
+
+
+<ListTitle>展示文件</ListTitle>
+
+Fastboard SDK 支持在白板中插入和展示多种形式的文件，例如，PNG、JPG 格式的图片，MP3、MP4 格式的音视频，以及 PPT、PPTX、DOC、DOCX、PDF 等格式的文档。具体实现步骤参考[展示文件](./basic-features/present-files-fb)。
+
+
+
+</VersionSection>
