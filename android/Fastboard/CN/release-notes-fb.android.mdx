@@ -37,7 +37,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 - 调用 [`setToolboxEdgeMargin`](/api-ref/fastboard/android/fastboard-api#settoolboxedgemargin) 时，如果未指定 Toolbox Gravity，则该方法无效。
 - 首次调用 [`setResource`](/api-ref/fastboard/android/fastboard-api#setresource) UI 更新不生效。
-- 画笔颜色未包含在 [`setToolsColors`](/api-ref/fastboard/android/fastboard-api#settoolscolors) 中。
+- 调用 [`setToolsColors`](/api-ref/fastboard/android/fastboard-api#settoolscolors) 设置了自定义颜色列表后，初次进入房间时的画笔颜色不在这组颜色里，不符合预期。
 
 <VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
 
