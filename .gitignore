@@ -1,18 +1,17 @@
-node_modules/
-iOS-EN（裁剪版）/output
-iOS-EN/output
-iOS-CN/output
-*.html
-
 ios/node_modules/
-ios/iOS-EN（裁剪版）/output
-ios/iOS-EN/output
-ios/iOS-CN/output
+ios/EN/output
+ios/CN/output
 
 android/node_modules/
 android/CN/output
-android/EN-Compact/output
-android/EN-Full/output
+android/EN/output
+
 
 web/node_modules/
-web/docs/
+web/CN/node_modules/
+web/EN/node_modules/
+web/CN/docs/
+web/EN/docs/
+
+*.html
+*.zip
