@@ -1,110 +1,7 @@
 <PlatformWrapper platform="web">
 
 
-The <Vg k="FAST_SDK" /> is the latest generation of the whiteboard SDK launched by Agora to help developers quickly build whiteboard applications. It simplifies the APIs of the <Vg k="WHITE_SDK" /> and implements the core functionality with a default user interface (UI). In addition, the <Vg k="FAST_SDK" /> integrates [window-manager](https://github.com/netless-io/window-manager) and extensions from [netless-app](https://github.com/netless-io/netless-app) to allow developers to easily add extensions and thus extend the functionality of their whiteboard applications. With the <Vg k="FAST_SDK" />, you do not need to learn the complex concepts of the interactive whiteboard; you can join a whiteboard room with a few lines of code and instantly use the rich editing tools to start real-time interactive collaboration.
-
-## v1.0.0
-
-This version was released on November xx, 2024.
-
-#### New features
-
-**Full package reference**
-
-Starting from this version, Fastboard SDK adds full package files `@netless/fastboard/full` and `@netless/fastboard-react/full` to solve the dependency conflict problem. When using the full package reference, you do not need to install `@netless/window-manager` and `white-web-sdk` dependencies.
-
-<div class="alert note">
-Using the full package reference, you need to remove the `@netless/window-manager`, `white-web-sdk`, and `jspdf` dependencies from your project.
-</div>
-
-More information about full package and partial package reference, see [Fastboard installation and use](https://github.com/netless-io/fastboard/blob/main/README.md#install).
-
-**High-performance whiteboard drawing tool**
-
-This version adds the `appliance-plugin` plugin, which implements a high-performance whiteboard drawing tool and supports use in multi-window mode. After installing `@netless/appliance-plugin`, you can enable this plugin by using the `FastboardOptions.enableAppliancePlugin` or `managerConfig.supportAppliancePlugin` configuration item. In addition, when turning on appliance plugin, Fastboard UI adds a `laserPen` tool. For more information, see [`appliance-plugin`](https://github.com/netless-io/fastboard/blob/main/docs/en/appliance-plugin.md).
-
-<div class="alert note">
-`@netless/appliance-plugin` is a required external dependency and is not included in the full package. You need to install it separately.
-</div>
-
-#### Improvements
-
-**Custom UI component color**
-
-The `ToolbarConfig` interface adds the `colors` property, which is used to set the color of the UI components. Starting from this version, the colors of the toolbar and floatbar are consistent by default, and the application uses a unified color set. You can also set the color set of the two by using [`joinRoomParams.floatbarOptions.colors`](/api-ref/whiteboard/javascript/globals#floatbaroptions) and [`ToolbarConfig.colors`](/api-ref/fastboard/javascript/fastboard-api#toolbarconfig).
-
-**Other improvements**
-
-- This version updates @netless/window-manager to v1.0.0.
-
-#### API Changes
-
-**Added**
-
-- `FastboardOptions.enableAppliancePlugin`
-- `ToolbarConfig.colors`
-
-## v0.3.16
-
-This version was released on September xx, 2024.
-
-#### New features
-
-**Get whether the room is operable**
-
-This version adds the `canOperate` method, which is used to get whether the room is in an operable state, that is, whether the current room is in interactive mode (`writable`) and the room connection state is connected (`connected`).
-
-
-#### Improvements
-
-This version has the following improvements:
-
-- In multi-window mode, the small window application inserted supports dragging the upper right corner of the window to adjust the window size.
-- Supports accessing the value of the state after calling `destroy` to destroy the state (`state.value`).
-- The `insertDocs` method supports passing in the response body of the static conversion with the `prefix` field.
-
-#### Fixed issues
-
-This version fixes the following issues:
-
-- Using `insertDocs` to insert a document converted from a static file fails to return the `appId`.
-- An error occurs when `FatboardUIConfig` is updated to `{ toolbar: undefined }`.
-- Listening to some states (such as `camera.value`) returns an outdated value.
-- Some components are invalid when the room connection state (`room.phase`) is not connected.
-
-#### API Changes
-
-**Added**
-- `canOperate`
-
-## v0.3.10
-
-v0.3.10 was released on Febrary xx, 2024.
-
-#### New features
-
-**New features for whiteboard tools**
-
-This version adds new features to the following whiteboard tools：
-
-- Pencil Tool: Added `toggleDottedLine` method to the Pencil tool to switch to drawing dotted lines.
-- Pencil Eraser Tool: Added `setPencilEraserSize` method to the Pencil Eraser tool to change the size of the pencil eraser.
-
-#### Improvements
-
-This version has the following ：
-
-- Added `crossOrigin` parameter to the `insertImage` method to enable Cross-Origin Resource Sharing (CORS) for inserted images.
-- Added `jumpPage` method to jump to a specified whiteboard page.
-
-#### API Changes
-
-**Added**
-
-- `toggleDottedLine`
-- `setPencilEraserSize`
-- Added a new parameter `crossOrigin` in `insertImage` 
-- `jumpPage`
+The <Vg k="FAST_SDK" /> is the latest generation of the whiteboard SDK launched by Agora to help developers quickly build whiteboard applications. It simplifies the APIs of the <Vg k="WHITE_SDK" /> and implements the core functionality with a default user interface (UI). In addition, the <Vg k="FAST_SDK" /> integrates [window-manager](https://github.com/netless-io/window-manager) and extensions from [netless-app](https://github.com/netless-io/netless-app) to allow developers to easily add extensions to extend the functionality of their whiteboard applications. With the <Vg k="FAST_SDK" />, you do not need to learn the complex concepts of the interactive whiteboard; you can join a whiteboard room with a few lines of code and instantly use the rich editing tools to start real-time interactive collaboration.
 
 ## v0.3.8
 
@@ -283,7 +180,7 @@ Users can use these extensions immediately after joining the whiteboard room. Th
 
 In addition, you can develop and add custom extensions to your whiteboard application according to your business needs.
 
-<div class="alert note">The GeoGebra extension in the UI Kit is for demonstration purposes only. For commercial use, contact GeoGebra to apply for a license.</div>
+<Admonition type="info">The GeoGebra extension in the UI Kit is for demonstration purposes only. For commercial use, contact GeoGebra to apply for a license.</Admonition>
 
 #### Display files
 

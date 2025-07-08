@@ -4,11 +4,19 @@ title: 发版说明
 
 import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/VersionSection.tsx'
 
-本文提供声网互动白板 iOS SDK 的发版说明。
+本文提供声网 Whiteboard iOS SDK 的发版说明。
+
+<Admonition type="info" title="桥接说明">
+为了确保 Whiteboard SDK 在不同平台上提供一致的用户体验，同时允许各端以原生方式接入，Whiteboard iOS SDK 通过桥接 Whiteboard Web SDK 实现，不是完全原生的 SDK。因此，iOS SDK 的版本更新内容会默认包含指定 Web SDK 版本及以前的更新内容，你可以根据 iOS 各版本的桥接说明，前往 [Web SDK 发版说明](/doc/whiteboard/javascript/whiteboard-sdk/release-notes-wb)查看包含的更新内容。
+</Admonition>
 
 <VersionSection version="2.16.112 版">
 
-该版本于 2025 年 4 月 x 日发布。
+该版本于 2025 年 4 月 7 日发布。
+
+<Admonition type="info" title="桥接说明">
+桥接的 Web SDK 已升级至 [v2.16.53](/doc/whiteboard/javascript/whiteboard-sdk/release-notes-wb#2.16.53%20版)。
+</Admonition>
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
@@ -53,9 +61,13 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 </VersionSection>
 
-<VersionSection version="2.16.96 版">
+<VersionSection version="2.16.95 版">
 
-该版本于 2024 年 6 月 x 日发布。
+该版本于 2024 年 6 月 6 日发布。
+
+<Admonition type="info" title="桥接说明">
+桥接的 Web SDK 已升级至 [v2.16.51](/doc/whiteboard/javascript/whiteboard-sdk/release-notes-wb#2.16.51%20版)。
+</Admonition>
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
@@ -82,13 +94,17 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <VersionSection version="2.16.88 版">
 
-该版本于 2024 年 3 月 x 日发布。
+该版本于 2024 年 3 月 13 日发布。
+
+<Admonition type="info" title="桥接说明">
+桥接的 Web SDK 已升级至 [v2.16.48](/doc/whiteboard/javascript/whiteboard-sdk/release-notes-wb#2.16.48%20版)。
+</Admonition>
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
 <ListTitle>小窗应用管理</ListTitle>
 
-在多窗口模式下，SDK 支持以新建窗口的方式插入 PPT 或白板插件，它们统称为小窗应用。该版本起，`WhiteRoom` 类新增以下方法用于在多窗口模式下管理小窗应用：
+在[多窗口模式](./overview/concepts#多窗口模式)下，SDK 支持以新建窗口的方式插入 PPT 或白板插件等，它们统称为[小窗应用](./overview/concepts#小窗应用)。该版本起，`WhiteRoom` 类新增以下方法用于在多窗口模式下管理小窗应用：
 
 - `addApp`：插入小窗应用，并返回应用 ID。
 - `closeApp`：关闭指定小窗应用的窗口。
@@ -160,6 +176,10 @@ PPT 渲染配置项 `WhiteSlideAppParams` 新增了以下属性：
 
 该版本于 2023 年 8 月 31 日发布。
 
+<Admonition type="info" title="桥接说明">
+桥接的 Web SDK 已升级至 v2.16.42。
+</Admonition>
+
 <VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
 
 该版本废弃了白板数据中心（`region`）原有的英国伦敦数据中心（`gb-lon`），并新增了欧洲法兰克福数据中心（`eu`），服务区覆盖欧洲。如果你在之前版本中设置了 `region` 为 `gb-lon`，请在升级到该版本后改用 `eu`，并在控制台-互动白板服务配置中启用该数据中心。
@@ -227,6 +247,10 @@ PPT 渲染配置项 `WhiteSlideAppParams` 新增了以下属性：
 <VersionSection version="2.16.46 版">
 
 该版本于 2022 年 12 月 2 日发布。
+
+<Admonition type="info" title="桥接说明">
+桥接的 Web SDK 已升级至 v2.16.35。
+</Admonition>
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
@@ -312,7 +336,7 @@ PPT 渲染配置项 `WhiteSlideAppParams` 新增了以下属性：
 
 <ListTitle>全链路加速</ListTitle>
 
-自该版本起，声网互动白板服务集成并支持[声网全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。集成声网 Whiteboard iOS SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
+自该版本起，声网互动白板服务集成并支持声网全链路加速（FPA）服务。集成声网 Whiteboard iOS SDK 后，你可以按照如下步骤设置，在互动白板应用中开启全链路加速功能，提升传输质量：
 
 1. 在项目的 `podfile` 文件中添加如下依赖：
 
@@ -895,7 +919,9 @@ PPT 渲染配置项 `WhiteSlideAppParams` 新增了以下属性：
 
 
 <Admonition type="caution" title="注意">
-为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：<li>Android SDK 2.12.3 版或之后</li><li>iOS SDK 2.12.3 版或之后</li><li>Web SDK 2.12.5 版或之后</li>
+为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：
+
+<ul><li>Android SDK 2.12.3 版或之后</li><li>iOS SDK 2.12.3 版或之后</li><li>Web SDK 2.12.5 版或之后</li></ul>
 </Admonition>
 
 
@@ -913,7 +939,11 @@ PPT 渲染配置项 `WhiteSlideAppParams` 新增了以下属性：
 
 
 <Admonition type="caution" title="注意">
-为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：<li>Android SDK 2.12.2 版或之后</li><li>iOS SDK 2.12.3 版或之后</li><li>Web SDK 2.12.5 版或之后</li>
+为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：
+为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：
+- Android SDK 2.12.2 版或之后
+- iOS SDK 2.12.3 版或之后
+- Web SDK 2.12.5 版或之后
 </Admonition>
 
 
