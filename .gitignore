@@ -1,17 +1,17 @@
 ios/node_modules/
-ios/EN/output
-ios/CN/output
+ios/Whiteboard/EN/output
+ios/Whiteboard/CN/output
 
 android/node_modules/
-android/CN/output
-android/EN/output
+android/Whiteboard/CN/output
+android/Whiteboard/EN/output
 
 
 web/node_modules/
-web/CN/node_modules/
-web/EN/node_modules/
-web/CN/docs/
-web/EN/docs/
+web/Whiteboard/CN/node_modules/
+web/Whiteboard/EN/node_modules/
+web/Whiteboard/CN/docs/
+web/Whiteboard/EN/docs/
 
 *.html
 *.zip
