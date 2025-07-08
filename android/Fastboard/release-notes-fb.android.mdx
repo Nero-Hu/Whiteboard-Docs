@@ -9,57 +9,60 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 声网 Fastboard SDK 是为帮助开发人员快速构建白板应用推出的新一代白板 SDK。Fastboard SDK 基于互动白板 SDK 开发，对复杂的 API 进行封装，简化了接口调用逻辑，并提供核心功能的实现和默认 UI；此外，Fastboard SDK 还集成窗口管理器（[Window Manager](https://github.com/netless-io/window-manager)）和常用插件，帮助开发者轻松扩展白板应用的功能。使用 Fastboard SDK，你无需深入学习互动白板复杂的概念，只需几行代码即可加入白板房间，并立即使用丰富的工具体验实时互动协作。
 
+<VersionSection version="1.6.2 版">
 
-## 1.6.2
+该版本于 2024 年 9 月 14 日发布。
 
-该版本于 2024 年 9 月 X 日发布。
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
-#### 新增特性
+<ListTitle>手动加载白板视图</ListTitle>
 
-**手动加载白板视图**
+该版本新增 [`preloadWhiteboardView`](/api-ref/fastboard/android/fastboard-api#preloadwhiteboardview) 方法，用于手动执行一次白板视图预加载，提升下次加入房间的速度。使用该功能前需要确保 [`FastboardConfig`](/api-ref/fastboard/android/fastboard-api#fastboardconfig) 中的 `autoPreload` 为 `false`。
 
-该版本新增 [`preloadWhiteboardView`](/api-ref/fastboard/android/fastboard-api#setconfig) 方法，用于手动执行一次白板视图预加载，提升下次加入房间的速度。使用该功能前需要确保 [`FastboardConfig`](/api-ref/fastboard/android/fastboard-api#fastboardconfig) 中的 `autoPreload` 为 `false`。
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
 
-#### API 变更
-
-**新增**
+<ListTitle>新增</ListTitle>
 
 - `preloadWhiteboardView`
 - `FastboardConfig` 新增 `autoPreload`
 
-## 1.6.0 版
+</VersionSection>
 
-该版本于 2024 年 2 月 X 日发布。
 
-#### 新增特性
+<VersionSection version="1.6.0 版">
 
-**插入文档**
+该版本于 2024 年 2 月 4 日发布。
 
-`FastRoom` 类新增 [`insertStaticDoc`](/api-ref/whiteboard/android/fastboard-api#insertstaticdoc) 和 [`insertPptx`](/api-ref/whiteboard/android/fastboard-api#insertpptx) 方法，分别用于插入转换后的 PDF 等静态文档和的 PPTX 动态文档。
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
-**白板预加载**
+<ListTitle>插入文档</ListTitle>
 
-新增 `FastboardConfig` 类用于 `Fastboard` 对象的辅助配置，可通过调用 `setConfig` 方法修改配置。其中，`FastboardConfig.enablePreload` 和 `FastboardConfig.preloadCount` 分别用于开关白板预加载功能和指定预加载的 WebView 数量，配置后可提升白板加载速度。
+`FastRoom` 类新增 [`insertStaticDoc`](/api-ref/fastboard/android/fastboard-api#insertstaticdoc) 和 [`insertPptx`](/api-ref/fastboard/android/fastboard-api#insertpptx) 方法，分别用于插入转换后的 PDF 等静态文档和的 PPTX 动态文档。
 
-**新白板教具**
+<ListTitle>白板预加载</ListTitle>
+
+新增 [`FastboardConfig`](/api-ref/fastboard/android/fastboard-api#fastboardconfig) 类用于 `Fastboard` 对象的辅助配置，可通过调用 `setConfig` 方法修改配置。其中，`FastboardConfig.enablePreload` 和 `FastboardConfig.preloadCount` 分别用于开关白板预加载功能和指定预加载的 WebView 数量，配置后可提升白板加载速度。
+
+<ListTitle>新白板教具</ListTitle>
 
 该版本新增了以下白板教具：
 
-- 新增铅笔橡皮工具 `FastAppliance.PENCIL_ERASER`, 用于擦除局部铅笔笔迹。
+- 新增铅笔橡皮工具 `FastAppliance.PENCIL_ERASER`，用于擦除局部铅笔笔迹。
 - 新增抓手工具 `FastAppliance.HAND`，用于移动视图。
 
-**白板日志记录**
+<ListTitle>白板日志记录</ListTitle>
 
-该版本新增 `FastLogger` 类，提供了一个灵活的白板运行日志记录工具，可以方便地记录 `debug`、`info`、`warn`、`error` 共四种不同级别的日志信息。你既可以调用 `setLogger` 方法自定义日志记录器，以适应不同的日志记录需求，也可以使用系统的 `Log` 类进行日志记录。
+该版本新增 [`FastLogger`](/api-ref/fastboard/android/fastboard-api#fastlogger) 类，提供了一个灵活的白板运行日志记录工具，可以方便地记录 `debug`、`info`、`warn`、`error` 共四种不同级别的日志信息。你既可以调用 `setLogger` 方法自定义日志记录器，以适应不同的日志记录需求，也可以使用系统的 `Log` 类进行日志记录。
 
-#### 优化
+<VersionTitle icon="/img/icons/version-improve.png">优化</VersionTitle>
 
-- 调用 `Fastroom.insertImage` 方法现在将默认插入图片至当前视图的中心。
+- 调用 `Fastroom.insertImage` 方法插入图片，默认将图片置于当前视图的中心。
 - 禁用了房间加入成功后的全量房间状态回调 `roomState`, 客户端需要通过 `Room.getRoomState()` 来获取完整的 `RoomState`。
 
-#### API 变更
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
 
-**新增**
+<ListTitle>新增</ListTitle>
+
 - `insertStaticDoc`
 - `insertPptx`
 - `DocPage`
@@ -70,15 +73,17 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
   - `HAND`
 - `FastLogger`
   - `setLogger`
+  - `Logger`
   - `warn`
   - `debug`
   - `info`
   - `error`
-  - `Logger`
 
-**废弃**
+<ListTitle>废弃</ListTitle>
+
 - `insertDocs`
 
+</VersionSection>
 
 <VersionSection version="1.3.4 版">
 
@@ -89,21 +94,21 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <ListTitle>修改白板底色</ListTitle>
 
-该版本在 `FastRoom` 类下新增 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#setresource`}>`setResource`</a> 方法，用于修改白板的相关颜色资源。你可以通过重写 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#fastresource`}>`FastResource`</a> 类中的方法来自定义颜色。
+该版本在 `FastRoom` 类下新增 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#setresource`}>`setResource`</a> 方法，用于修改白板的相关颜色资源。你可以通过重写 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#fastresource`}>`FastResource`</a> 类中的方法来自定义颜色。
 
 <ListTitle>设置窗口比例</ListTitle>
 
-该版本在 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#fastroomoptions`}>`FastRoomOptions`</a> 类中新增 `containerSizeRatio` 属性，用于修改本地显示窗口中内容的高宽比。
+该版本在 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#fastroomoptions`}>`FastRoomOptions`</a> 类中新增 `containerSizeRatio` 属性，用于修改本地显示窗口中内容的高宽比。
 
 <ListTitle>显示用户光标</ListTitle>
 
-该版本在 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#fastroomoptions`}>`FastRoomOptions`</a> 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。
+该版本在 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#fastroomoptions`}>`FastRoomOptions`</a> 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。
 
 <ListTitle>设置房间读写权限</ListTitle>
 
 该版本在 `FastRoom` 类下新增了以下方法：
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#setwritable1`}>`setWritable [1/2]`</a> 和 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#setwritable2`}>`setWritable [2/2]`</a>：设置用户在房间中为具有读写权限的**互动模式**或只有只读权限的**订阅模式**，其中，`setWritable [2/2]` 支持通过回调函数异步处理调用结果。
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#iswritable`}>`isWritable`</a>：获取本地用户在当前互动白板实时房间是否为互动模式。
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#setwritable1`}>`setWritable [1/2]`</a> 和 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#setwritable2`}>`setWritable [2/2]`</a>：设置用户在房间中为具有读写权限的**互动模式**或只有只读权限的**订阅模式**，其中，`setWritable [2/2]` 支持通过回调函数异步处理调用结果。
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#iswritable`}>`isWritable`</a>：获取本地用户在当前互动白板实时房间是否为互动模式。
 
 
 <Admonition type="tip" title="提示">
@@ -113,7 +118,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <ListTitle>调整工具条边距</ListTitle>
 
-该版本在 `FastUiSettings` 类下新增 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#settoolboxedgemargin`}>`setToolboxEdgeMargin`</a> 方法，用于设置工具条和白板侧边的边距。
+该版本在 `FastUiSettings` 类下新增 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#settoolboxedgemargin`}>`setToolboxEdgeMargin`</a> 方法，用于设置工具条和白板侧边的边距。
 
 <VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
 
@@ -140,20 +145,20 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <ListTitle>API 更名</ListTitle>
 
-`FastRoom` 类下的 `setStokeWidth` 更名为 `setStrokeWidth`，详见 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#setstokewidth`}>`setStrokeWidth`</a>。
+`FastRoom` 类下的 `setStokeWidth` 更名为 `setStrokeWidth`，详见 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#setstokewidth`}>`setStrokeWidth`</a>。
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
 
 <ListTitle>新版文档转换服务支持</ListTitle>
 
-该版本在 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#insertdocs`}>`FastInsertDocParams`</a> 类中新增以下属性以支持新版文档转换服务：
+该版本在 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#insertdocs`}>`FastInsertDocParams`</a> 类中新增以下属性以支持新版文档转换服务：
 
 - `dynamicDoc`: Boolean。文档转换任务类型是否为动态转换。
 
 - `converterType`：枚举。文档转换服务版本，取值如下：
   - `Projector`：新版。详见[新版文档转换服务](./advanced-features/convert-files)。
-  - `WhiteboardConverter`：旧版（默认值）。详见[旧版文档转换服务](./advanced-features/convert-files-old)。
+  - `WhiteboardConverter`：旧版（默认值）。旧版文档转换服务当前已不再维护。
 
 <VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
 
@@ -173,16 +178,16 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 为支持自定义白板用户界面，该版本在 `FastUiSettings` 类中新增如下方法，用于设置白板用户界面上的控件：
 
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#showroomcontroller`}>`showRoomController`</a>：展示白板用户界面上的控件。
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#hideroomcontroller`}>`hideRoomController`</a>：隐藏白板用户界面上的控件。
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#settoolsexpandappliances`}>`setToolsExpandAppliances`</a>：设置展开模式下工具条包含的工具集
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#settoolscollapseappliances`}>`setToolsCollapseAppliances`</a>：设置折叠模式下工具条包含的工具集。
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#settoolscolors`}>`setToolsColors`</a>：设置白板工具的颜色。
-- <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#settoolboxgravity`}>`setToolboxGravity`</a>：设置工具条在白板上的位置。
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#showroomcontroller`}>`showRoomController`</a>：展示白板用户界面上的控件。
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#hideroomcontroller`}>`hideRoomController`</a>：隐藏白板用户界面上的控件。
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#settoolsexpandappliances`}>`setToolsExpandAppliances`</a>：设置展开模式下工具条包含的工具集
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#settoolscollapseappliances`}>`setToolsCollapseAppliances`</a>：设置折叠模式下工具条包含的工具集。
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#settoolscolors`}>`setToolsColors`</a>：设置白板工具的颜色。
+- <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#settoolboxgravity`}>`setToolboxGravity`</a>：设置工具条在白板上的位置。
 
 <ListTitle>白板用户界面的样式配置</ListTitle>
 
-该版本在 `FastRoom` 类中新增 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#setfaststyle`}>`setFastStyle`</a> 方法，用于设置白板用户界面的样式。通过该方法，你可以修改白板用户界面的主题色彩和主题模式。
+该版本在 `FastRoom` 类中新增 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#setfaststyle`}>`setFastStyle`</a> 方法，用于设置白板用户界面的样式。通过该方法，你可以修改白板用户界面的主题色彩和主题模式。
 
 </VersionSection>
 

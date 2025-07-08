@@ -41,7 +41,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <ListTitle>显示用户光标</ListTitle>
 
-该版本在 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#fastroomconfiguration`}>`FastRoomConfiguration`</a> 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。自该版本起，SDK 将默认显示用户光标。
+该版本在 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#fastroomconfiguration`}>`FastRoomConfiguration`</a> 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。自该版本起，SDK 将默认显示用户光标。
 
 <VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
 
@@ -64,7 +64,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <ListTitle>插入动态文档</ListTitle>
 
-该版本新增 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#insertpptx`}>`insertPptx`</a> 方法，用于在白板子窗口中插入并展示动态文档。
+该版本新增 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#insertpptx`}>`insertPptx`</a> 方法，用于在白板子窗口中插入并展示动态文档。
 
 <ListTitle>丰富自定义主题样式</ListTitle>
 
@@ -107,15 +107,15 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <ListTitle>修改白板用户界面的主题</ListTitle>
 
-该版本在 `FastRoomThemeManager` 类中新增 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#apply`}>`apply`</a> 方法，用于修改白板用户界面的主题。通过该方法，你可以将白板用户界面的主题设置为 SDK 提供的预定义主题，或设置为自定义主题。
+该版本在 `FastRoomThemeManager` 类中新增 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#apply`}>`apply`</a> 方法，用于修改白板用户界面的主题。通过该方法，你可以将白板用户界面的主题设置为 SDK 提供的预定义主题，或设置为自定义主题。
 
 <ListTitle>修改调色盘的颜色集</ListTitle>
 
-该版本在 `FastRoomDefaultOperationItem` 类中提供 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#defaultcolors`}>`defaultColors`</a> 属性，支持修改白板工具调色盘的颜色集合。
+该版本在 `FastRoomDefaultOperationItem` 类中提供 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#defaultcolors`}>`defaultColors`</a> 属性，支持修改白板工具调色盘的颜色集合。
 
 <ListTitle>启用/禁用 Apple Pencil 的系统默认功能</ListTitle>
 
-该版本在 `FastRoom` 类中提供 <a href={`/api-ref/whiteboard/${frontMatter.ag_platform}/fastboard-api#followsystempencilbehavior`}>`followSystemPencilBehavior`</a> 属性，用于在白板应用中启用/禁用 Apple Pencil 的系统默认功能。当 `followSystemPencilBehavior` 设为 `YES`，表示使用白板应用时，Apple Pencil 的行为跟随系统设置，用户可以使用 Apple Pencil 的系统默认功能操作白板，例如，双击切换当前工具为橡皮擦，双击显示调色板，使用 Apple Pencil 涂鸦等。当 `followSystemPencilBehavior` 设为 `NO`，表示使用白板应用时，Apple Pencil 的行为不跟随系统设置，即 Apple Pencil 的系统默认功能不可用。
+该版本在 `FastRoom` 类中提供 <a href={`/api-ref/fastboard/${frontMatter.ag_platform}/fastboard-api#followsystempencilbehavior`}>`followSystemPencilBehavior`</a> 属性，用于在白板应用中启用/禁用 Apple Pencil 的系统默认功能。当 `followSystemPencilBehavior` 设为 `YES`，表示使用白板应用时，Apple Pencil 的行为跟随系统设置，用户可以使用 Apple Pencil 的系统默认功能操作白板，例如，双击切换当前工具为橡皮擦，双击显示调色板，使用 Apple Pencil 涂鸦等。当 `followSystemPencilBehavior` 设为 `NO`，表示使用白板应用时，Apple Pencil 的行为不跟随系统设置，即 Apple Pencil 的系统默认功能不可用。
 
 </VersionSection>
 
