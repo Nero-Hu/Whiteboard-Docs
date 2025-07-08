@@ -3,3 +3,16 @@ iOS-EN（裁剪版）/output
 iOS-EN/output
 iOS-CN/output
 *.html
+
+ios/node_modules/
+ios/iOS-EN（裁剪版）/output
+ios/iOS-EN/output
+ios/iOS-CN/output
+
+android/node_modules/
+android/CN/output
+android/EN-Compact/output
+android/EN-Full/output
+
+web/node_modules/
+web/docs/
