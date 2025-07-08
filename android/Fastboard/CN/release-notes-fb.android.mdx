@@ -25,7 +25,8 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 同时新增 [`FastRegisterAppParams`](/api-ref/fastboard/android/fastboard-api#fastregisterappparams) 类，用于配置注册参数，包含应用名称、脚本代码、URL 地址等配置选项。
 
 <Admonition type="caution" title="注意">
-注册必须在加入房间前完成，以确保应用能够正常加载。确保所有客户端使用一致的应用版本，避免运行时问题。
+- 注册必须在加入房间前完成，以确保应用能够正常加载。
+- 确保所有客户端使用一致的应用版本，避免运行时问题。
 </Admonition>
 
 <ListTitle>设置画笔粗细范围</ListTitle>
@@ -34,9 +35,9 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
 
-- 修复 [`setToolboxEdgeMargin`](/api-ref/fastboard/android/fastboard-api#settoolboxedgemargin) 在未指定 Toolbox Gravity 时无效的问题。
-- 修复首次调用 [`setResource`](/api-ref/fastboard/android/fastboard-api#setresource) 时未生效的 UI 更新问题。
-- 修复画笔颜色未包含在 [`setToolsColors`](/api-ref/fastboard/android/fastboard-api#settoolscolors) 中的问题。
+- 调用 [`setToolboxEdgeMargin`](/api-ref/fastboard/android/fastboard-api#settoolboxedgemargin) 时，如果未指定 Toolbox Gravity，则该方法无效。
+- 首次调用 [`setResource`](/api-ref/fastboard/android/fastboard-api#setresource) UI 更新不生效。
+- 画笔颜色未包含在 [`setToolsColors`](/api-ref/fastboard/android/fastboard-api#settoolscolors) 中。
 
 <VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
 
