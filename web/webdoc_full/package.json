@@ -1,0 +1,17 @@
+{
+  "name": "webdoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "doccn": "npx typedoc --out ./docs/zh-CN/api --readme ./api_index_zh.md --name \"Agora Interactive Whiteboard Web SDK API Reference\" --options ./config/typedoc.json ./index-zh.d.ts --excludePrivate",
+    "docen": "npx typedoc --out ./docs/en/api --readme ./api_index_en.md --name \"Agora Interactive Whiteboard Web SDK API Reference\" --options ./config/typedoc.json ./index-en.d.ts --excludePrivate"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "typedoc": "^0.16.0",
+    "typescript": "^4.2.4"
+  },
+  "author": "",
+  "license": "ISC"
+}
