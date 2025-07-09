@@ -336,6 +336,11 @@ class DocSynchronizer:
             current_branch = result.stdout.strip()
             self.logger.info(f"当前分支: {current_branch}")
             
+            # 配置Git用户信息（GitHub Actions环境需要）
+            subprocess.run(['git', 'config', 'user.name', 'GitHub Actions'], cwd=target_repo_path, check=True)
+            subprocess.run(['git', 'config', 'user.email', 'actions@github.com'], cwd=target_repo_path, check=True)
+            self.logger.info("已配置Git用户信息")
+            
             # 创建新分支
             subprocess.run(['git', 'checkout', '-b', branch_name], cwd=target_repo_path, check=True)
             branch_created = True
@@ -414,8 +419,16 @@ class DocSynchronizer:
                 self.logger.error("Git提交失败的可能原因:")
                 self.logger.error("1. 没有可提交的更改")
                 self.logger.error("2. 提交信息格式问题")
-                self.logger.error("3. Git配置问题")
+                self.logger.error("3. Git配置问题（用户名/邮箱未设置）")
                 self.logger.error("4. 文件权限问题")
+                
+                # 检查Git配置
+                try:
+                    config_result = subprocess.run(['git', 'config', '--list'], 
+                                                 cwd=target_repo_path, capture_output=True, text=True)
+                    self.logger.error(f"当前Git配置:\n{config_result.stdout}")
+                except Exception as config_error:
+                    self.logger.error(f"无法获取Git配置: {config_error}")
             
             raise
     

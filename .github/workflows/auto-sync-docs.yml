@@ -53,6 +53,12 @@ jobs:
         path: shengwang-doc-source
         token: ${{ secrets.SYNC_TOKEN }}
     
+    - name: Configure Git
+      run: |
+        cd shengwang-doc-source
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+    
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
