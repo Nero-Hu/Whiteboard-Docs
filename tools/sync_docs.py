@@ -170,7 +170,7 @@ class DocSynchronizer:
                 source_file = Path(self.config['source']['repo_path']) / source_path
                 target_file = target_repo_path / target_path / Path(source_path).name
                 
-                if self._sync_file(source_file, target_file):
+                if self._sync_file(source_file, target_file, dry_run):
                     sync_results['synced_files'].append(source_path)
                     sync_results['platforms'].append(self._extract_platform(source_path))
                     sync_results['has_changes'] = True
@@ -188,7 +188,7 @@ class DocSynchronizer:
                 source_file = Path(self.config['source']['repo_path']) / source_path
                 target_file = target_repo_path / target_path / Path(source_path).name
                 
-                if self._sync_file(source_file, target_file):
+                if self._sync_file(source_file, target_file, dry_run):
                     sync_results['synced_files'].append(source_path)
                     sync_results['platforms'].append(self._extract_platform(source_path))
                     sync_results['has_changes'] = True
@@ -201,7 +201,7 @@ class DocSynchronizer:
         self.logger.info(f"同步完成: {len(sync_results['synced_files'])} 个文件, {len(sync_results['errors'])} 个错误")
         return sync_results
     
-    def _sync_file(self, source_file: Path, target_file: Path) -> bool:
+    def _sync_file(self, source_file: Path, target_file: Path, dry_run: bool = False) -> bool:
         """同步单个文件"""
         try:
             # 确保目标目录存在
@@ -212,6 +212,10 @@ class DocSynchronizer:
                 if self._files_identical(source_file, target_file):
                     self.logger.info(f"文件内容相同，跳过: {source_file}")
                     return False
+            
+            if dry_run:
+                self.logger.info(f"测试模式：检测到文件变更 {source_file} -> {target_file}")
+                return True
             
             # 复制文件
             import shutil
@@ -315,12 +319,13 @@ def main():
     parser = argparse.ArgumentParser(description='同步Fastboard文档到shengwang-doc-source')
     parser.add_argument('--platform', choices=['android', 'ios', 'web'], help='指定平台')
     parser.add_argument('--force', action='store_true', help='强制同步，忽略变更检测')
+    parser.add_argument('--dry-run', action='store_true', help='测试模式，只检测变更不创建PR')
     parser.add_argument('--config', default='config/sync_config.yaml', help='配置文件路径')
     
     args = parser.parse_args()
     
     synchronizer = DocSynchronizer(args.config)
-    success = synchronizer.sync_docs(args.platform, args.force)
+    success = synchronizer.sync_docs(args.platform, args.force, args.dry_run)
     
     sys.exit(0 if success else 1)
 
