@@ -10,10 +10,11 @@ from datetime import datetime
 import hashlib
 
 class DocSynchronizer:
-    def __init__(self, config_path: str = "config/sync_config.yaml"):
+    def __init__(self, config_path: str = "config/sync_config.yaml", interactive: bool = True):
         self.config = self._load_config(config_path)
         self.setup_logging()
         self.logger = logging.getLogger(__name__)
+        self.interactive = interactive  # 是否启用交互模式
         
     def _load_config(self, config_path: str) -> Dict:
         """加载配置文件"""
@@ -155,7 +156,7 @@ class DocSynchronizer:
         return 'unknown'
     
     def _prepare_target_repo(self) -> Path:
-        """准备目标仓库"""
+        """准备目标仓库（改进：添加安全检查）"""
         self.logger.info("准备目标仓库...")
         
         target_repo_path = Path(self.config['target']['repo_path'])
@@ -168,11 +169,50 @@ class DocSynchronizer:
                 self.config['target']['repo_url'], 
                 str(target_repo_path)
             ], check=True)
+            return target_repo_path
+        
+        # 检查工作区状态
+        import subprocess
+        
+        # 检查是否有未提交的更改
+        status_result = subprocess.run(
+            ['git', 'status', '--porcelain'], 
+            cwd=target_repo_path, capture_output=True, text=True
+        )
+        
+        if status_result.stdout.strip():
+            self.logger.warning("检测到未提交的更改！")
+            self.logger.warning("未提交的文件:")
+            for line in status_result.stdout.strip().split('\n'):
+                if line.strip():
+                    self.logger.warning(f"  {line}")
+            
+            # 询问用户是否继续
+            if self.interactive:
+                response = input("\n⚠️  目标仓库有未提交的更改，是否继续？(y/N): ").strip().lower()
+                if response not in ['y', 'yes']:
+                    raise Exception("用户取消操作：目标仓库有未提交的更改")
+            else:
+                self.logger.error("非交互模式下检测到未提交的更改，拒绝继续")
+                raise Exception("目标仓库有未提交的更改，请在交互模式下运行或清理工作区")
+        
+        # 检查当前分支
+        current_branch_result = subprocess.run(
+            ['git', 'branch', '--show-current'], 
+            cwd=target_repo_path, capture_output=True, text=True, check=True
+        )
+        current_branch = current_branch_result.stdout.strip()
+        
+        self.logger.info(f"当前分支: {current_branch}")
+        
+        # 如果不在master分支，自动切换到master（因为工作区已经确认干净）
+        if current_branch != 'master':
+            self.logger.info(f"切换到master分支...")
+            subprocess.run(['git', 'checkout', 'master'], cwd=target_repo_path, check=True)
         
         # 更新到最新
-        import subprocess
+        self.logger.info("拉取最新代码...")
         subprocess.run(['git', 'fetch'], cwd=target_repo_path, check=True)
-        subprocess.run(['git', 'checkout', 'master'], cwd=target_repo_path, check=True)
         subprocess.run(['git', 'pull'], cwd=target_repo_path, check=True)
         
         return target_repo_path
@@ -445,10 +485,11 @@ def main():
     parser.add_argument('--force', action='store_true', help='强制同步，忽略变更检测')
     parser.add_argument('--dry-run', action='store_true', help='测试模式，只检测变更不创建PR')
     parser.add_argument('--config', default='config/sync_config.yaml', help='配置文件路径')
+    parser.add_argument('--non-interactive', action='store_true', help='非交互模式，适用于CI/CD环境')
     
     args = parser.parse_args()
     
-    synchronizer = DocSynchronizer(args.config)
+    synchronizer = DocSynchronizer(args.config, interactive=not args.non_interactive)
     success = synchronizer.sync_docs(args.platform, args.force, args.dry_run)
     
     sys.exit(0 if success else 1)
