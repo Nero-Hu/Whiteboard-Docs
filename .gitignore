@@ -15,3 +15,7 @@ web/Whiteboard/EN/docs/
 
 *.html
 *.zip
+
+# 文档同步工具配置
+config/sync_config.yaml
+logs/

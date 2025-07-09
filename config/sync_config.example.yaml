@@ -1,0 +1,42 @@
+# Fastboard文档同步配置文件模板
+# 复制此文件为 sync_config.yaml 并修改相应配置
+
+source:
+  # 源仓库路径（Whiteboard-Docs仓库的本地路径）
+  repo_path: "E:/AgoraTWrepo/Whiteboard-Docs"
+
+target:
+  # 目标仓库路径（shengwang-doc-source仓库的本地路径）
+  repo_path: "E:/AgoraTWrepo/shengwang-doc-source"
+  # 目标仓库的Git URL
+  repo_url: "https://github.com/AgoraIO-Community/shengwang-doc-source.git"
+  # GitHub仓库所有者
+  repo_owner: "AgoraIO-Community"
+  # GitHub仓库名称
+  repo_name: "shengwang-doc-source"
+  # GitHub访问令牌（用于创建PR）
+  # 本地使用时填写实际的token，GitHub Actions中会自动替换
+  github_token: "${GITHUB_TOKEN}"
+
+# 文件同步映射配置
+sync_mapping:
+  # 发版说明文件映射
+  # 格式：源文件路径 -> 目标目录路径
+  release_notes:
+    "android/Fastboard/CN/release-notes-fb.android.mdx": "docs/whiteboard/fastboard-sdk"
+    "ios/Fastboard/CN/release-notes-fb.ios.mdx": "docs/whiteboard/fastboard-sdk"
+    "web/Fastboard/CN/release-notes-fb.javascript.mdx": "docs/whiteboard/fastboard-sdk"
+  
+  # API文档文件映射
+  # 格式：源文件路径 -> 目标目录路径
+  api_docs:
+    "android/Fastboard/CN/fastboard-api.mdx": "docs-api-reference/fastboard"
+    "ios/Fastboard/CN/fastboard-api.ios.mdx": "docs-api-reference/fastboard"
+    "web/Fastboard/CN/fastboard-api.javascript.mdx": "docs-api-reference/fastboard"
+
+# 日志配置
+logging:
+  # 日志级别：DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  # 日志文件命名模式
+  file_pattern: "logs/doc_sync_%Y%m%d_%H%M%S.log" 

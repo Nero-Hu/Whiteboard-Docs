@@ -1,0 +1,90 @@
+name: Auto Sync Documentation
+
+on:
+  push:
+    branches: [master]
+    paths: 
+      - 'android/Fastboard/CN/release-notes-fb.android.mdx'
+      - 'android/Fastboard/CN/fastboard-api.mdx'
+      - 'ios/Fastboard/CN/release-notes-fb.ios.mdx'
+      - 'ios/Fastboard/CN/fastboard-api.ios.mdx'
+      - 'web/Fastboard/CN/release-notes-fb.javascript.mdx'
+      - 'web/Fastboard/CN/fastboard-api.javascript.mdx'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform to sync (android/ios/web)'
+        required: false
+        default: 'all'
+      force:
+        description: 'Force sync even if no changes detected'
+        required: false
+        default: 'false'
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Whiteboard-Docs
+      uses: actions/checkout@v3
+      with:
+        path: whiteboard-docs
+        token: ${{ secrets.DOCS_TOKEN }}
+    
+    - name: Checkout shengwang-doc-source
+      uses: actions/checkout@v3
+      with:
+        repository: AgoraIO-Community/shengwang-doc-source
+        path: shengwang-doc-source
+        token: ${{ secrets.SYNC_TOKEN }}
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        pip install pyyaml requests
+    
+    - name: Create sync config
+      run: |
+        cat > config/sync_config.yaml << EOF
+        source:
+          repo_path: "whiteboard-docs"
+        
+        target:
+          repo_path: "shengwang-doc-source"
+          repo_url: "https://github.com/AgoraIO-Community/shengwang-doc-source.git"
+          repo_owner: "AgoraIO-Community"
+          repo_name: "shengwang-doc-source"
+          github_token: "${{ secrets.SYNC_TOKEN }}"
+        
+        sync_mapping:
+          release_notes:
+            "android/Fastboard/CN/release-notes-fb.android.mdx": "docs/whiteboard/fastboard-sdk"
+            "ios/Fastboard/CN/release-notes-fb.ios.mdx": "docs/whiteboard/fastboard-sdk"
+            "web/Fastboard/CN/release-notes-fb.javascript.mdx": "docs/whiteboard/fastboard-sdk"
+          
+          api_docs:
+            "android/Fastboard/CN/fastboard-api.mdx": "docs-api-reference/fastboard"
+            "ios/Fastboard/CN/fastboard-api.ios.mdx": "docs-api-reference/fastboard"
+            "web/Fastboard/CN/fastboard-api.javascript.mdx": "docs-api-reference/fastboard"
+        EOF
+    
+    - name: Run sync script
+      env:
+        GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
+      run: |
+        python tools/sync_docs.py \
+          --platform ${{ github.event.inputs.platform || 'all' }} \
+          --force ${{ github.event.inputs.force || 'false' }} \
+          --config config/sync_config.yaml
+    
+    - name: Upload logs
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: sync-logs
+        path: logs/ 
