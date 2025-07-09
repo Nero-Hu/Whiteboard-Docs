@@ -66,7 +66,9 @@ jobs:
     - name: Create sync config
       run: |
         cd whiteboard-docs
-        cat > config/sync_config.yaml << EOF
+        
+        # 创建配置文件（不包含敏感信息）
+        cat > config/sync_config.yaml << 'EOF'
         # Fastboard文档同步配置文件
         # 用于配置从Whiteboard-Docs仓库同步到shengwang-doc-source仓库
         
@@ -81,7 +83,7 @@ jobs:
           repo_url: "https://github.com/AgoraIO/shengwang-doc-source.git"
           repo_owner: "AgoraIO"
           repo_name: "shengwang-doc-source"
-          github_token: "\${{ secrets.SYNC_TOKEN }}"
+          github_token: "PLACEHOLDER_TOKEN"
         
         # 同步映射配置
         sync_mapping:

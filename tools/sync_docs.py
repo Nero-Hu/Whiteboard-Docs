@@ -19,7 +19,18 @@ class DocSynchronizer:
     def _load_config(self, config_path: str) -> Dict:
         """加载配置文件"""
         with open(config_path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
+            config = yaml.safe_load(f)
+        
+        # 如果配置文件中使用占位符，从环境变量替换
+        if config.get('target', {}).get('github_token') == 'PLACEHOLDER_TOKEN':
+            import os
+            sync_token = os.environ.get('GITHUB_TOKEN')
+            if sync_token:
+                config['target']['github_token'] = sync_token
+            else:
+                raise ValueError("未找到GITHUB_TOKEN环境变量")
+        
+        return config
     
     def setup_logging(self):
         """设置日志"""
