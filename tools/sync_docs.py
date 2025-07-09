@@ -36,10 +36,10 @@ class DocSynchronizer:
             ]
         )
     
-    def sync_docs(self, platform: str = None, force: bool = False) -> bool:
+    def sync_docs(self, platform: str = None, force: bool = False, dry_run: bool = False) -> bool:
         """同步文档到shengwang-doc-source仓库"""
         try:
-            self.logger.info(f"开始同步文档，平台: {platform or 'all'}, 强制同步: {force}")
+            self.logger.info(f"开始同步文档，平台: {platform or 'all'}, 强制同步: {force}, 测试模式: {dry_run}")
             
             # 1. 检测变更
             if not force:
@@ -52,11 +52,13 @@ class DocSynchronizer:
             target_repo_path = self._prepare_target_repo()
             
             # 3. 执行同步
-            sync_results = self._perform_sync(target_repo_path, platform)
+            sync_results = self._perform_sync(target_repo_path, platform, dry_run)
             
-            # 4. 创建分支和PR
-            if sync_results['has_changes']:
+            # 4. 创建分支和PR（仅在非测试模式下）
+            if sync_results['has_changes'] and not dry_run:
                 self._create_branch_and_pr(sync_results)
+            elif sync_results['has_changes'] and dry_run:
+                self.logger.info("测试模式：检测到变更，但跳过创建分支和PR")
             
             self.logger.info("文档同步完成")
             return True
@@ -148,7 +150,7 @@ class DocSynchronizer:
         
         return target_repo_path
     
-    def _perform_sync(self, target_repo_path: Path, platform: str = None) -> Dict:
+    def _perform_sync(self, target_repo_path: Path, platform: str = None, dry_run: bool = False) -> Dict:
         """执行同步操作"""
         self.logger.info("执行文档同步...")
         
