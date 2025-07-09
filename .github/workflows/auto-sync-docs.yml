@@ -17,10 +17,9 @@ on:
       platform:
         description: 'Platform to sync (android/ios/web)'
         required: false
-        default: 'all'
+        default: 'android'
         type: choice
         options:
-          - all
           - android
           - ios
           - web
@@ -116,12 +115,29 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
       run: |
         cd whiteboard-docs
-        python tools/sync_docs.py \
-          --platform ${{ github.event.inputs.platform || 'all' }} \
-          --force ${{ github.event.inputs.force || 'false' }} \
-          --dry-run ${{ github.event.inputs.dry_run || 'false' }} \
-          --non-interactive \
-          --config config/sync_config.yaml
+        
+        # 构建命令参数
+        CMD="python tools/sync_docs.py --non-interactive --config config/sync_config.yaml"
+        
+        # 添加平台参数（如果指定）
+        if [ "${{ github.event.inputs.platform }}" != "" ]; then
+          CMD="$CMD --platform ${{ github.event.inputs.platform }}"
+        fi
+        
+        # 添加强制同步参数
+        if [ "${{ github.event.inputs.force }}" == "true" ]; then
+          CMD="$CMD --force"
+        fi
+        
+        # 添加测试模式参数
+        if [ "${{ github.event.inputs.dry_run }}" == "true" ]; then
+          CMD="$CMD --dry-run"
+        fi
+        
+        echo "执行命令: $CMD"
+        
+        # 执行同步脚本
+        $CMD
     
     - name: Upload logs
       uses: actions/upload-artifact@v4
