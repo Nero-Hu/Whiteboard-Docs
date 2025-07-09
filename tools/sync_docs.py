@@ -341,12 +341,56 @@ class DocSynchronizer:
             branch_created = True
             self.logger.info(f"创建分支: {branch_name}")
             
+            # 检查工作区状态
+            status_result = subprocess.run(['git', 'status', '--porcelain'], 
+                                         cwd=target_repo_path, capture_output=True, text=True, check=True)
+            self.logger.info(f"工作区状态:\n{status_result.stdout}")
+            
+            if not status_result.stdout.strip():
+                self.logger.warning("工作区没有可提交的更改")
+                return
+            
             # 添加变更
             subprocess.run(['git', 'add', '.'], cwd=target_repo_path, check=True)
+            self.logger.info("已添加所有变更到暂存区")
+            
+            # 检查暂存区状态
+            staged_result = subprocess.run(['git', 'diff', '--cached', '--name-only'], 
+                                         cwd=target_repo_path, capture_output=True, text=True, check=True)
+            self.logger.info(f"暂存区文件:\n{staged_result.stdout}")
+            
+            if not staged_result.stdout.strip():
+                self.logger.warning("暂存区没有文件，跳过提交")
+                return
             
             # 提交变更
-            commit_message = f"docs: sync fastboard docs\n\n同步文件:\n" + "\n".join(f"- {f}" for f in sync_results['synced_files'])
-            subprocess.run(['git', 'commit', '-m', commit_message], cwd=target_repo_path, check=True)
+            synced_files_list = "\n".join(f"- {f}" for f in sync_results['synced_files'])
+            commit_message = f"docs: sync fastboard docs\n\n同步文件:\n{synced_files_list}"
+            self.logger.info(f"提交信息:\n{commit_message}")
+            
+            try:
+                # 使用临时文件来避免命令行参数问题
+                import tempfile
+                with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False, encoding='utf-8') as f:
+                    f.write(commit_message)
+                    temp_file = f.name
+                
+                try:
+                    subprocess.run(['git', 'commit', '-F', temp_file], cwd=target_repo_path, check=True)
+                    self.logger.info("提交成功")
+                finally:
+                    # 清理临时文件
+                    import os
+                    if os.path.exists(temp_file):
+                        os.unlink(temp_file)
+                        
+            except subprocess.CalledProcessError as e:
+                self.logger.error(f"提交失败: {e}")
+                # 获取更详细的错误信息
+                error_result = subprocess.run(['git', 'status'], 
+                                            cwd=target_repo_path, capture_output=True, text=True)
+                self.logger.error(f"Git状态:\n{error_result.stdout}")
+                raise
             
             # 推送分支
             subprocess.run(['git', 'push', 'origin', branch_name], cwd=target_repo_path, check=True)
@@ -364,6 +408,15 @@ class DocSynchronizer:
             # 执行回滚操作
             self._rollback_branch_creation(target_repo_path, current_branch, branch_name, 
                                          branch_created, branch_pushed, pr_created)
+            
+            # 提供更详细的错误信息
+            if "Command" in str(e) and "git commit" in str(e):
+                self.logger.error("Git提交失败的可能原因:")
+                self.logger.error("1. 没有可提交的更改")
+                self.logger.error("2. 提交信息格式问题")
+                self.logger.error("3. Git配置问题")
+                self.logger.error("4. 文件权限问题")
+            
             raise
     
     def _rollback_branch_creation(self, target_repo_path: Path, current_branch: str, 
