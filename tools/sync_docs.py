@@ -7,6 +7,7 @@ from typing import List, Dict
 import yaml
 import json
 from datetime import datetime
+import hashlib
 
 class DocSynchronizer:
     def __init__(self, config_path: str = "config/sync_config.yaml"):
@@ -67,8 +68,8 @@ class DocSynchronizer:
             self.logger.error(f"文档同步失败: {e}", exc_info=True)
             return False
     
-    def _detect_changes(self, platform: str = None) -> Dict:
-        """检测文档变更"""
+    def _detect_changes(self, target_repo_path: Path, platform: str = None) -> Dict:
+        """检测文档变更（改进：在目标仓库中比较文件内容）"""
         self.logger.info("检测文档变更...")
         
         changes = {
@@ -83,7 +84,9 @@ class DocSynchronizer:
                 continue
                 
             source_file = Path(self.config['source']['repo_path']) / source_path
-            if source_file.exists() and self._has_changes(source_file):
+            target_file = target_repo_path / target_path / Path(source_path).name
+            
+            if source_file.exists() and self._has_content_changes(source_file, target_file):
                 changes['release_notes'].append(source_path)
                 changes['platforms'].append(self._extract_platform(source_path))
         
@@ -93,7 +96,9 @@ class DocSynchronizer:
                 continue
                 
             source_file = Path(self.config['source']['repo_path']) / source_path
-            if source_file.exists() and self._has_changes(source_file):
+            target_file = target_repo_path / target_path / Path(source_path).name
+            
+            if source_file.exists() and self._has_content_changes(source_file, target_file):
                 changes['api_docs'].append(source_path)
                 changes['platforms'].append(self._extract_platform(source_path))
         
@@ -102,20 +107,42 @@ class DocSynchronizer:
         self.logger.info(f"检测到变更: {len(changes['release_notes'])} 个发版说明, {len(changes['api_docs'])} 个API文档")
         return changes
     
-    def _has_changes(self, file_path: Path) -> bool:
-        """检查文件是否有变更"""
-        import subprocess
-        
+    def _has_content_changes(self, source_file: Path, target_file: Path) -> bool:
+        """检查文件内容是否有变更（改进：使用哈希比较）"""
         try:
-            # 检查git状态
-            result = subprocess.run(
-                ['git', 'status', '--porcelain', str(file_path)],
-                capture_output=True, text=True, cwd=file_path.parent
-            )
-            return bool(result.stdout.strip())
-        except:
-            # 如果git命令失败，默认认为有变更
+            # 如果目标文件不存在，认为有变更
+            if not target_file.exists():
+                self.logger.debug(f"目标文件不存在，认为有变更: {target_file}")
+                return True
+            
+            # 计算源文件和目标文件的哈希值
+            source_hash = self._calculate_file_hash(source_file)
+            target_hash = self._calculate_file_hash(target_file)
+            
+            has_changes = source_hash != target_hash
+            if has_changes:
+                self.logger.debug(f"文件内容有变更: {source_file} -> {target_file}")
+            else:
+                self.logger.debug(f"文件内容相同: {source_file}")
+            
+            return has_changes
+            
+        except Exception as e:
+            self.logger.warning(f"比较文件内容时出错 {source_file}: {e}")
+            # 如果比较失败，默认认为有变更
             return True
+    
+    def _calculate_file_hash(self, file_path: Path) -> str:
+        """计算文件的MD5哈希值"""
+        hash_md5 = hashlib.md5()
+        try:
+            with open(file_path, "rb") as f:
+                for chunk in iter(lambda: f.read(4096), b""):
+                    hash_md5.update(chunk)
+            return hash_md5.hexdigest()
+        except Exception as e:
+            self.logger.error(f"计算文件哈希失败 {file_path}: {e}")
+            raise
     
     def _extract_platform(self, file_path: str) -> str:
         """从文件路径提取平台信息"""
@@ -229,26 +256,39 @@ class DocSynchronizer:
             return False
     
     def _files_identical(self, file1: Path, file2: Path) -> bool:
-        """比较两个文件是否相同"""
+        """比较两个文件是否相同（改进：使用哈希比较）"""
         try:
-            with open(file1, 'rb') as f1, open(file2, 'rb') as f2:
-                return f1.read() == f2.read()
+            return self._calculate_file_hash(file1) == self._calculate_file_hash(file2)
         except:
             return False
     
     def _create_branch_and_pr(self, sync_results: Dict):
-        """创建分支和PR"""
+        """创建分支和PR（改进：添加回滚机制）"""
         self.logger.info("创建分支和PR...")
         
         target_repo_path = Path(self.config['target']['repo_path'])
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         branch_name = f"sync/fastboard-docs-{timestamp}"
         
+        # 记录当前分支，用于回滚
+        current_branch = None
+        branch_created = False
+        branch_pushed = False
+        pr_created = False
+        
         try:
             import subprocess
             
+            # 获取当前分支
+            result = subprocess.run(['git', 'branch', '--show-current'], 
+                                  cwd=target_repo_path, capture_output=True, text=True, check=True)
+            current_branch = result.stdout.strip()
+            self.logger.info(f"当前分支: {current_branch}")
+            
             # 创建新分支
             subprocess.run(['git', 'checkout', '-b', branch_name], cwd=target_repo_path, check=True)
+            branch_created = True
+            self.logger.info(f"创建分支: {branch_name}")
             
             # 添加变更
             subprocess.run(['git', 'add', '.'], cwd=target_repo_path, check=True)
@@ -259,15 +299,98 @@ class DocSynchronizer:
             
             # 推送分支
             subprocess.run(['git', 'push', 'origin', branch_name], cwd=target_repo_path, check=True)
+            branch_pushed = True
+            self.logger.info(f"推送分支: {branch_name}")
             
             # 创建PR
             self._create_pr_via_api(branch_name, sync_results)
-            
-            self.logger.info(f"成功创建分支: {branch_name}")
+            pr_created = True
+            self.logger.info(f"成功创建PR: {branch_name}")
             
         except Exception as e:
             self.logger.error(f"创建分支和PR失败: {e}", exc_info=True)
+            
+            # 执行回滚操作
+            self._rollback_branch_creation(target_repo_path, current_branch, branch_name, 
+                                         branch_created, branch_pushed, pr_created)
             raise
+    
+    def _rollback_branch_creation(self, target_repo_path: Path, current_branch: str, 
+                                 branch_name: str, branch_created: bool, 
+                                 branch_pushed: bool, pr_created: bool):
+        """回滚分支创建操作"""
+        self.logger.info("开始回滚分支创建操作...")
+        
+        try:
+            import subprocess
+            
+            # 1. 如果PR已创建，尝试删除PR（通过API）
+            if pr_created:
+                self.logger.info("尝试删除已创建的PR...")
+                self._delete_pr_via_api(branch_name)
+            
+            # 2. 如果分支已推送，删除远程分支
+            if branch_pushed:
+                self.logger.info(f"删除远程分支: {branch_name}")
+                try:
+                    subprocess.run(['git', 'push', 'origin', '--delete', branch_name], 
+                                 cwd=target_repo_path, check=True)
+                except subprocess.CalledProcessError as e:
+                    self.logger.warning(f"删除远程分支失败: {e}")
+            
+            # 3. 如果分支已创建，切换回原分支并删除本地分支
+            if branch_created:
+                if current_branch:
+                    self.logger.info(f"切换回原分支: {current_branch}")
+                    subprocess.run(['git', 'checkout', current_branch], cwd=target_repo_path, check=True)
+                
+                self.logger.info(f"删除本地分支: {branch_name}")
+                try:
+                    subprocess.run(['git', 'branch', '-D', branch_name], cwd=target_repo_path, check=True)
+                except subprocess.CalledProcessError as e:
+                    self.logger.warning(f"删除本地分支失败: {e}")
+            
+            self.logger.info("回滚操作完成")
+            
+        except Exception as e:
+            self.logger.error(f"回滚操作失败: {e}", exc_info=True)
+    
+    def _delete_pr_via_api(self, branch_name: str):
+        """通过GitHub API删除PR"""
+        try:
+            import requests
+            
+            headers = {
+                'Authorization': f'token {self.config["target"]["github_token"]}',
+                'Accept': 'application/vnd.github.v3+json'
+            }
+            
+            # 首先获取PR列表，找到对应的PR
+            response = requests.get(
+                f'https://api.github.com/repos/{self.config["target"]["repo_owner"]}/{self.config["target"]["repo_name"]}/pulls',
+                headers=headers,
+                params={'head': f'{self.config["target"]["repo_owner"]}:{branch_name}'}
+            )
+            
+            if response.status_code == 200:
+                prs = response.json()
+                for pr in prs:
+                    if pr['head']['ref'] == branch_name:
+                        # 删除PR
+                        delete_response = requests.delete(
+                            f'https://api.github.com/repos/{self.config["target"]["repo_owner"]}/{self.config["target"]["repo_name"]}/pulls/{pr["number"]}',
+                            headers=headers
+                        )
+                        if delete_response.status_code == 204:
+                            self.logger.info(f"成功删除PR: {pr['number']}")
+                        else:
+                            self.logger.warning(f"删除PR失败: {delete_response.status_code}")
+                        break
+            else:
+                self.logger.warning(f"获取PR列表失败: {response.status_code}")
+                
+        except Exception as e:
+            self.logger.error(f"删除PR时出错: {e}")
     
     def _create_pr_via_api(self, branch_name: str, sync_results: Dict):
         """通过GitHub API创建PR"""
@@ -314,6 +437,7 @@ class DocSynchronizer:
             self.logger.info(f"成功创建PR: {pr_data['html_url']}")
         else:
             self.logger.error(f"创建PR失败: {response.status_code} - {response.text}")
+            raise Exception(f"创建PR失败: {response.status_code} - {response.text}")
 
 def main():
     parser = argparse.ArgumentParser(description='同步Fastboard文档到shengwang-doc-source')

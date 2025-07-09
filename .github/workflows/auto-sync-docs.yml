@@ -4,11 +4,13 @@ on:
   push:
     branches: [master]
     paths: 
+      # Fastboard 发版说明文件（仅中文）
       - 'android/Fastboard/CN/release-notes-fb.android.mdx'
-      - 'android/Fastboard/CN/fastboard-api.mdx'
       - 'ios/Fastboard/CN/release-notes-fb.ios.mdx'
-      - 'ios/Fastboard/CN/fastboard-api.ios.mdx'
       - 'web/Fastboard/CN/release-notes-fb.javascript.mdx'
+      # Fastboard API文档文件（仅中文）
+      - 'android/Fastboard/CN/fastboard-api.mdx'
+      - 'ios/Fastboard/CN/fastboard-api.ios.mdx'
       - 'web/Fastboard/CN/fastboard-api.javascript.mdx'
   workflow_dispatch:
     inputs:
@@ -16,10 +18,22 @@ on:
         description: 'Platform to sync (android/ios/web)'
         required: false
         default: 'all'
+        type: choice
+        options:
+          - all
+          - android
+          - ios
+          - web
       force:
         description: 'Force sync even if no changes detected'
         required: false
-        default: 'false'
+        default: false
+        type: boolean
+      dry_run:
+        description: 'Test mode - detect changes without creating PR'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   sync-docs:
@@ -46,45 +60,90 @@ jobs:
     
     - name: Install dependencies
       run: |
-        pip install pyyaml requests
+        cd whiteboard-docs
+        pip install -r tools/requirements.txt
     
     - name: Create sync config
       run: |
+        cd whiteboard-docs
         cat > config/sync_config.yaml << EOF
-        source:
-          repo_path: "whiteboard-docs"
+        # Fastboard文档同步配置文件
+        # 用于配置从Whiteboard-Docs仓库同步到shengwang-doc-source仓库
         
+        # 源仓库配置
+        source:
+          repo_path: "."
+          repo_url: "https://github.com/agora/Whiteboard-Docs.git"
+        
+        # 目标仓库配置
         target:
-          repo_path: "shengwang-doc-source"
+          repo_path: "../shengwang-doc-source"
           repo_url: "https://github.com/AgoraIO-Community/shengwang-doc-source.git"
           repo_owner: "AgoraIO-Community"
           repo_name: "shengwang-doc-source"
-          github_token: "${{ secrets.SYNC_TOKEN }}"
+          github_token: "\${{ secrets.SYNC_TOKEN }}"
         
+        # 同步映射配置
         sync_mapping:
+          # 发版说明文件映射（仅Fastboard中文）
           release_notes:
-            "android/Fastboard/CN/release-notes-fb.android.mdx": "docs/whiteboard/fastboard-sdk"
-            "ios/Fastboard/CN/release-notes-fb.ios.mdx": "docs/whiteboard/fastboard-sdk"
-            "web/Fastboard/CN/release-notes-fb.javascript.mdx": "docs/whiteboard/fastboard-sdk"
+            # Android平台
+            "android/Fastboard/CN/release-notes-fb.android.mdx": "docs/fastboard/android/cn"
+            
+            # iOS平台
+            "ios/Fastboard/CN/release-notes-fb.ios.mdx": "docs/fastboard/ios/cn"
+            
+            # Web平台
+            "web/Fastboard/CN/release-notes-fb.javascript.mdx": "docs/fastboard/web/cn"
           
+          # API文档文件映射（仅Fastboard中文）
           api_docs:
-            "android/Fastboard/CN/fastboard-api.mdx": "docs-api-reference/fastboard"
-            "ios/Fastboard/CN/fastboard-api.ios.mdx": "docs-api-reference/fastboard"
-            "web/Fastboard/CN/fastboard-api.javascript.mdx": "docs-api-reference/fastboard"
+            # Android平台
+            "android/Fastboard/CN/fastboard-api.mdx": "docs/fastboard/android/cn"
+            
+            # iOS平台
+            "ios/Fastboard/CN/fastboard-api.ios.mdx": "docs/fastboard/ios/cn"
+            
+            # Web平台
+            "web/Fastboard/CN/fastboard-api.javascript.mdx": "docs/fastboard/web/cn"
+        
+        # 日志配置
+        logging:
+          level: "INFO"
+          max_files: 10
+          max_size: "10MB"
+        
+        # 同步选项
+        sync_options:
+          backup_before_sync: true
+          verify_after_sync: true
+          max_concurrent_syncs: 3
+          max_file_size_mb: 50
         EOF
     
     - name: Run sync script
       env:
         GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
       run: |
+        cd whiteboard-docs
         python tools/sync_docs.py \
           --platform ${{ github.event.inputs.platform || 'all' }} \
           --force ${{ github.event.inputs.force || 'false' }} \
+          --dry-run ${{ github.event.inputs.dry_run || 'false' }} \
           --config config/sync_config.yaml
     
     - name: Upload logs
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: sync-logs
-        path: logs/ 
+        name: sync-logs-${{ github.run_id }}
+        path: whiteboard-docs/logs/
+        retention-days: 30
+    
+    - name: Notify on failure
+      if: failure()
+      run: |
+        echo "❌ 文档同步失败！"
+        echo "请检查日志文件获取详细信息。"
+        echo "失败时间: $(date)"
+        echo "工作流ID: ${{ github.run_id }}" 
