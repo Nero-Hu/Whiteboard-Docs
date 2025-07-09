@@ -9,6 +9,46 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 声网 Fastboard SDK 是为帮助开发人员快速构建白板应用推出的新一代白板 SDK。Fastboard SDK 基于互动白板 SDK 开发，对复杂的 API 进行封装，简化了接口调用逻辑，并提供核心功能的实现和默认 UI；此外，Fastboard SDK 还集成窗口管理器（[Window Manager](https://github.com/netless-io/window-manager)）和常用插件，帮助开发者轻松扩展白板应用的功能。使用 Fastboard SDK，你无需深入学习互动白板复杂的概念，只需几行代码即可加入白板房间，并立即使用丰富的工具体验实时互动协作。
 
+<VersionSection version="1.7.2 版">
+
+该版本于 2025 年 7 月 10 日发布。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+<ListTitle>注册第三方窗口应用</ListTitle>
+
+该版本在 `FastRoom` 类下新增 [`registerApp`](/api-ref/fastboard/android/fastboard-api#registerapp) 方法，用于向白板房间注册第三方窗口应用。该方法允许你注册可以在白板内作为独立窗口运行的外部应用，支持两种注册方式：
+
+- **本地脚本注册**：使用本地 JavaScript 代码（推荐方式，可靠性高）
+- **远程包注册**：使用远程 URL（可能因网络原因失败）
+
+同时新增 [`FastRegisterAppParams`](/api-ref/fastboard/android/fastboard-api#fastregisterappparams) 类，用于配置注册参数，包含应用名称、脚本代码、URL 地址等配置选项。
+
+<Admonition type="caution" title="注意">
+- 注册必须在加入房间前完成，以确保应用能够正常加载。
+- 确保所有客户端使用一致的应用版本，避免运行时问题。
+</Admonition>
+
+<ListTitle>设置画笔粗细范围</ListTitle>
+
+该版本在 `FastUiSettings` 类下新增 [`setStrokeRange`](/api-ref/fastboard/android/fastboard-api#setstrokerange) 方法，用于设置工具箱中线条宽度滑块的范围。该方法配置工具箱扩展面板中线条宽度滑块的最小值和最大值，用户在使用铅笔、矩形、圆形等绘图工具时，可以在此范围内调整线条宽度。默认范围为 1 到 24。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+- 调用 [`setToolboxEdgeMargin`](/api-ref/fastboard/android/fastboard-api#settoolboxedgemargin) 时，如果未指定 Toolbox Gravity，则该方法无效。
+- 首次调用 [`setResource`](/api-ref/fastboard/android/fastboard-api#setresource) UI 更新不生效。
+- 调用 [`setToolsColors`](/api-ref/fastboard/android/fastboard-api#settoolscolors) 设置了自定义颜色列表后，初次进入房间时的画笔颜色不在这组颜色里，不符合预期。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+<ListTitle>新增</ListTitle>
+
+- [`registerApp`](/api-ref/fastboard/android/fastboard-api#registerapp)
+- [`FastRegisterAppParams`](/api-ref/fastboard/android/fastboard-api#fastregisterappparams)
+- [`setStrokeRange`](/api-ref/fastboard/android/fastboard-api#setstrokerange)
+
+</VersionSection>
+
 <VersionSection version="1.6.2 版">
 
 该版本于 2024 年 9 月 14 日发布。

@@ -717,6 +717,97 @@ public class FastResource {
 十六进制的颜色值。
 
 
+<H3 className="anchor index-api-registerapp" id="registerapp">registerApp</H3>
+
+```java
+public void registerApp(FastRegisterAppParams params, FastResult<Boolean> result)
+```
+
+向白板房间注册第三方窗口应用。
+
+该方法允许你注册可以在白板内作为独立窗口运行的外部应用。
+
+注册支持两种方式：
+1. **本地脚本注册**：使用本地 JavaScript 代码（推荐方式，可靠性高）
+2. **远程包注册**：使用远程 URL（可能因网络原因失败）
+
+<Admonition type="caution" title="注意">
+- 注册必须在加入房间前完成，以确保应用能够正常加载。
+- 确保所有客户端使用一致的应用版本，避免运行时问题。
+- 在加入房间前注册应用。
+- 注册的应用将可通过 `getRoom().addApp()` 添加到房间中。
+</Admonition>
+
+**参数**
+
+- `params`：注册参数，包含应用配置。详见 <a href="#fastregisterappparams">FastRegisterAppParams</a>。
+- `result`：`registerApp` 方法调用的结果。详见 <a href="#result">FastResult</a>。传入 `FastResult` 实例，SDK 会触发在 `FastResult` 接口中实现的回调，报告 `registerApp` 方法调用是否成功；传入 `null` 表示不监听回调。
+
+
+<a name="fastregisterappparams"></a>
+<H3 className="anchor index-api-fastregisterappparams" id="fastregisterappparams">FastRegisterAppParams</H3>
+
+用于注册第三方窗口 App 参数的配置类。
+
+```java
+public class FastRegisterAppParams {
+    private String javascriptString;
+    private String kind;
+    private String url;
+    private Map<String, Object> appOptions;
+    private String variable;
+
+    public FastRegisterAppParams(String javascriptString, String kind, String variable, Map<String, Object> appOptions) {
+        this.javascriptString = javascriptString;
+        this.kind = kind;
+        this.appOptions = appOptions;
+        this.variable = variable;
+    }
+
+    public FastRegisterAppParams(String url, String kind, Map<String, Object> appOptions) {
+        this.url = url;
+        this.kind = kind;
+        this.appOptions = appOptions;
+    }
+
+    public String getJavascriptString() {
+        return javascriptString;
+    }
+
+    public String getKind() {
+        return kind;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Map<String, Object> getAppOptions() {
+        return appOptions;
+    }
+
+    public String getVariable() {
+        return variable;
+    }
+}
+```
+
+`FastRegisterAppParams` 类提供两种注册方式：
+
+1. **本地脚本注册**：通过本地的 JavaScript 字符串注册（推荐方式，可靠性高）
+   - 使用 `FastRegisterAppParams(String javascriptString, String kind, String variable, Map<String, Object> appOptions)` 构造函数
+2. **远程包注册**：通过发布包的 URL 进行注册（可能因网络原因失败）
+   - 使用 `FastRegisterAppParams(String url, String kind, Map<String, Object> appOptions)` 构造函数
+
+`FastRegisterAppParams` 类包含以下属性：
+
+- `javascriptString`：String。本地 JS 脚本代码，用于本地脚本注册。
+- `kind`：String。注册的 App 名称，即 App 的类型名称。
+- `url`：String。远程注册包的 URL 地址，用于远程包注册。
+- `appOptions`：Map&lt;String, Object&gt;。初始化 App 实例时会被传入的参数。这段配置不会被同步到其他端，属于本地设置。常常用来设置 debug 的开关。
+- `variable`：String。挂载在 window 上的变量名，挂载后为 `window.variable`。
+
+
 <H2 className="anchor index-auto-group index-class-fastuisettings" id="fastuisettings">FastUiSettings 类</H2>
 
 `FastUiSettings` 类提供设置白板用户界面的方法。
@@ -905,6 +996,32 @@ public void setToolboxExpand(boolean expand)
 - `expand`：是否展开工具栏：
   - `true`：展开。
   - `false`：折叠。
+
+<H3 className="anchor index-api-setstrokerange" id="setstrokerange">setStrokeRange</H3>
+
+```java
+public void setStrokeRange(int min, int max)
+```
+
+设置工具箱中线条宽度滑块的范围。
+
+该方法配置工具箱扩展面板中线条宽度滑块的最小值和最大值。用户在使用铅笔、矩形、圆形等绘图工具时，可以在此范围内调整线条宽度。
+
+**默认范围**
+
+1 到 24（在 ExtensionLayout 中定义）
+
+**使用说明**
+
+- 线条宽度滑块将被限制在指定的范围内
+- 如果当前线条宽度超出新范围，将被限制到新范围内
+- 此设置影响所有支持线条宽度调整的绘图工具
+
+**参数**
+
+- `min`：int。线条宽度的最小值（包含）。
+- `max`：int。线条宽度的最大值（包含）。
+}
 
 <h2 className="anchor index-auto-group index-class-fastlogger 类" id="fastlogger">FastLogger 类</h2>
 
