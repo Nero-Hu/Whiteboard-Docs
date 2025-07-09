@@ -15,11 +15,12 @@ on:
   workflow_dispatch:
     inputs:
       platform:
-        description: 'Platform to sync (android/ios/web)'
+        description: 'Platform to sync (all/android/ios/web)'
         required: false
-        default: 'android'
+        default: 'all'
         type: choice
         options:
+          - all
           - android
           - ios
           - web

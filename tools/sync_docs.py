@@ -481,7 +481,7 @@ class DocSynchronizer:
 
 def main():
     parser = argparse.ArgumentParser(description='同步Fastboard文档到shengwang-doc-source')
-    parser.add_argument('--platform', choices=['android', 'ios', 'web'], help='指定平台（不指定则同步所有平台）')
+    parser.add_argument('--platform', choices=['all', 'android', 'ios', 'web'], help='指定平台（all/android/ios/web，不指定则同步所有平台）')
     parser.add_argument('--force', action='store_true', help='强制同步，忽略变更检测')
     parser.add_argument('--dry-run', action='store_true', help='测试模式，只检测变更不创建PR')
     parser.add_argument('--config', default='config/sync_config.yaml', help='配置文件路径')
@@ -489,8 +489,11 @@ def main():
     
     args = parser.parse_args()
     
+    # 处理 'all' 选项
+    platform = None if args.platform == 'all' else args.platform
+    
     synchronizer = DocSynchronizer(args.config, interactive=not args.non_interactive)
-    success = synchronizer.sync_docs(args.platform, args.force, args.dry_run)
+    success = synchronizer.sync_docs(platform, args.force, args.dry_run)
     
     sys.exit(0 if success else 1)
 
