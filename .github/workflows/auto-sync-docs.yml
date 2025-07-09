@@ -27,13 +27,13 @@ jobs:
     
     steps:
     - name: Checkout Whiteboard-Docs
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         path: whiteboard-docs
         token: ${{ secrets.DOCS_TOKEN }}
     
     - name: Checkout shengwang-doc-source
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: AgoraIO-Community/shengwang-doc-source
         path: shengwang-doc-source
@@ -83,7 +83,7 @@ jobs:
           --config config/sync_config.yaml
     
     - name: Upload logs
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: sync-logs
