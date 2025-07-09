@@ -1,4 +1,4 @@
-name: Auto Sync Documentation
+name: Auto Sync Fastboard Docs
 
 on:
   push:
