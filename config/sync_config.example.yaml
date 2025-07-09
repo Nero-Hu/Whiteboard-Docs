@@ -9,9 +9,9 @@ target:
   # 目标仓库路径（shengwang-doc-source仓库的本地路径）
   repo_path: "E:/AgoraTWrepo/shengwang-doc-source"
   # 目标仓库的Git URL
-  repo_url: "https://github.com/AgoraIO-Community/shengwang-doc-source.git"
+  repo_url: "https://github.com/AgoraIO/shengwang-doc-source.git"
   # GitHub仓库所有者
-  repo_owner: "AgoraIO-Community"
+  repo_owner: "AgoraIO"
   # GitHub仓库名称
   repo_name: "shengwang-doc-source"
   # GitHub访问令牌（用于创建PR）
@@ -36,7 +36,20 @@ sync_mapping:
 
 # 日志配置
 logging:
-  # 日志级别：DEBUG, INFO, WARNING, ERROR
-  level: "INFO"
-  # 日志文件命名模式
-  file_pattern: "logs/doc_sync_%Y%m%d_%H%M%S.log" 
+  level: "INFO"  # 日志级别：DEBUG, INFO, WARNING, ERROR
+  max_files: 10  # 保留的日志文件数量
+  max_size: "10MB"  # 单个日志文件最大大小
+
+# 同步选项
+sync_options:
+  # 是否在同步前备份目标文件
+  backup_before_sync: true
+  
+  # 是否在同步后验证文件完整性
+  verify_after_sync: true
+  
+  # 并发同步的最大线程数
+  max_concurrent_syncs: 3
+  
+  # 文件大小限制（超过此大小的文件会记录警告）
+  max_file_size_mb: 50 
