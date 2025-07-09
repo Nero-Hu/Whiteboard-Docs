@@ -19,3 +19,4 @@ web/Whiteboard/EN/docs/
 # 文档同步工具配置
 config/sync_config.yaml
 logs/
+__pycache__/
