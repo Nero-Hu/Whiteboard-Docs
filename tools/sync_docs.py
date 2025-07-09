@@ -42,15 +42,15 @@ class DocSynchronizer:
         try:
             self.logger.info(f"开始同步文档，平台: {platform or 'all'}, 强制同步: {force}, 测试模式: {dry_run}")
             
-            # 1. 检测变更
+            # 1. 准备目标仓库
+            target_repo_path = self._prepare_target_repo()
+            
+            # 2. 检测变更（改进：在目标仓库中比较文件内容）
             if not force:
-                changes = self._detect_changes(platform)
+                changes = self._detect_changes(target_repo_path, platform)
                 if not changes:
                     self.logger.info("未检测到文档变更，跳过同步")
                     return True
-            
-            # 2. 准备目标仓库
-            target_repo_path = self._prepare_target_repo()
             
             # 3. 执行同步
             sync_results = self._perform_sync(target_repo_path, platform, dry_run)
