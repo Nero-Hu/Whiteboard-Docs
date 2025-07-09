@@ -32,6 +32,7 @@ pip install -r tools/requirements.txt
 
 - `--platform`: 指定平台 (android/ios/web)
 - `--force`: 强制同步，忽略变更检测
+- `--dry-run`: 测试模式，只检测变更不创建PR
 - `--config`: 指定配置文件路径
 
 ## 示例
@@ -45,6 +46,9 @@ python tools/sync_docs.py --platform android
 
 # 强制同步
 python tools/sync_docs.py --force
+
+# 测试模式（只检测变更，不创建PR）
+python tools/sync_docs.py --dry-run
 
 # 使用自定义配置
 python tools/sync_docs.py --config my_config.yaml

@@ -15,6 +15,7 @@ target:
   # GitHub仓库名称
   repo_name: "shengwang-doc-source"
   # GitHub访问令牌（用于创建PR）
+  # 本地使用时填写实际的token，GitHub Actions中会自动替换
   github_token: "${GITHUB_TOKEN}"
 
 # 文件同步映射配置

@@ -147,6 +147,9 @@ python tools/sync_docs.py --platform android
 # 强制同步（忽略变更检测）
 python tools/sync_docs.py --force
 
+# 测试模式（只检测变更，不创建PR）
+python tools/sync_docs.py --dry-run
+
 # 使用自定义配置文件
 python tools/sync_docs.py --config my_config.yaml
 ```
@@ -191,6 +194,10 @@ python tools/sync_docs.py --config my_config.yaml
 3. **同步失败**
    - 查看日志文件了解详细错误信息
    - 检查网络连接和GitHub API访问
+
+4. **测试建议**
+   - 首次使用建议先运行 `--dry-run` 模式测试
+   - 确认检测结果正确后再执行实际同步
 
 ## 注意事项
 
