@@ -114,6 +114,8 @@ Whiteboard-Docs/
 - **详细日志**：记录同步过程和结果，便于问题排查
 - **多平台支持**：支持android、ios、web三个平台
 - **手动和自动触发**：支持手动运行和GitHub Actions自动触发
+- **安全交互模式**：检测未提交更改，保护用户工作
+- **非交互模式**：适用于CI/CD环境，自动处理所有操作
 
 ### 使用方法
 
@@ -150,13 +152,28 @@ python tools/sync_docs.py --force
 # 测试模式（只检测变更，不创建PR）
 python tools/sync_docs.py --dry-run
 
+# 非交互模式（适用于CI/CD环境）
+python tools/sync_docs.py --non-interactive
+
 # 使用自定义配置文件
 python tools/sync_docs.py --config my_config.yaml
 ```
 
-#### 3. 自动同步
+#### 3. 交互模式说明
 
-当PR合入master分支时，如果修改了以下文件，会自动触发同步：
+同步工具支持两种运行模式：
+
+**交互模式（默认）**：
+- 检测到未提交更改时会询问用户是否继续
+- 显示详细的未提交文件列表
+- 适合开发环境使用，保护用户工作
+
+**非交互模式**：
+- 使用 `--non-interactive` 参数启用
+- 检测到未提交更改时会直接失败
+- 适合CI/CD环境使用，确保工作区干净
+
+#### 4. 自动同步
 - `android/Fastboard/CN/release-notes-fb.android.mdx`
 - `android/Fastboard/CN/fastboard-api.mdx`
 - `ios/Fastboard/CN/release-notes-fb.ios.mdx`
@@ -195,7 +212,12 @@ python tools/sync_docs.py --config my_config.yaml
    - 查看日志文件了解详细错误信息
    - 检查网络连接和GitHub API访问
 
-4. **测试建议**
+4. **交互模式问题**
+   - 如果遇到"目标仓库有未提交的更改"错误，请先提交或暂存更改
+   - 在CI/CD环境中使用 `--non-interactive` 参数
+   - 开发环境中建议使用默认的交互模式
+
+5. **测试建议**
    - 首次使用建议先运行 `--dry-run` 模式测试
    - 确认检测结果正确后再执行实际同步
 

@@ -130,6 +130,7 @@ jobs:
           --platform ${{ github.event.inputs.platform || 'all' }} \
           --force ${{ github.event.inputs.force || 'false' }} \
           --dry-run ${{ github.event.inputs.dry_run || 'false' }} \
+          --non-interactive \
           --config config/sync_config.yaml
     
     - name: Upload logs
