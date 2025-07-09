@@ -102,6 +102,96 @@ Whiteboard-Docs/
 3. 选择语言版本（`CN/` 或 `EN/`）
 4. 查看对应的文档和发版说明
 
+## 文档同步工具
+
+本仓库提供了自动化工具来同步 Fastboard 文档到发布仓库。
+
+### 功能特性
+
+- **自动检测变更**：检测发版说明和API文档的变更
+- **智能同步**：只同步有变更的文件，避免不必要的更新
+- **自动创建PR**：在目标仓库自动创建分支和Pull Request
+- **详细日志**：记录同步过程和结果，便于问题排查
+- **多平台支持**：支持android、ios、web三个平台
+- **手动和自动触发**：支持手动运行和GitHub Actions自动触发
+
+### 使用方法
+
+#### 1. 配置环境
+
+1. 复制配置文件模板：
+   ```bash
+   cp config/sync_config.example.yaml config/sync_config.yaml
+   ```
+
+2. 编辑配置文件，设置正确的路径和GitHub Token：
+   ```yaml
+   source:
+     repo_path: "E:/AgoraTWrepo/Whiteboard-Docs"
+   
+   target:
+     repo_path: "E:/AgoraTWrepo/shengwang-doc-source"
+     repo_url: "https://github.com/AgoraIO-Community/shengwang-doc-source.git"
+     github_token: "your_github_token_here"
+   ```
+
+#### 2. 手动同步
+
+```bash
+# 同步所有平台
+python tools/sync_docs.py
+
+# 同步指定平台
+python tools/sync_docs.py --platform android
+
+# 强制同步（忽略变更检测）
+python tools/sync_docs.py --force
+
+# 使用自定义配置文件
+python tools/sync_docs.py --config my_config.yaml
+```
+
+#### 3. 自动同步
+
+当PR合入master分支时，如果修改了以下文件，会自动触发同步：
+- `android/Fastboard/CN/release-notes-fb.android.mdx`
+- `android/Fastboard/CN/fastboard-api.mdx`
+- `ios/Fastboard/CN/release-notes-fb.ios.mdx`
+- `ios/Fastboard/CN/fastboard-api.ios.mdx`
+- `web/Fastboard/CN/release-notes-fb.javascript.mdx`
+- `web/Fastboard/CN/fastboard-api.javascript.mdx`
+
+也可以在GitHub Actions页面手动触发同步。
+
+### 同步规则
+
+- **发版说明**：同步到 `docs/whiteboard/fastboard-sdk/` 目录
+- **API文档**：同步到 `docs-api-reference/fastboard/` 目录
+- **文件名**：保持与源文件相同的文件名
+- **PR标题**：`[AUTO] sync fastboard release docs`
+- **分支命名**：`sync/fastboard-docs-{timestamp}`
+
+### 日志和监控
+
+- 同步日志保存在 `logs/` 目录下
+- 日志文件名格式：`doc_sync_YYYYMMDD_HHMMSS.log`
+- GitHub Actions运行日志可在Actions页面查看
+- 同步失败时会记录详细的错误信息
+
+### 故障排除
+
+1. **GitHub Token权限不足**
+   - 确保Token具有 `repo` 权限
+   - 检查Token是否过期
+
+2. **文件路径错误**
+   - 检查配置文件中的路径是否正确
+   - 确保目标仓库已正确克隆
+
+3. **同步失败**
+   - 查看日志文件了解详细错误信息
+   - 检查网络连接和GitHub API访问
+
 ## 注意事项
 
 - 本仓库不直接开发代码，仅用于文档生成
@@ -109,6 +199,7 @@ Whiteboard-Docs/
 - 所有发版说明都使用 MDX 格式编写
 - 确保中英文文档内容保持一致
 - 遵循各平台的文档工具使用规范
+- 同步工具配置文件 `config/sync_config.yaml` 已添加到 `.gitignore`，避免敏感信息泄露
 
 ## 贡献指南
 
