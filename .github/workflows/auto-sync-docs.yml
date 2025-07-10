@@ -90,7 +90,7 @@ jobs:
           repo_url: "https://github.com/AgoraIO/shengwang-doc-source.git"
           repo_owner: "AgoraIO"
           repo_name: "shengwang-doc-source"
-          github_token: "PLACEHOLDER_TOKEN"
+          github_token: "${GITHUB_TOKEN}"
         
         # 同步映射配置
         sync_mapping:
