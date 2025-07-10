@@ -22,6 +22,11 @@ class DocSynchronizer:
         # 确保配置文件路径是相对于项目根目录的绝对路径
         if not Path(config_path).is_absolute():
             config_path = str(PROJECT_ROOT / config_path)
+        
+        # 添加调试信息
+        print(f"项目根目录: {PROJECT_ROOT}")
+        print(f"配置文件路径: {config_path}")
+        
         self.config = self._load_config(config_path)
         self.setup_logging()
         self.logger = logging.getLogger(__name__)
@@ -184,24 +189,35 @@ class DocSynchronizer:
         if not target_repo_path.is_absolute():
             target_repo_path = PROJECT_ROOT / target_repo_path
         
+        self.logger.info(f"目标仓库路径: {target_repo_path}")
+        
         # 检查路径是否存在
-        if not target_repo_path.exists():
-            # 检查是否是Git仓库
+        if target_repo_path.exists():
+            # 检查是否是有效的Git仓库
             if (target_repo_path / '.git').exists():
-                self.logger.info(f"目标路径已存在Git仓库: {target_repo_path}")
+                self.logger.info(f"使用已存在的本地仓库: {target_repo_path}")
             else:
-                self.logger.info("克隆目标仓库...")
-                import subprocess
+                raise Exception(f"目标路径存在但不是Git仓库: {target_repo_path}")
+        else:
+            # 路径不存在，尝试克隆
+            self.logger.info("目标路径不存在，尝试克隆仓库...")
+            import subprocess
+            try:
                 subprocess.run([
                     'git', 'clone', 
                     self.config['target']['repo_url'], 
                     str(target_repo_path)
                 ], check=True)
-        else:
-            # 检查是否是有效的Git仓库
-            if not (target_repo_path / '.git').exists():
-                raise Exception(f"目标路径存在但不是Git仓库: {target_repo_path}")
-            self.logger.info(f"使用已存在的本地仓库: {target_repo_path}")
+                self.logger.info(f"成功克隆仓库到: {target_repo_path}")
+            except subprocess.CalledProcessError as e:
+                self.logger.error(f"克隆仓库失败: {e}")
+                # 提供更详细的错误信息
+                self.logger.error("可能的原因:")
+                self.logger.error("1. 网络连接问题")
+                self.logger.error("2. 仓库URL不正确")
+                self.logger.error("3. 权限问题")
+                self.logger.error("4. 目标路径权限问题")
+                raise
         
         # 检查工作区状态
         import subprocess

@@ -86,7 +86,7 @@ jobs:
         
         # 目标仓库配置
         target:
-          repo_path: "shengwang-doc-source"
+          repo_path: "../shengwang-doc-source"
           repo_url: "https://github.com/AgoraIO/shengwang-doc-source.git"
           repo_owner: "AgoraIO"
           repo_name: "shengwang-doc-source"
@@ -125,6 +125,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
       run: |
         cd whiteboard-docs
+        
+        # 显示当前工作目录和文件结构
+        echo "当前工作目录: $(pwd)"
+        echo "目录结构:"
+        ls -la
+        echo "上级目录结构:"
+        ls -la ..
         
         # 构建命令参数
         CMD="python tools/sync-fastboard/sync_docs.py --non-interactive --config config/sync_config.yaml"
