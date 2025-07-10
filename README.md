@@ -102,124 +102,18 @@ Whiteboard-Docs/
 3. 选择语言版本（`CN/` 或 `EN/`）
 4. 查看对应的文档和发版说明
 
-## 文档同步工具
+## 文档自动化工具
 
-本仓库提供了自动化工具来同步 Fastboard 文档到发布仓库。
+本仓库提供了以下自动化工具：
 
-### 功能特性
+### 1. 文档同步工具
+自动将 Fastboard 文档从 Whiteboard-Docs 仓库同步到 shengwang-doc-source 发布仓库。支持智能变更检测、自动PR创建和多平台同步。
+**详细文档**：[查看使用指南](tools/sync-fastboard/README.md)
 
-- **自动检测变更**：检测发版说明和API文档的变更
-- **智能同步**：只同步有变更的文件，避免不必要的更新
-- **自动创建PR**：在目标仓库自动创建分支和Pull Request
-- **详细日志**：记录同步过程和结果，便于问题排查
-- **多平台支持**：支持android、ios、web三个平台
-- **手动和自动触发**：支持手动运行和GitHub Actions自动触发
-- **安全交互模式**：检测未提交更改，保护用户工作
-- **非交互模式**：适用于CI/CD环境，自动处理所有操作
+### 2. 文档翻译工具
+将中文 Fastboard 文档翻译成英文，使用 Dify ChatFlow API 进行高质量翻译。🚧 **开发中**
+**详细文档**：[查看工具说明](tools/translate-fastboard/README.md)
 
-### 使用方法
-
-#### 1. 配置环境
-
-1. 复制配置文件模板：
-   ```bash
-   cp config/sync_config.example.yaml config/sync_config.yaml
-   ```
-
-2. 编辑配置文件，设置正确的路径和GitHub Token：
-   ```yaml
-   source:
-     repo_path: "E:/AgoraTWrepo/Whiteboard-Docs"
-   
-   target:
-     repo_path: "E:/AgoraTWrepo/shengwang-doc-source"
-     repo_url: "https://github.com/AgoraIO-Community/shengwang-doc-source.git"
-     github_token: "your_github_token_here"
-   ```
-
-#### 2. 手动同步
-
-```bash
-# 同步所有平台
-python tools/sync_docs.py
-
-# 同步指定平台
-python tools/sync_docs.py --platform android
-
-# 强制同步（忽略变更检测）
-python tools/sync_docs.py --force
-
-# 测试模式（只检测变更，不创建PR）
-python tools/sync_docs.py --dry-run
-
-# 非交互模式（适用于CI/CD环境）
-python tools/sync_docs.py --non-interactive
-
-# 使用自定义配置文件
-python tools/sync_docs.py --config my_config.yaml
-```
-
-#### 3. 交互模式说明
-
-同步工具支持两种运行模式：
-
-**交互模式（默认）**：
-- 检测到未提交更改时会询问用户是否继续
-- 显示详细的未提交文件列表
-- 适合开发环境使用，保护用户工作
-
-**非交互模式**：
-- 使用 `--non-interactive` 参数启用
-- 检测到未提交更改时会直接失败
-- 适合CI/CD环境使用，确保工作区干净
-
-#### 4. 自动同步
-- `android/Fastboard/CN/release-notes-fb.android.mdx`
-- `android/Fastboard/CN/fastboard-api.mdx`
-- `ios/Fastboard/CN/release-notes-fb.ios.mdx`
-- `ios/Fastboard/CN/fastboard-api.ios.mdx`
-- `web/Fastboard/CN/release-notes-fb.javascript.mdx`
-- `web/Fastboard/CN/fastboard-api.javascript.mdx`
-
-也可以在GitHub Actions页面手动触发同步。
-
-### 同步规则
-
-- **发版说明**：同步到 `docs/whiteboard/fastboard-sdk/` 目录
-- **API文档**：同步到 `docs-api-reference/fastboard/` 目录
-- **文件名**：保持与源文件相同的文件名
-- **PR标题**：`[AUTO] sync fastboard release docs`
-- **分支命名**：`sync/fastboard-docs-{timestamp}`
-
-### 日志和监控
-
-- 同步日志保存在 `logs/` 目录下
-- 日志文件名格式：`doc_sync_YYYYMMDD_HHMMSS.log`
-- GitHub Actions运行日志可在Actions页面查看
-- 同步失败时会记录详细的错误信息
-
-### 故障排除
-
-1. **GitHub Token权限不足**
-   - 确保Token具有 `repo` 权限
-   - 检查Token是否过期
-
-2. **文件路径错误**
-   - 检查配置文件中的路径是否正确
-   - 确保目标仓库已正确克隆
-
-3. **同步失败**
-   - 查看日志文件了解详细错误信息
-   - 检查网络连接和GitHub API访问
-
-4. **交互模式问题**
-   - 如果遇到"目标仓库有未提交的更改"错误，请先提交或暂存更改
-   - 在CI/CD环境中使用 `--non-interactive` 参数
-   - 开发环境中建议使用默认的交互模式
-
-5. **测试建议**
-   - 首次使用建议先运行 `--dry-run` 模式测试
-   - 确认检测结果正确后再执行实际同步
 
 ## 注意事项
 

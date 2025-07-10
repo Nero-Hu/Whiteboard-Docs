@@ -67,7 +67,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd whiteboard-docs
-        pip install -r tools/requirements.txt
+        pip install -r tools/sync-fastboard/requirements.txt
     
     - name: Create sync config
       run: |
@@ -126,7 +126,7 @@ jobs:
         cd whiteboard-docs
         
         # 构建命令参数
-        CMD="python tools/sync_docs.py --non-interactive --config config/sync_config.yaml"
+        CMD="python tools/sync-fastboard/sync_docs.py --non-interactive --config config/sync_config.yaml"
         
         # 添加平台参数（如果指定）
         if [ "${{ github.event.inputs.platform }}" != "" ]; then

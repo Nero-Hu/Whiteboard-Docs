@@ -10,7 +10,7 @@ from datetime import datetime
 import hashlib
 
 class DocSynchronizer:
-    def __init__(self, config_path: str = "config/sync_config.yaml", interactive: bool = True):
+    def __init__(self, config_path: str = "../../config/sync_config.yaml", interactive: bool = True):
         self.config = self._load_config(config_path)
         self.setup_logging()
         self.logger = logging.getLogger(__name__)
@@ -34,7 +34,7 @@ class DocSynchronizer:
     
     def setup_logging(self):
         """设置日志"""
-        log_dir = Path("logs")
+        log_dir = Path("../../logs")
         log_dir.mkdir(exist_ok=True)
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -95,7 +95,7 @@ class DocSynchronizer:
             if platform and platform not in source_path:
                 continue
                 
-            source_file = Path(self.config['source']['repo_path']) / source_path
+            source_file = Path("../../") / source_path
             target_file = target_repo_path / target_path / Path(source_path).name
             
             if source_file.exists() and self._has_content_changes(source_file, target_file):
@@ -107,7 +107,7 @@ class DocSynchronizer:
             if platform and platform not in source_path:
                 continue
                 
-            source_file = Path(self.config['source']['repo_path']) / source_path
+            source_file = Path("../../") / source_path
             target_file = target_repo_path / target_path / Path(source_path).name
             
             if source_file.exists() and self._has_content_changes(source_file, target_file):
@@ -245,7 +245,7 @@ class DocSynchronizer:
                 continue
                 
             try:
-                source_file = Path(self.config['source']['repo_path']) / source_path
+                source_file = Path("../../") / source_path
                 target_file = target_repo_path / target_path / Path(source_path).name
                 
                 if self._sync_file(source_file, target_file, dry_run):
@@ -263,7 +263,7 @@ class DocSynchronizer:
                 continue
                 
             try:
-                source_file = Path(self.config['source']['repo_path']) / source_path
+                source_file = Path("../../") / source_path
                 target_file = target_repo_path / target_path / Path(source_path).name
                 
                 if self._sync_file(source_file, target_file, dry_run):
@@ -561,7 +561,7 @@ def main():
     parser.add_argument('--platform', choices=['all', 'android', 'ios', 'web'], help='指定平台（all/android/ios/web，不指定则同步所有平台）')
     parser.add_argument('--force', action='store_true', help='强制同步，忽略变更检测')
     parser.add_argument('--dry-run', action='store_true', help='测试模式，只检测变更不创建PR')
-    parser.add_argument('--config', default='config/sync_config.yaml', help='配置文件路径')
+    parser.add_argument('--config', default='../../config/sync_config.yaml', help='配置文件路径')
     parser.add_argument('--non-interactive', action='store_true', help='非交互模式，适用于CI/CD环境')
     
     args = parser.parse_args()

@@ -16,7 +16,7 @@
 ## 安装依赖
 
 ```bash
-pip install -r tools/requirements.txt
+pip install -r tools/sync-fastboard/requirements.txt
 ```
 
 ## 配置
@@ -45,28 +45,28 @@ target:
 
 ```bash
 # 同步所有平台
-python tools/sync_docs.py
+python tools/sync-fastboard/sync_docs.py
 
 # 同步指定平台
-python tools/sync_docs.py --platform android
-python tools/sync_docs.py --platform ios
-python tools/sync_docs.py --platform web
+python tools/sync-fastboard/sync_docs.py --platform android
+python tools/sync-fastboard/sync_docs.py --platform ios
+python tools/sync-fastboard/sync_docs.py --platform web
 ```
 
 ### 高级选项
 
 ```bash
 # 强制同步（跳过变更检测）
-python tools/sync_docs.py --force
+python tools/sync-fastboard/sync_docs.py --force
 
 # 测试模式（只检测变更，不创建PR）
-python tools/sync_docs.py --dry-run
+python tools/sync-fastboard/sync_docs.py --dry-run
 
 # 非交互模式（适用于CI/CD）
-python tools/sync_docs.py --non-interactive
+python tools/sync-fastboard/sync_docs.py --non-interactive
 
 # 使用自定义配置文件
-python tools/sync_docs.py --config my_config.yaml
+python tools/sync-fastboard/sync_docs.py --config my_config.yaml
 ```
 
 ### 参数说明
@@ -84,7 +84,7 @@ python tools/sync_docs.py --config my_config.yaml
 ### 开发环境（推荐）
 
 ```bash
-python tools/sync_docs.py --platform android
+python tools/sync-fastboard/sync_docs.py --platform android
 ```
 
 **可能的交互**：
@@ -99,7 +99,7 @@ python tools/sync_docs.py --platform android
 ### CI/CD环境
 
 ```bash
-python tools/sync_docs.py --platform android --non-interactive
+python tools/sync-fastboard/sync_docs.py --platform android --non-interactive
 ```
 
 **特点**：
@@ -177,21 +177,21 @@ python tools/sync_docs.py --platform android --non-interactive
 
 1. **首次使用**：
    ```bash
-   # 先测试检测功能
-   python tools/sync_docs.py --dry-run --platform android
-   ```
+# 先测试检测功能
+python tools/sync-fastboard/sync_docs.py --dry-run --platform android
+```
 
 2. **确认配置**：
    ```bash
-   # 检查配置文件
-   python tools/sync_docs.py --dry-run --config config/sync_config.yaml
-   ```
+# 检查配置文件
+python tools/sync-fastboard/sync_docs.py --dry-run --config config/sync_config.yaml
+```
 
 3. **小范围测试**：
    ```bash
-   # 只同步一个平台
-   python tools/sync_docs.py --platform android
-   ```
+# 只同步一个平台
+python tools/sync-fastboard/sync_docs.py --platform android
+```
 
 ## 安全考虑
 
