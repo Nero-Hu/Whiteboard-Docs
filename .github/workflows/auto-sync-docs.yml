@@ -77,6 +77,7 @@ jobs:
         cat > config/sync_config.yaml << 'EOF'
         # Fastboard文档同步配置文件
         # 用于配置从Whiteboard-Docs仓库同步到shengwang-doc-source仓库
+        # 所有路径都是相对于项目根目录的路径
         
         # 源仓库配置
         source:
@@ -85,7 +86,7 @@ jobs:
         
         # 目标仓库配置
         target:
-          repo_path: "../shengwang-doc-source"
+          repo_path: "shengwang-doc-source"
           repo_url: "https://github.com/AgoraIO/shengwang-doc-source.git"
           repo_owner: "AgoraIO"
           repo_name: "shengwang-doc-source"

@@ -9,8 +9,19 @@ import json
 from datetime import datetime
 import hashlib
 
+def get_project_root():
+    """自动定位项目根目录"""
+    return Path(__file__).resolve().parent.parent.parent
+
+# 获取项目根目录并切换到该目录
+PROJECT_ROOT = get_project_root()
+os.chdir(PROJECT_ROOT)
+
 class DocSynchronizer:
-    def __init__(self, config_path: str = "../../config/sync_config.yaml", interactive: bool = True):
+    def __init__(self, config_path: str = "config/sync_config.yaml", interactive: bool = True):
+        # 确保配置文件路径是相对于项目根目录的绝对路径
+        if not Path(config_path).is_absolute():
+            config_path = str(PROJECT_ROOT / config_path)
         self.config = self._load_config(config_path)
         self.setup_logging()
         self.logger = logging.getLogger(__name__)
@@ -19,22 +30,20 @@ class DocSynchronizer:
     def _load_config(self, config_path: str) -> Dict:
         """加载配置文件"""
         with open(config_path, 'r', encoding='utf-8') as f:
-            config = yaml.safe_load(f)
+            config_content = f.read()
         
-        # 如果配置文件中使用占位符，从环境变量替换
-        if config.get('target', {}).get('github_token') == 'PLACEHOLDER_TOKEN':
-            import os
-            sync_token = os.environ.get('GITHUB_TOKEN')
-            if sync_token:
-                config['target']['github_token'] = sync_token
-            else:
-                raise ValueError("未找到GITHUB_TOKEN环境变量")
+        # 替换环境变量占位符
+        import os
+        config_content = os.path.expandvars(config_content)
+        
+        config = yaml.safe_load(config_content)
         
         return config
     
     def setup_logging(self):
         """设置日志"""
-        log_dir = Path("../../logs")
+        # 使用项目根目录下的logs目录
+        log_dir = PROJECT_ROOT / "logs"
         log_dir.mkdir(exist_ok=True)
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -95,7 +104,7 @@ class DocSynchronizer:
             if platform and platform not in source_path:
                 continue
                 
-            source_file = Path("../../") / source_path
+            source_file = PROJECT_ROOT / source_path
             target_file = target_repo_path / target_path / Path(source_path).name
             
             if source_file.exists() and self._has_content_changes(source_file, target_file):
@@ -107,7 +116,7 @@ class DocSynchronizer:
             if platform and platform not in source_path:
                 continue
                 
-            source_file = Path("../../") / source_path
+            source_file = PROJECT_ROOT / source_path
             target_file = target_repo_path / target_path / Path(source_path).name
             
             if source_file.exists() and self._has_content_changes(source_file, target_file):
@@ -167,20 +176,32 @@ class DocSynchronizer:
         return 'unknown'
     
     def _prepare_target_repo(self) -> Path:
-        """准备目标仓库（改进：添加安全检查）"""
+        """准备目标仓库"""
         self.logger.info("准备目标仓库...")
         
+        # 处理目标仓库路径：如果是相对路径，则相对于项目根目录
         target_repo_path = Path(self.config['target']['repo_path'])
+        if not target_repo_path.is_absolute():
+            target_repo_path = PROJECT_ROOT / target_repo_path
         
+        # 检查路径是否存在
         if not target_repo_path.exists():
-            self.logger.info("克隆目标仓库...")
-            import subprocess
-            subprocess.run([
-                'git', 'clone', 
-                self.config['target']['repo_url'], 
-                str(target_repo_path)
-            ], check=True)
-            return target_repo_path
+            # 检查是否是Git仓库
+            if (target_repo_path / '.git').exists():
+                self.logger.info(f"目标路径已存在Git仓库: {target_repo_path}")
+            else:
+                self.logger.info("克隆目标仓库...")
+                import subprocess
+                subprocess.run([
+                    'git', 'clone', 
+                    self.config['target']['repo_url'], 
+                    str(target_repo_path)
+                ], check=True)
+        else:
+            # 检查是否是有效的Git仓库
+            if not (target_repo_path / '.git').exists():
+                raise Exception(f"目标路径存在但不是Git仓库: {target_repo_path}")
+            self.logger.info(f"使用已存在的本地仓库: {target_repo_path}")
         
         # 检查工作区状态
         import subprocess
@@ -245,7 +266,7 @@ class DocSynchronizer:
                 continue
                 
             try:
-                source_file = Path("../../") / source_path
+                source_file = PROJECT_ROOT / source_path
                 target_file = target_repo_path / target_path / Path(source_path).name
                 
                 if self._sync_file(source_file, target_file, dry_run):
@@ -263,7 +284,7 @@ class DocSynchronizer:
                 continue
                 
             try:
-                source_file = Path("../../") / source_path
+                source_file = PROJECT_ROOT / source_path
                 target_file = target_repo_path / target_path / Path(source_path).name
                 
                 if self._sync_file(source_file, target_file, dry_run):
@@ -561,7 +582,7 @@ def main():
     parser.add_argument('--platform', choices=['all', 'android', 'ios', 'web'], help='指定平台（all/android/ios/web，不指定则同步所有平台）')
     parser.add_argument('--force', action='store_true', help='强制同步，忽略变更检测')
     parser.add_argument('--dry-run', action='store_true', help='测试模式，只检测变更不创建PR')
-    parser.add_argument('--config', default='../../config/sync_config.yaml', help='配置文件路径')
+    parser.add_argument('--config', default='config/sync_config.yaml', help='配置文件路径（相对于项目根目录）')
     parser.add_argument('--non-interactive', action='store_true', help='非交互模式，适用于CI/CD环境')
     
     args = parser.parse_args()
